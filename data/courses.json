@@ -1,0 +1,351 @@
+{
+    "courses": [
+        {
+            "title": "[S01] Tổng quan về Automation & kinh nghiệm làm nghề",
+            "description": "Giới thiệu tổng quan về chương trình AI Automation In Action và chia sẻ kinh nghiệm làm nghề từ các dự án thực chiến",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 2900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Mindset",
+                "Automation"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+            "productURL": "https://go.cuonghoa.ai/s01-tong-quan-ve-automation-kinh-nghiem-lam-nghe"
+        },
+        {
+            "title": "[S02] Thông báo tiền ra/vào & báo cáo từ Internet Banking",
+            "description": "Tự động thông báo giao dịch ngân hàng và báo cáo biến động số dự tiền ra tiền vào theo thời gian thực (real-time).",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 1900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": "2025-12-31 23:59:59",
+            "tools": [
+                "SePay",
+                "Lark",
+                "n8n"
+            ],
+            "authors": [
+                {
+                    "name": "Nguyễn Văn An",
+                    "avatar": "N",
+                    "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                },
+                {
+                    "name": "Trần Thị Bình",
+                    "avatar": "T",
+                    "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                }
+            ],
+            "featureImage": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+            "productURL": "https://go.cuonghoa.ai/tong-hop-bao-cao-tien-vao-ra-tu-dong-tu-internet-banking"
+        },
+        {
+            "title": "[S03] Báo cáo doanh thu & vận hành khóa học tinh gọn",
+            "description": "Đồng bộ đơn hàng từ website Woocommerce về LarkBase để vận hành nhanh.",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 2900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": "2025-12-31 23:59:59",
+            "tools": [
+                "Wordpress",
+                "SePay",
+                "Lark",
+                "n8n"
+            ],
+            "authors": [
+                {
+                    "name": "Nguyễn Văn An",
+                    "avatar": "N",
+                    "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                },
+                {
+                    "name": "Trần Thị Bình",
+                    "avatar": "T",
+                    "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                }
+            ],
+            "featureImage": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+            "productURL": "https://go.cuonghoa.ai/bao-cao-doanh-thu-va-van-hanh-khoa-hoc-tinh-gon"
+        },
+        {
+            "title": "[S04] Tự động hóa quy trình hợp đồng & công nợ",
+            "description": "Xây dựng hệ thống quản lý báo giá hợp đồng phiếu thu…no-code.",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 4900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": "2025-12-31 23:59:59",
+            "tools": [
+                "SePay",
+                "Lark",
+                "n8n"
+            ],
+            "authors": [
+                {
+                    "name": "Nguyễn Văn An",
+                    "avatar": "N",
+                    "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                },
+                {
+                    "name": "Trần Thị Bình",
+                    "avatar": "T",
+                    "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                }
+            ],
+            "featureImage": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+            "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-bao-gia-va-quan-ly-cong-no-tu-dong"
+        },
+        {
+            "title": "[S05] Chăm sóc group chat Zalo bằng Zalo cá nhân",
+            "description": "Lên lịch đăng bài tự động hóa lên nhiều nền tảng Facebook, Zalo (đặc biệt là Zalo group) dựa theo các nội dung tại file Google Sheet",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 2900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Make",
+                "Pancake",
+                "Facebook"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-3-20250909025510-8mrrg.png",
+            "productURL": "https://go.cuonghoa.ai/cham-soc-group-chat-bang-zalo-ca-nhan"
+        },
+        {
+            "title": "[S06] Tự động hóa hoạt động CSKH cho shop bán lẻ trên Shopee",
+            "description": "Tự động đồng bộ đánh giá Shopee và cảnh báo ngay khi có review xấu để CSKH kịp thời xử lý",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 3900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Lark",
+                "n8n",
+                "Shopee"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-4-20250909025943-0n2dg.png",
+            "productURL": "https://go.cuonghoa.ai/tu-dong-xu-ly-danh-gia-xau-shopee"
+        },
+        {
+            "title": "[S07] Hệ thống kích hoạt bảo hành điện tử với AI Automation",
+            "description": "Hệ thống bảo hành điện tử kết hợp thu thập thông tin khách hàng cho các kênh bán sàn (Shopee)",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 4900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Shopee",
+                "ZNS",
+                "n8n"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-5-20250909030520-awygw.png",
+            "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-kich-hoat-bao-hanh-dien-tu"
+        },
+        {
+            "title": "[S08] Bot tóm tắt nội dung nhóm chat",
+            "description": "Trợ lý AI thông minh với báo cáo tự động, tóm tắt cuộc họp và theo dõi hiệu suất team real-time",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 4900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "AI",
+                "n8n",
+                "Zalo"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-6-20250909030937-euvfb.png",
+            "productURL": "https://go.cuonghoa.ai/bot-tom-tat-noi-dung-nhom-chat"
+        },
+        {
+            "title": "[S09] Quy trình sản xuất content Social với AI Automation",
+            "description": "Thu thập bài viết website hoặc transcript Youtube từ URL nội dung được cung cấp (hoặc channel URL) & đúc kết insight từ nội dung và bình luận, hỗ trợ ý tưởng vô hạn cho đội content trong nhà mỗi ngày",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 7900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Make",
+                "n8n",
+                "AI"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png",
+            "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-san-xuat-content-social"
+        },
+        {
+            "title": "Tư duy đúng để xây dựng Website Ecommerce từ đầu",
+            "description": "Chi sẻ kinh nghiệm xây dựng website Ecommerce tối ưu ngay từ đầu cho dân không chuyên",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 3000000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Ecommerce",
+                "Website",
+                "Mindset"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-9-20250909033712-ad8ma.png",
+            "productURL": "https://go.cuonghoa.ai/tu-duy-xay-dung-website-ecom"
+        },
+        {
+            "title": "ExpertOS 01",
+            "description": "Giải pháp vận hành tinh gọn cho sự kiện và khóa học trên Ladi",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 4790000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Ladipage",
+                "Automation"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-vclass-ladi-01-20251022142251-pdkyl.png",
+            "productURL": "https://go.cuonghoa.ai/expertos-01"
+        },
+        {
+            "title": "ExpertOS 02",
+            "description": "Giải pháp vận hành khóa học tinh gọn & tự động hóa ExpertOS 02 (Nâng cấp của khóa ExpertOS 01)",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 6900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Ladipage",
+                "Automation"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-vclass-ladi-01-1-20251022142341-c06en.png",
+            "productURL": "https://go.cuonghoa.ai/expertos-02"
+        },
+        {
+            "title": "AI4B01 - Ứng dụng AI cơ bản cho tiệm bánh",
+            "description": "Ứng dụng AI cơ bản cho người mới bắt đầu, tiết kiệm thời gian tự mò mẫm",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 499000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "AI",
+                "ChatGPT",
+                "Beginer"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-11-20250909034834-prepm.png",
+            "productURL": "https://go.cuonghoa.ai/ung-dung-ai-co-ban-cho-tiem-banh"
+        },
+        {
+            "title": "AI4B02 - Sáng tạo nội dung cho tiệm bánh",
+            "description": "Ứng dụng AI 1 cách chuyên nghiệp trong việc sáng tạo nội dung và vận hành cho tiệm bánh",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 1790000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "available",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "AI",
+                "ChatGPT",
+                "Creative"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/image-12-20250909035013-uos1l.png",
+            "productURL": "https://go.cuonghoa.ai/sang-tao-nang-cao-cho-chu-tiem-banh"
+        },
+        {
+            "title": "EGA Content",
+            "description": "Nội dung khóa học đang được cập nhật",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 6900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "coming-soon",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Content"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-mini-courses-4-3pt8-20250909041641-fvdnt.png",
+            "productURL": "https://go.cuonghoa.ai/ega-content"
+        },
+        {
+            "title": "Rekap Pro",
+            "description": "Nội dung khóa học đang được cập nhật",
+            "category": "vClass",
+            "rating": 4.8,
+            "price": 6900000,
+            "originalPrice": null,
+            "discount": null,
+            "status": "coming-soon",
+            "hasFlashSale": false,
+            "flashSaleEnd": null,
+            "tools": [
+                "Recap"
+            ],
+            "authors": null,
+            "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-mini-courses-3-d0oe-20250909041747-rdnzi.png",
+            "productURL": "https://go.cuonghoa.ai/rekap-pro"
+        }
+    ]
+}
