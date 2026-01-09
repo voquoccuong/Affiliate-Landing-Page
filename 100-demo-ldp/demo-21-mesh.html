@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Modern</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #111;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated Mesh Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background:
+                radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+                radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+            background-size: 200% 200%;
+            animation: gradient-move 15s ease infinite;
+            opacity: 0.1;
+            /* Subtle overlay */
+        }
+
+        /* Or a lighter, more vibrant mesh */
+        .mesh-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.6;
+            animation: float 20s infinite alternate;
+        }
+
+        .blob-1 {
+            background: #6246ea;
+            top: -100px;
+            left: -100px;
+        }
+
+        .blob-2 {
+            background: #e45858;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            background: #2b2c34;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* Container & Glass Cards */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #111 0%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .btn-modern {
+            background: #111;
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.02);
+        }
+
+        .tag {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .price {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #111;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s;
+        }
+
+        .card:hover .price {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mesh-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+
+        <!-- Nav -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 80px;">
+            <div style="font-weight:800; font-size:1.5rem; letter-spacing:-1px;">CuongHoa.AI</div>
+            <a href="#" style="color:#111; text-decoration:none; font-weight:600;">Sign In</a>
+        </div>
+
+        <!-- Hero -->
+        <section class="hero">
+            <h1>Automate Your<br>Creative Flow</h1>
+            <p>
+                The complete toolkit for the modern solopreneur.
+                Leverage AI to scale your business without scaling your headcount.
+            </p>
+            <a href="#courses" class="btn-modern">
+                Explore The Bundle <i class="ph-bold ph-arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- Content -->
+        <div class="grid" id="courses">
+
+            <!-- Card 1 -->
+            <div class="card">
+                <span class="price">2.9M</span>
+                <span class="tag">Essential</span>
+                <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" class="card-img">
+                <h3>Automation Mindset</h3>
+                <p>Rewire your brain for efficiency. The foundational course for system building.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <span class="price">1.9M</span>
+                <span class="tag">Finance</span>
+                <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" class="card-img">
+                <h3>Banking Sync</h3>
+                <p>Real-time financial telemetry. Connect your bank to your dashboard instantly.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <span class="price">7.9M</span>
+                <span class="tag">Content</span>
+                <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" class="card-img">
+                <h3>AI Content Machine</h3>
+                <p>Generate viral content at scale. The infinite creativity engine.</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card">
+                <span class="price">6.9M</span>
+                <span class="tag">Growth</span>
+                <img src="https://w.ladicdn.com/22603/image-20250909040425-zw_ho.png" class="card-img">
+                <h3>LadiPage Systems</h3>
+                <p>High-conversion landing pages structure and automation.</p>
+            </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 80px; color: #666; font-size: 0.9rem;">
+            &copy; 2025 CuongHoa.AI. All systems operational.
+        </div>
+
+    </div>
+
+</body>
+
+</html>

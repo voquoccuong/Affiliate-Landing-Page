@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Enterprise Grade Automation</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --primary: #166534;
+            /* Green 800 */
+            --primary-light: #dcfce7;
+            /* Green 100 */
+            --text-heading: #111827;
+            --text-body: #4b5563;
+            --bg-body: #ffffff;
+            --bg-subtle: #f9fafb;
+            --border: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-body);
+            line-height: 1.5;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-heading);
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            z-index: 50;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-body);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.625rem 1.25rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: 1px solid transparent;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            background-color: #14532d;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--text-heading);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-subtle);
+            border-color: #d1d5db;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0;
+            background: radial-gradient(circle at 50% 0%, var(--primary-light) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            background-color: white;
+            border: 1px solid var(--primary-light);
+            border-radius: 9999px;
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-body);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-media {
+            margin-top: 4rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .hero-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Features/Courses */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #a7f3d0;
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            padding-top: 56.25%;
+            /* 16:9 ratio */
+            overflow: hidden;
+        }
+
+        .card-img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.625rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-body);
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .card-text {
+            color: var(--text-body);
+            font-size: 0.9375rem;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .card-footer {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--text-heading);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--primary);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            border-radius: var(--radius);
+            margin: 4rem 1.5rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+        }
+
+        .cta-section p {
+            color: #dcfce7;
+            max-width: 600px;
+            margin: 1rem auto 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <i class="ph-fill ph-robot" style="color: var(--primary);"></i> CuongHoa.AI
+            </a>
+            <div class="nav-links">
+                <a href="#">Trang chủ</a>
+                <a href="#">Khóa học</a>
+                <a href="#">Dịch vụ</a>
+                <a href="#">Blog</a>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+                <a href="#" class="btn btn-secondary">Đăng nhập</a>
+                <a href="#" class="btn btn-primary">Đăng ký ngay</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%;"></span>
+                    Mới ra mắt: Series Automation S09
+                </div>
+                <h1>Hệ thống hóa doanh nghiệp <br> với <span style="color: var(--primary);">AI Automation</span></h1>
+                <p>Giải pháp toàn diện giúp doanh nghiệp SME tiết kiệm chi phí, vận hành tự động và tăng tốc độ phát
+                    triển. Không cần biết code.</p>
+                <div style="display: flex; justify-content: center; gap: 1rem;">
+                    <a href="#courses" class="btn btn-primary btn-lg">Xem danh sách khóa học</a>
+                    <a href="#" class="btn btn-secondary btn-lg">
+                        <i class="ph ph-play-circle" style="font-size: 1.2rem;"></i> Demo thực tế
+                    </a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
+                    alt="Dashboard Dashboard">
+            </div>
+        </div>
+    </div>
+
+    <section id="courses" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Chương trình đào tạo</span>
+                <h2>Khóa học nổi bật</h2>
+                <p style="color: var(--text-body); max-width: 600px;">Các khóa học được thiết kế dựa trên quy trình thực
+                    tế, giúp bạn áp dụng ngay vào công việc.</p>
+            </div>
+
+            <div class="courses-grid" id="courseGrid">
+                <!-- Javascript will populate this -->
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="cta-section">
+            <h2>Sẵn sàng tự động hóa?</h2>
+            <p>Tham gia cộng đồng hơn 2000+ học viên và bắt đầu hành trình chuyển đổi số ngay hôm nay.</p>
+            <a href="#" class="btn" style="background: white; color: var(--primary); font-weight: 700;">Tư vấn lộ trình
+                miễn phí</a>
+        </div>
+    </div>
+
+    <footer style="background: var(--bg-subtle); padding: 4rem 0; border-top: 1px solid var(--border);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
+                <div>
+                    <a href="#" class="logo" style="margin-bottom: 1.5rem; display: block;">CuongHoa.AI</a>
+                    <p style="font-size: 0.875rem; color: var(--text-body);">
+                        Chuyên trang đào tạo và cung cấp giải pháp Automation, AI cho doanh nghiệp Việt Nam.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Sản phẩm</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#"
+                                style="text-decoration: none; color: var(--text-body);">Khóa học Video</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#"
+                                style="text-decoration: none; color: var(--text-body);">Coaching 1:1</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#"
+                                style="text-decoration: none; color: var(--text-body);">Giải pháp doanh nghiệp</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Về chúng tôi</h4>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#"
+                                style="text-decoration: none; color: var(--text-body);">Giới thiệu</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#"
+                                style="text-decoration: none; color: var(--text-body);">Liên hệ</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#"
+                                style="text-decoration: none; color: var(--text-body);">Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                style="margin-top: 3rem; pt: 2rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-body); font-size: 0.875rem;">
+                &copy; 2025 CuongHoa.AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const courses = [
+            {
+                "title": "[S01] Tổng quan về Automation & kinh nghiệm làm nghề",
+                "description": "Giới thiệu tổng quan về chương trình AI Automation In Action và chia sẻ kinh nghiệm làm nghề từ các dự án thực chiến",
+                "price": 2900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+                "tools": ["Mindset", "Automation"]
+            },
+            {
+                "title": "[S02] Thông báo tiền ra/vào & báo cáo từ Internet Banking",
+                "description": "Tự động thông báo giao dịch ngân hàng và báo cáo biến động số dự tiền ra tiền vào theo thời gian thực.",
+                "price": 1900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+                "tools": ["SePay", "Lark", "n8n"]
+            },
+            {
+                "title": "[S03] Báo cáo doanh thu & vận hành khóa học tinh gọn",
+                "description": "Đồng bộ đơn hàng từ website Woocommerce về LarkBase để vận hành nhanh.",
+                "price": 2900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+                "tools": ["Wordpress", "SePay", "Lark"]
+            },
+            {
+                "title": "[S04] Tự động hóa quy trình hợp đồng & công nợ",
+                "description": "Xây dựng hệ thống quản lý báo giá hợp đồng phiếu thu…no-code.",
+                "price": 4900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+                "tools": ["SePay", "Lark", "n8n"]
+            },
+            {
+                "title": "[S05] Chăm sóc group chat Zalo bằng Zalo cá nhân",
+                "description": "Lên lịch đăng bài tự động hóa lên nhiều nền tảng Facebook, Zalo (đặc biệt là Zalo group).",
+                "price": 2900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-3-20250909025510-8mrrg.png",
+                "tools": ["Make", "Pancake"]
+            },
+            {
+                "title": "[S09] Quy trình sản xuất content Social với AI Automation",
+                "description": "Thu thập bài viết website hoặc transcript Youtube & đúc kết insight từ nội dung.",
+                "price": 7900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png",
+                "tools": ["Make", "n8n", "AI"]
+            }
+        ];
+
+        const grid = document.getElementById('courseGrid');
+
+        courses.forEach(course => {
+            const priceFormatted = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(course.price);
+
+            const toolsHtml = course.tools.slice(0, 3).map(tool =>
+                `<span class="tag">${tool}</span>`
+            ).join('');
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-img-wrapper">
+                    <img src="${course.featureImage}" alt="${course.title}" loading="lazy">
+                </div>
+                <div class="card-body">
+                    <div class="card-tags">
+                        ${toolsHtml}
+                    </div>
+                    <h3 class="card-title"><a href="#" style="text-decoration:none; color:inherit;">${course.title}</a></h3>
+                    <p class="card-text">${course.description}</p>
+                    <div class="card-footer">
+                        <span class="price">${priceFormatted}</span>
+                        <a href="#" class="btn btn-secondary" style="padding: 0.375rem 0.75rem; font-size: 0.875rem;">Xem chi tiết</a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Nature</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Urbanist:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --sage-green: #a7bd98;
+            --deep-forest: #2f4f4f;
+            --warm-sand: #f5f0e1;
+            --wood-brown: #8b5742;
+        }
+
+        body {
+            font-family: 'Urbanist', sans-serif;
+            background-color: var(--warm-sand);
+            color: var(--deep-forest);
+            line-height: 1.6;
+        }
+
+        /* Organic decorative shape */
+        .leaf-bg {
+            position: fixed;
+            top: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: #d8e2dc;
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+            z-index: -1;
+            animation: breathe 10s ease-in-out infinite alternate;
+        }
+
+        .leaf-bg-2 {
+            position: fixed;
+            bottom: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: #e6ebe0;
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            z-index: -1;
+            animation: breathe 12s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            100% {
+                transform: scale(1.05) rotate(5deg);
+            }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 60px;
+        }
+
+        .brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--wood-brown);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--deep-forest);
+        }
+
+        p.intro {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #556b6b;
+        }
+
+        .btn-nature {
+            background: var(--deep-forest);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px 50px 50px 0;
+            /* Leaf shape */
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-nature:hover {
+            transform: translateY(-3px);
+            background: var(--wood-brown);
+            border-radius: 50px 50px 0 50px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 200px 200px 20px 20px;
+            /* Arch shape */
+            box-shadow: 20px 20px 0 rgba(167, 189, 152, 0.3);
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(47, 79, 79, 0.05);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat i {
+            font-size: 2rem;
+            color: var(--sage-green);
+            margin-bottom: 10px;
+        }
+
+        .stat h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        @media(max-width: 800px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-img {
+                height: 300px;
+                order: -1;
+            }
+
+            .stats-row {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="leaf-bg"></div>
+    <div class="leaf-bg-2"></div>
+
+    <div class="container">
+
+        <nav>
+            <div class="brand"><i class="ph-fill ph-plant"></i> CuongHoa Eco</div>
+            <div style="font-weight:600; color: #556b6b;">Sustainable Growth</div>
+        </nav>
+
+        <div class="hero">
+            <div>
+                <h1>Cultivate Your<br>Digital Garden</h1>
+                <p class="intro">
+                    Grow your business naturally with systems that nurture success.
+                    No burnout. Just consistent, organic progress.
+                </p>
+                <a href="#" class="btn-nature">Begin Planting</a>
+            </div>
+            <img src="https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                class="hero-img">
+        </div>
+
+        <div class="stats-row">
+            <div class="stat">
+                <i class="ph-fill ph-sun"></i>
+                <h3>Natural Flow</h3>
+                <p>Systems that adapt to you.</p>
+            </div>
+            <div class="stat">
+                <i class="ph-fill ph-drop"></i>
+                <h3>Nurturing</h3>
+                <p>Support that helps you grow.</p>
+            </div>
+            <div class="stat">
+                <i class="ph-fill ph-tree"></i>
+                <h3>Evergreen</h3>
+                <p>Results that last for years.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - System Blueprint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --blueprint-bg: #00509d;
+            --blueprint-grid: rgba(255, 255, 255, 0.15);
+            --line-color: rgba(255, 255, 255, 0.8);
+            --text-color: #ffffff;
+            --accent: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--blueprint-bg);
+            color: var(--text-color);
+            font-family: 'Share Tech Mono', monospace;
+            background-image:
+                linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+            min-height: 100vh;
+            padding: 40px;
+            overflow-x: hidden;
+        }
+
+        .border-frame {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 4px solid var(--line-color);
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .border-frame::after {
+            content: "PROJECT: AUTOMATION_V1 // APPROVED";
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            background: var(--blueprint-bg);
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Connecting Lines (Decor) */
+        .connector {
+            position: absolute;
+            background: var(--line-color);
+            z-index: -1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            border: 2px solid var(--line-color);
+            padding: 40px;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blueprint-bg);
+        }
+
+        header::before,
+        header::after {
+            content: "+";
+            position: absolute;
+            color: var(--line-color);
+            font-size: 20px;
+        }
+
+        header::before {
+            top: -14px;
+            left: -6px;
+        }
+
+        header::after {
+            bottom: -14px;
+            right: -6px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        .specs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Module Cards */
+        .module-container {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .module-row {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+        }
+
+        .module-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        /* Dimension Lines */
+        .dim-line {
+            position: absolute;
+            border-left: 1px solid var(--line-color);
+            border-right: 1px solid var(--line-color);
+            height: 10px;
+            width: 100%;
+            top: -20px;
+        }
+
+        .dim-line::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--line-color);
+        }
+
+        .dim-text {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blueprint-bg);
+            padding: 0 5px;
+            font-size: 12px;
+        }
+
+        .module-card {
+            border: 2px solid var(--line-color);
+            padding: 20px;
+            width: 300px;
+            background: rgba(0, 80, 157, 0.9);
+            position: relative;
+        }
+
+        .module-card img {
+            width: 100%;
+            border: 1px solid var(--line-color);
+            margin-bottom: 15px;
+            filter: grayscale(100%) sepia(100%) hue-rotate(180deg) saturate(200%);
+            mix-blend-mode: luminosity;
+        }
+
+        .module-specs {
+            flex: 1;
+            padding: 20px;
+            border: 1px dashed var(--line-color);
+            position: relative;
+        }
+
+        .module-specs h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .btn-schematic {
+            display: inline-block;
+            margin-top: 20px;
+            border: 2px solid var(--text-color);
+            padding: 10px 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-schematic:hover {
+            background: var(--text-color);
+            color: var(--blueprint-bg);
+        }
+
+        .measurement {
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="border-frame"></div>
+
+    <div class="container">
+        <header>
+            <h1>System Architecture</h1>
+            <div class="specs">
+                <span>REF: CH-2025</span>
+                <span>SCALE: 1:1</span>
+                <span>STATUS: WIP</span>
+            </div>
+            <!-- Decorative connection line top -->
+            <div class="connector" style="width: 2px; height: 40px; top: -42px; left: 50%;"></div>
+        </header>
+
+        <div class="module-container">
+            <!-- Module 1 -->
+            <div class="module-row">
+                <div class="dim-line"><span class="dim-text">SECTION A-1</span></div>
+                <div class="module-card">
+                    <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" alt="Blueprint">
+                    <div style="font-size: 12px; text-align: right;">FIG 1.0</div>
+                </div>
+                <div class="module-specs">
+                    <span class="measurement">&lt; 2,900,000 u &gt;</span>
+                    <h3>Foundation Layer</h3>
+                    <p>Mindset calibration. Installing core operating principles for automated workflows.</p>
+                    <ul style="margin-top: 10px; padding-left: 20px; font-size: 0.9rem;">
+                        <li>Input: Manual Chaos</li>
+                        <li>Process: Systemization</li>
+                        <li>Output: Order</li>
+                    </ul>
+                    <a href="#" class="btn-schematic">Inspect</a>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module-row">
+                <div class="dim-line"><span class="dim-text">SECTION B-2</span></div>
+                <div class="module-card">
+                    <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" alt="Blueprint">
+                    <div style="font-size: 12px; text-align: right;">FIG 1.1</div>
+                </div>
+                <div class="module-specs">
+                    <span class="measurement">&lt; 1,900,000 u &gt;</span>
+                    <h3>Financial Subsystem</h3>
+                    <p>Automated telemetry for banking transactions. Real-time data visualization.</p>
+                    <a href="#" class="btn-schematic">Inspect</a>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module-row">
+                <div class="dim-line"><span class="dim-text">SECTION C-3</span></div>
+                <div class="module-card">
+                    <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" alt="Blueprint">
+                    <div style="font-size: 12px; text-align: right;">FIG 1.2</div>
+                </div>
+                <div class="module-specs">
+                    <span class="measurement">&lt; 7,900,000 u &gt;</span>
+                    <h3>Content Generator Core</h3>
+                    <p>High-throughput AI engine for social media distribution and synthesis.</p>
+                    <a href="#" class="btn-schematic">Inspect</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Singularity</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Jura:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Jura', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        /* The Core / Black Hole */
+        .singularity-core {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: #000;
+            border-radius: 50%;
+            box-shadow:
+                0 0 60px rgba(255, 255, 255, 0.5),
+                0 0 100px rgba(100, 200, 255, 0.3),
+                inset 0 0 60px rgba(0, 0, 0, 1);
+            z-index: 1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        /* Accretion Disk */
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .r1 {
+            width: 600px;
+            height: 600px;
+            animation: spin 20s linear infinite;
+            border-top-color: white;
+        }
+
+        .r2 {
+            width: 800px;
+            height: 800px;
+            animation: spin 30s linear infinite reverse;
+            border-bottom-color: rgba(100, 200, 255, 0.5);
+        }
+
+        .r3 {
+            width: 1200px;
+            height: 1200px;
+            animation: spin 60s linear infinite;
+            border-left-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes spin {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 60px rgba(255, 255, 255, 0.5);
+            }
+
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 0 100px rgba(255, 255, 255, 0.8), 0 0 150px rgba(100, 200, 255, 0.5);
+            }
+        }
+
+        /* Starfield */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .container {
+            z-index: 10;
+            text-align: center;
+            mix-blend-mode: difference;
+        }
+
+        h1 {
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            font-size: 5rem;
+            text-transform: uppercase;
+            letter-spacing: 1rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 0.5rem;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+            opacity: 0.8;
+        }
+
+        .btn-singularity {
+            background: white;
+            color: black;
+            padding: 20px 60px;
+            font-family: 'Syncopate', sans-serif;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 2px;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-singularity:hover {
+            transform: scale(1.1);
+            background: #00f0ff;
+            box-shadow: 0 0 50px #00f0ff;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 100px;
+            margin-top: 100px;
+        }
+
+        .feature-point {
+            text-align: center;
+        }
+
+        .feature-point .num {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, #fff, transparent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-point .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-top: 1px solid white;
+            padding-top: 10px;
+        }
+
+        @media(max-width: 800px) {
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.5rem;
+            }
+
+            .singularity-core {
+                width: 200px;
+                height: 200px;
+            }
+
+            .features {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stars"></div>
+
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+
+    <div class="singularity-core"></div>
+
+    <div class="container">
+        <p class="subtitle">CuongHoa Artificial Intelligence</p>
+        <h1>Singularity</h1>
+
+        <a href="#" class="btn-singularity">ENTER THE VOID</a>
+
+        <div class="features">
+            <div class="feature-point">
+                <span class="num">∞</span>
+                <span class="label">Scale</span>
+            </div>
+            <div class="feature-point">
+                <span class="num">0.0</span>
+                <span class="label">Friction</span>
+            </div>
+            <div class="feature-point">
+                <span class="num">1.0</span>
+                <span class="label">Integration</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

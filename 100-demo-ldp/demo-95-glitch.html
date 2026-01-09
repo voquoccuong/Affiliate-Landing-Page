@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glitch - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Share Tech Mono', monospace;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .glitch-wrapper {
+            position: relative;
+        }
+
+        h1 {
+            font-size: 8rem;
+            margin: 0;
+            line-height: 1;
+            position: relative;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        /* Glitch Effect Layers */
+        h1::before,
+        h1::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050505;
+        }
+
+        h1::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-1 5s infinite linear alternate-reverse;
+        }
+
+        h1::after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim-2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% {
+                clip: rect(20px, 9999px, 80px, 0);
+            }
+
+            20% {
+                clip: rect(80px, 9999px, 10px, 0);
+            }
+
+            40% {
+                clip: rect(10px, 9999px, 90px, 0);
+            }
+
+            60% {
+                clip: rect(90px, 9999px, 20px, 0);
+            }
+
+            80% {
+                clip: rect(30px, 9999px, 60px, 0);
+            }
+
+            100% {
+                clip: rect(60px, 9999px, 30px, 0);
+            }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip: rect(90px, 9999px, 10px, 0);
+            }
+
+            20% {
+                clip: rect(30px, 9999px, 60px, 0);
+            }
+
+            40% {
+                clip: rect(10px, 9999px, 80px, 0);
+            }
+
+            60% {
+                clip: rect(80px, 9999px, 20px, 0);
+            }
+
+            80% {
+                clip: rect(20px, 9999px, 90px, 0);
+            }
+
+            100% {
+                clip: rect(70px, 9999px, 40px, 0);
+            }
+        }
+
+        .sub-text {
+            border: 1px solid #fff;
+            padding: 1rem;
+            margin-top: 2rem;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .sub-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ff00c1;
+            z-index: -1;
+        }
+
+        .cta-glitch {
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 20px;
+            position: relative;
+            transition: all 0.1s;
+        }
+
+        .cta-glitch:hover {
+            background: #00fff9;
+            box-shadow: 5px 5px 0 #ff00c1;
+            transform: translate(-2px, -2px);
+        }
+
+        /* Scanlines */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Random glyphs */
+        .bg-glyph {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 10rem;
+            z-index: -1;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scanlines"></div>
+
+    <div class="bg-glyph" style="top: 10%; left: 10%;">ERROR</div>
+    <div class="bg-glyph" style="bottom: 10%; right: 10%; font-size: 5rem;">404</div>
+
+    <div class="wrapper">
+        <h1 data-text="SYSTEM">SYSTEM</h1>
+        <h1 data-text="FAILURE" style="font-size: 5rem; color: #ff00c1;">FAILURE</h1>
+
+        <div class="sub-text">
+            <span>> FATAL EXCEPTION 0xC0000005</span><br>
+            <span>> RE-ROUTING TO SAFE MODE...</span><br>
+            <span>> SUCCESS IS NOT GUARANTEED.</span>
+        </div>
+
+        <a href="https://www.cuonghoa.website" class="cta-glitch">REBOOT SYSTEM</a>
+    </div>
+
+    <script>
+        // Simple script to occasionally "twitch" the whole body
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                document.body.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+                setTimeout(() => {
+                    document.body.style.transform = 'none';
+                }, 50);
+            }
+        }, 100);
+    </script>
+
+</body>
+
+</html>

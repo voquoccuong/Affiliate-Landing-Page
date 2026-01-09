@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Blue - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
+
+        :root {
+            --deep-blue-top: #006080;
+            --deep-blue-bot: #001020;
+            --light-ray: rgba(255, 255, 255, 0.1);
+            --bubble: rgba(255, 255, 255, 0.4);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, var(--deep-blue-top), var(--deep-blue-bot));
+            height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Caustics / Light Rays */
+        .light-rays {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                repeating-linear-gradient(15deg,
+                    transparent 0,
+                    transparent 20px,
+                    var(--light-ray) 25px,
+                    transparent 40px);
+            opacity: 0.3;
+            animation: rays 10s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes rays {
+            from {
+                transform: translateX(-20px);
+            }
+
+            to {
+                transform: translateX(20px);
+            }
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(to bottom, #E0F7FA, #00BCD4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0, 20, 40, 0.5);
+            letter-spacing: -2px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #B2EBF2;
+            max-width: 600px;
+            margin: 1rem auto 3rem auto;
+            line-height: 1.6;
+        }
+
+        .bubble-btn {
+            display: inline-block;
+            padding: 1.5rem 4rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 2px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bubble-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 255, 0.2);
+        }
+
+        /* Bubbles */
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+            border-radius: 50%;
+            animation: rise 10s infinite ease-in;
+            opacity: 0.6;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="light-rays"></div>
+
+    <!-- Bubbles -->
+    <div class="bubble" style="width: 20px; height: 20px; left: 10%; animation-duration: 8s; animation-delay: 0s;">
+    </div>
+    <div class="bubble" style="width: 40px; height: 40px; left: 20%; animation-duration: 12s; animation-delay: 2s;">
+    </div>
+    <div class="bubble" style="width: 15px; height: 15px; left: 35%; animation-duration: 7s; animation-delay: 5s;">
+    </div>
+    <div class="bubble" style="width: 50px; height: 50px; left: 60%; animation-duration: 15s; animation-delay: 1s;">
+    </div>
+    <div class="bubble" style="width: 25px; height: 25px; left: 80%; animation-duration: 9s; animation-delay: 3s;">
+    </div>
+    <div class="bubble" style="width: 30px; height: 30px; left: 90%; animation-duration: 11s; animation-delay: 6s;">
+    </div>
+
+    <div class="container">
+        <h1>DEEP DIVE</h1>
+        <p>Explore the depths of immersive web experiences. Fluid layout, weightless typography, and crystal clear
+            visuals.</p>
+        <a href="https://www.cuonghoa.website" class="bubble-btn">SUBMERGE</a>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - The Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #f9f7f1;
+            --ink: #1a1a1a;
+            --accent: #a00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--ink);
+            font-family: 'Lora', serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Masthead */
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+            border-bottom: 3px double var(--ink);
+            margin-bottom: 40px;
+        }
+
+        .meta-top {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        h1.masthead {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        /* Main Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* Hero Article */
+        .hero-article h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            margin-bottom: 20px;
+            border: 1px solid var(--ink);
+        }
+
+        .drop-cap {
+            float: left;
+            font-size: 4.5rem;
+            line-height: 0.8;
+            padding-top: 4px;
+            padding-right: 8px;
+            padding-left: 3px;
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+        }
+
+        .lead {
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            border-left: 1px solid var(--ink);
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .sidebar-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            border-top: 2px solid var(--ink);
+            padding-top: 10px;
+        }
+
+        .price-tag {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            background: var(--ink);
+            color: white;
+            padding: 2px 8px;
+        }
+
+        .btn-text {
+            color: var(--accent);
+            text-decoration: underline;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .ticker {
+            background: var(--ink);
+            color: white;
+            padding: 10px;
+            overflow: hidden;
+            white-space: nowrap;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ticker">
+        LATEST: AI AUTOMATION REPLACES 90% OF MANUAL DATA ENTRY JOBS --- STOCK MARKET UP --- CUONGHOA.AI RELEASES NEW
+        SUITE ---
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="meta-top">
+                <span>Vol. 1</span>
+                <span>Ho Chi Minh City, 2025</span>
+                <span>$2.99</span>
+            </div>
+            <h1 class="masthead">The Automation Times</h1>
+            <p class="tagline">"Because Manual Labor is So Last Century"</p>
+        </header>
+
+        <section class="grid-layout">
+            <article class="hero-article">
+                <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+                    class="hero-image" alt="Robot working">
+                <h2>The Rise of the Machine Workforce</h2>
+                <div class="meta-top" style="border: none; margin-bottom: 10px; color: #666;">By Cuong Hoa • Business
+                    Strategy</div>
+                <p class="lead">
+                    <span class="drop-cap">W</span>hy do we continue to suffer through the drudgery of copy-pasting? In
+                    an era where silicon brains can process terabytes of data in milliseconds, the human penchant for
+                    manual spreadsheet management is not just inefficient—it is tragic.
+                </p>
+                <p class="lead">
+                    <br>
+                    The new curriculum from the <strong>Automation Mindset</strong> department promises to liberate the
+                    modern knowledge worker. It is not merely a course; it is an emancipation proclamation for your
+                    time.
+                </p>
+                <br>
+                <a href="#" class="btn-text">Read Full Story -></a>
+            </article>
+
+            <aside class="sidebar">
+                <div class="sidebar-item">
+                    <span class="price-tag">BEST SELLER</span>
+                    <h3>Banking Report v2.0 Released</h3>
+                    <p style="font-size: 0.95rem;">
+                        Financial telemetry has never been this elegant. Connects directly to your nervous system
+                        (metaphorically).
+                        <br><br>
+                        <strong>Price: 1.900.000 VND</strong>
+                    </p>
+                    <a href="#" class="btn-text">Acquire</a>
+                </div>
+
+                <div class="sidebar-item">
+                    <span class="price-tag">TRENDING</span>
+                    <h3>Infinite Content Engine</h3>
+                    <p style="font-size: 0.95rem;">
+                        Writers block is officially cured. The new AI engine generates viral posts while you sleep.
+                        <br><br>
+                        <strong>Price: 7.900.000 VND</strong>
+                    </p>
+                    <a href="#" class="btn-text">Acquire</a>
+                </div>
+
+                <div class="sidebar-item" style="background: #e0e0e0; padding: 20px; text-align: center;">
+                    <h4
+                        style="font-family: sans-serif; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px;">
+                        Advertisement</h4>
+                    <p style="font-size: 0.8rem; margin-bottom: 10px;">
+                        <strong>LadiPage System</strong><br>
+                        High conversion guaranteed.
+                    </p>
+                    <button
+                        style="background: var(--ink); color: white; border: none; padding: 5px 15px; cursor: pointer;">BUY
+                        NOW</button>
+                </div>
+            </aside>
+        </section>
+
+        <section
+            style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; border-bottom: 1px solid black; padding-bottom: 40px;">
+            <!-- Bottom Col 1 -->
+            <div style="border-right: 1px solid #ddd; padding-right: 20px;">
+                <h4 style="border-bottom: 2px solid black; margin-bottom: 10px; font-family: sans-serif;">OPINION</h4>
+                <h3 style="font-family: 'Playfair Display'; font-size: 1.2rem;">Why Excel Macros Are Dead</h3>
+                <p style="font-size: 0.9rem;">The script kiddies are moving to n8n. Here is why you should too.</p>
+            </div>
+
+            <!-- Bottom Col 2 -->
+            <div style="border-right: 1px solid #ddd; padding-right: 20px;">
+                <h4 style="border-bottom: 2px solid black; margin-bottom: 10px; font-family: sans-serif;">MARKETS</h4>
+                <h3 style="font-family: 'Playfair Display'; font-size: 1.2rem;">Time Value Skyrockets</h3>
+                <p style="font-size: 0.9rem;">As automation increases, the value of creative thought hits an all-time
+                    high.</p>
+            </div>
+
+            <!-- Bottom Col 3 -->
+            <div>
+                <h4 style="border-bottom: 2px solid black; margin-bottom: 10px; font-family: sans-serif;">LIFESTYLE</h4>
+                <h3 style="font-family: 'Playfair Display'; font-size: 1.2rem;">What To Do With Free Time?</h3>
+                <p style="font-size: 0.9rem;">A guide to hobbies for the newly automated entrepreneur.</p>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2025 The Automation Times. All Rights Reserved. Printed in HTML5.
+        </footer>
+    </div>
+
+</body>
+
+</html>

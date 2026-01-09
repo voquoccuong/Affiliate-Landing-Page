@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - VS Code Edition</title>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --bg-editor: #1e1e1e;
+            --bg-sidebar: #252526;
+            --bg-activity: #333333;
+            --fg-text: #cccccc;
+            --fg-line-num: #858585;
+            --accent: #007acc;
+            --tab-active: #1e1e1e;
+            --tab-inactive: #2d2d2d;
+
+            --syntax-purple: #c586c0;
+            --syntax-blue: #569cd6;
+            --syntax-green: #6a9955;
+            /* comment */
+            --syntax-orange: #ce9178;
+            /* string */
+            --syntax-yellow: #dcdcaa;
+            /* function */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-editor);
+            color: var(--fg-text);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Activity Bar (Far Left) */
+        .activity-bar {
+            width: 48px;
+            background: var(--bg-activity);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        .activity-icon {
+            font-size: 24px;
+            color: #858585;
+            margin-bottom: 20px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .activity-icon.active {
+            color: white;
+            border-left: 2px solid white;
+        }
+
+        /* Sidebar (Explorer) */
+        .sidebar {
+            width: 250px;
+            background: var(--bg-sidebar);
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #000;
+        }
+
+        .sidebar-header {
+            padding: 10px 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #bbbbbb;
+        }
+
+        .file-explorer {
+            flex: 1;
+            padding-top: 5px;
+        }
+
+        .file-item {
+            padding: 5px 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #cccccc;
+        }
+
+        .file-item:hover {
+            background-color: #2a2d2e;
+        }
+
+        .file-item.active {
+            background-color: #37373d;
+            color: white;
+        }
+
+        .folder-label {
+            padding: 5px 10px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+        }
+
+        /* Main Editor Area */
+        .main-editor {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-editor);
+        }
+
+        .tabs-bar {
+            height: 35px;
+            background: var(--bg-sidebar);
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .tab {
+            padding: 0 15px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--tab-inactive);
+            color: #969696;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-right: 1px solid #000;
+            min-width: 120px;
+        }
+
+        .tab.active {
+            background: var(--tab-active);
+            color: white;
+            border-top: 1px solid var(--accent);
+        }
+
+        .tab-close {
+            margin-left: auto;
+            font-size: 14px;
+        }
+
+        .editor-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Code Syntax Styling (Fake) */
+        .line {
+            display: flex;
+        }
+
+        .line-num {
+            width: 40px;
+            text-align: right;
+            padding-right: 15px;
+            color: var(--fg-line-num);
+            user-select: none;
+        }
+
+        .code {
+            flex: 1;
+            white-space: pre-wrap;
+        }
+
+        .kwd {
+            color: var(--syntax-purple);
+        }
+
+        .func {
+            color: var(--syntax-yellow);
+        }
+
+        .str {
+            color: var(--syntax-orange);
+        }
+
+        .var {
+            color: var(--syntax-blue);
+        }
+
+        .cmt {
+            color: var(--syntax-green);
+        }
+
+        /* GUI styling inside editor for courses */
+        .gui-container {
+            padding: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .course-card {
+            background: #252526;
+            border: 1px solid #333;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .course-card:hover {
+            border-color: var(--accent);
+        }
+
+        .course-card img {
+            width: 100px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .btn-run {
+            background: var(--syntax-green);
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 2px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="activity-bar">
+        <div class="activity-icon active"><i class="ph ph-files"></i></div>
+        <div class="activity-icon"><i class="ph ph-magnifying-glass"></i></div>
+        <div class="activity-icon"><i class="ph ph-git-branch"></i></div>
+        <div class="activity-icon"><i class="ph ph-bug"></i></div>
+        <div class="activity-icon" style="margin-top: auto;"><i class="ph ph-gear"></i></div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-header">EXPLORER</div>
+
+        <div class="file-explorer">
+            <div class="folder-label"><i class="ph-fill ph-caret-down"></i> CUONGHOA-PROJECT</div>
+
+            <div class="folder-label" style="padding-left: 20px;"><i class="ph-fill ph-caret-down"></i> src</div>
+
+            <div class="file-item active" style="padding-left: 35px;" onclick="switchTab('readme')">
+                <i class="ph-fill ph-info" style="color: #569cd6;"></i> README.md
+            </div>
+            <div class="file-item" style="padding-left: 35px;" onclick="switchTab('courses')">
+                <i class="ph-fill ph-brackets-curly" style="color: #f1e05a;"></i> courses.json
+            </div>
+            <div class="file-item" style="padding-left: 35px;" onclick="switchTab('automation')">
+                <i class="ph-fill ph-file-ts" style="color: #007acc;"></i> automation.ts
+            </div>
+
+            <div class="folder-label" style="padding-left: 20px;"><i class="ph-fill ph-caret-right"></i> assets</div>
+        </div>
+    </div>
+
+    <div class="main-editor">
+        <div class="tabs-bar">
+            <div class="tab active" data-tab="readme">
+                <i class="ph-fill ph-info" style="color: #569cd6;"></i> README.md <span class="tab-close">×</span>
+            </div>
+            <div class="tab" data-tab="courses">
+                <i class="ph-fill ph-brackets-curly" style="color: #f1e05a;"></i> courses.json <span
+                    class="tab-close">×</span>
+            </div>
+            <div class="tab" data-tab="automation">
+                <i class="ph-fill ph-file-ts" style="color: #007acc;"></i> automation.ts <span
+                    class="tab-close">×</span>
+            </div>
+        </div>
+
+        <!-- Content 1: README (Hero) -->
+        <div class="editor-content" id="content-readme">
+            <div class="line">
+                <div class="line-num">1</div>
+                <div class="code"><span class="kwd"># CuongHoa.AI - Automation Mastery</span></div>
+            </div>
+            <div class="line">
+                <div class="line-num">2</div>
+                <div class="code"></div>
+            </div>
+            <div class="line">
+                <div class="line-num">3</div>
+                <div class="code">Welcome to the future of **business automation**.</div>
+            </div>
+            <div class="line">
+                <div class="line-num">4</div>
+                <div class="code">Here we build not just workflows, but **systems**.</div>
+            </div>
+            <div class="line">
+                <div class="line-num">5</div>
+                <div class="code"></div>
+            </div>
+            <div class="line">
+                <div class="line-num">6</div>
+                <div class="code"><span class="kwd">## Getting Started</span></div>
+            </div>
+            <div class="line">
+                <div class="line-num">7</div>
+                <div class="code">1. Browse `courses.json` to see available modules.</div>
+            </div>
+            <div class="line">
+                <div class="line-num">8</div>
+                <div class="code">2. Run `npm install knowledge` to upgrade your brain.</div>
+            </div>
+            <div class="line">
+                <div class="line-num">9</div>
+                <div class="code">3. Deploy to production immediately.</div>
+            </div>
+            <div class="line">
+                <div class="line-num">10</div>
+                <div class="code"></div>
+            </div>
+            <div class="line">
+                <div class="line-num">11</div>
+                <div class="code"><button class="btn-run" onclick="switchTab('courses')"><i class="ph-fill ph-play"></i>
+                        VIEW COURSES</button></div>
+            </div>
+        </div>
+
+        <!-- Content 2: Courses (JSON/GUI) -->
+        <div class="editor-content" id="content-courses" style="display: none;">
+            <!-- Hybrid View: JSON + GUI -->
+            <div class="line">
+                <div class="line-num">1</div>
+                <div class="code"><span class="cmt">// Loaded data from server...</span></div>
+            </div>
+            <div class="line">
+                <div class="line-num">2</div>
+                <div class="code"><span class="kwd">const</span> <span class="var">availableCourses</span> = [</div>
+            </div>
+
+            <div class="gui-container">
+                <!-- Injected Items -->
+                <div class="course-card">
+                    <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" alt="">
+                    <div>
+                        <h4 style="color: #569cd6; margin-bottom: 5px;">[S01] Automation Mindset</h4>
+                        <p style="font-size: 13px; color: #999; margin-bottom: 10px;">The foundation of all great
+                            systems.</p>
+                        <button class="btn-run">Enroll (2.900.000đ)</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" alt="">
+                    <div>
+                        <h4 style="color: #569cd6; margin-bottom: 5px;">[S02] Banking Report</h4>
+                        <p style="font-size: 13px; color: #999; margin-bottom: 10px;">Real-time money tracking with n8n.
+                        </p>
+                        <button class="btn-run">Enroll (1.900.000đ)</button>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" alt="">
+                    <div>
+                        <h4 style="color: #569cd6; margin-bottom: 5px;">[S09] AI Content Machine</h4>
+                        <p style="font-size: 13px; color: #999; margin-bottom: 10px;">Scale your social media with AI.
+                        </p>
+                        <button class="btn-run">Enroll (7.900.000đ)</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line">
+                <div class="line-num">35</div>
+                <div class="code">];</div>
+            </div>
+        </div>
+
+        <!-- Content 3: Code (TS) -->
+        <div class="editor-content" id="content-automation" style="display: none;">
+            <div class="line">
+                <div class="line-num">1</div>
+                <div class="code"><span class="kwd">import</span> { <span class="var">AI</span>, <span
+                        class="var">n8n</span> } <span class="kwd">from</span> <span
+                        class="str">'@cuonghoa/libs'</span>;</div>
+            </div>
+            <div class="line">
+                <div class="line-num">2</div>
+                <div class="code"></div>
+            </div>
+            <div class="line">
+                <div class="line-num">3</div>
+                <div class="code"><span class="cmt">// Function to automate your business</span></div>
+            </div>
+            <div class="line">
+                <div class="line-num">4</div>
+                <div class="code"><span class="kwd">async function</span> <span class="func">scaleBusiness</span>() {
+                </div>
+            </div>
+            <div class="line">
+                <div class="line-num">5</div>
+                <div class="code"> <span class="kwd">const</span> <span class="var">tasks</span> = <span
+                        class="kwd">await</span> <span class="var">n8n</span>.<span
+                        class="func">getManualTasks</span>();</div>
+            </div>
+            <div class="line">
+                <div class="line-num">6</div>
+                <div class="code"> </div>
+            </div>
+            <div class="line">
+                <div class="line-num">7</div>
+                <div class="code"> <span class="var">tasks</span>.<span class="func">forEach</span>(<span
+                        class="var">task</span> => {</div>
+            </div>
+            <div class="line">
+                <div class="line-num">8</div>
+                <div class="code"> <span class="cmt">// Remove manual effort by 90%</span></div>
+            </div>
+            <div class="line">
+                <div class="line-num">9</div>
+                <div class="code"> <span class="kwd">const</span> <span class="var">automated</span> = <span
+                        class="var">AI</span>.<span class="func">optimize</span>(<span class="var">task</span>);</div>
+            </div>
+            <div class="line">
+                <div class="line-num">10</div>
+                <div class="code"> <span class="var">console</span>.<span class="func">log</span>(<span
+                        class="str">`Saved 10 hours on ${automated.name}`</span>);</div>
+            </div>
+            <div class="line">
+                <div class="line-num">11</div>
+                <div class="code"> });</div>
+            </div>
+            <div class="line">
+                <div class="line-num">12</div>
+                <div class="code">}</div>
+            </div>
+            <div class="line">
+                <div class="line-num">13</div>
+                <div class="code"></div>
+            </div>
+            <div class="line">
+                <div class="line-num">14</div>
+                <div class="code"><span class="func">scaleBusiness</span>();</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Update Tab UI
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`.tab[data-tab="${tabName}"]`).classList.add('active');
+
+            // Update Sidebar UI
+            document.querySelectorAll('.file-item').forEach(f => f.classList.remove('active'));
+            // simple match, skipping proper mapping for demo speed
+            if (tabName === 'readme') document.querySelectorAll('.file-item')[0].classList.add('active');
+            if (tabName === 'courses') document.querySelectorAll('.file-item')[1].classList.add('active');
+            if (tabName === 'automation') document.querySelectorAll('.file-item')[2].classList.add('active');
+
+            // Show Content
+            document.querySelectorAll('.editor-content').forEach(c => c.style.display = 'none');
+            document.getElementById(`content-${tabName}`).style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

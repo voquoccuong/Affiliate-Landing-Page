@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Frost - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Iceberg&family=Roboto:wght@300&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #a8d5e5;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1483664852095-d6cc6870705d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .frost-glass {
+            width: 90%;
+            max-width: 800px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: #00334e;
+            overflow: hidden;
+        }
+
+        /* Ice Cracks/Texture overlay */
+        .frost-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.1"/></svg>');
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        /* Frost accumulation at corners */
+        .frost-glass::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.8), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.8), transparent 30%);
+            pointer-events: none;
+        }
+
+        h1 {
+            font-family: 'Iceberg', cursive;
+            font-size: 6rem;
+            margin: 0;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 51, 78, 0.3);
+            letter-spacing: 5px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #e3f2fd;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            margin: 1rem 0 3rem 0;
+        }
+
+        .btn-ice {
+            padding: 1rem 3rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid white;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-ice:hover {
+            background: white;
+            color: #00334e;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 2rem;
+            top: -50px;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="snowflake" style="left: 10%; animation-duration: 5s;">❄</div>
+    <div class="snowflake" style="left: 30%; animation-duration: 7s; font-size: 1rem;">❄</div>
+    <div class="snowflake" style="right: 20%; animation-duration: 6s; font-size: 1.5rem;">❄</div>
+    <div class="snowflake" style="right: 40%; animation-duration: 8s;">❄</div>
+
+    <div class="frost-glass">
+        <h1>FROZEN</h1>
+        <p>Cool, crisp, and perfectly preserved.</p>
+        <a href="https://www.cuonghoa.website" class="btn-ice">Break the Ice</a>
+    </div>
+
+</body>
+
+</html>

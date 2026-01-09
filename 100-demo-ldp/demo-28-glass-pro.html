@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Pro</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #000;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Animated Background Blobs */
+        .bg-blobs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            filter: blur(80px);
+            /* Heavy blur */
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 20s infinite alternate;
+            opacity: 0.6;
+        }
+
+        .b1 {
+            width: 600px;
+            height: 600px;
+            background: #4f46e5;
+            top: -100px;
+            left: -100px;
+        }
+
+        .b2 {
+            width: 500px;
+            height: 500px;
+            background: #ec4899;
+            bottom: -100px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        .b3 {
+            width: 400px;
+            height: 400px;
+            background: #06b6d4;
+            top: 30%;
+            right: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(50px, 30px) scale(1.1);
+            }
+        }
+
+        /* Main Container */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            display: flex;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            padding: 40px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            background: linear-gradient(to right, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-item {
+            color: rgba(255, 255, 255, 0.6);
+            padding: 15px 0;
+            cursor: pointer;
+            transition: color 0.3s;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            color: white;
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 50px;
+            overflow-y: auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin-bottom: 40px;
+        }
+
+        /* Glass Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: background 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+        }
+
+        /* Button */
+        .btn-glass {
+            padding: 12px 30px;
+            background: white;
+            color: black;
+            border-radius: 30px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-glass:hover {
+            opacity: 0.9;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-blobs">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+    </div>
+
+    <div class="glass-panel">
+
+        <div class="sidebar">
+            <div class="logo">CuongHoa.AI</div>
+            <div class="nav-item active">
+                <i class="ph-fill ph-squares-four"></i> Dashboard
+            </div>
+            <div class="nav-item">
+                <i class="ph-fill ph-book-open"></i> Courses
+            </div>
+            <div class="nav-item">
+                <i class="ph-fill ph-users"></i> Community
+            </div>
+            <div class="nav-item">
+                <i class="ph-fill ph-chart-line-up"></i> Analytics
+            </div>
+            <div class="nav-item" style="margin-top: auto;">
+                <i class="ph-fill ph-gear"></i> Settings
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="hero">
+                <h1>Unlock the Future<br>of Automation</h1>
+                <p>Master the tools that are reshaping the digital landscape. A unified ecosystem for the modern
+                    creator.</p>
+                <button class="btn-glass">Start Exploring</button>
+            </div>
+
+            <div class="cards-grid">
+
+                <div class="card">
+                    <div class="card-icon"><i class="ph-fill ph-brain"></i></div>
+                    <h3>Mindset</h3>
+                    <p>Building the neural pathways for efficient system thinking.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="ph-fill ph-magic-wand"></i></div>
+                    <h3>Creation</h3>
+                    <p>AI-driven content generation at enterprise scale.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="ph-fill ph-chart-bar"></i></div>
+                    <h3>Growth</h3>
+                    <p>Optimize your funnel with data-backed LadiPage strategies.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon"><i class="ph-fill ph-currency-dollar"></i></div>
+                    <h3>Finance</h3>
+                    <p>Real-time telemetry for your business health.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

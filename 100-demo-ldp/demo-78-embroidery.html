@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embroidery - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fffaf0;
+            background-image: url('https://www.transparenttextures.com/patterns/fabric-of-squares.png');
+            font-family: 'Nunito', sans-serif;
+            color: #555;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hoop {
+            width: 600px;
+            height: 600px;
+            border: 20px solid #d4a373;
+            /* Wood */
+            border-radius: 50%;
+            background: #ffffff;
+            /* Fabric canvas */
+            background-image: radial-gradient(#ddd 1px, transparent 1px);
+            background-size: 10px 10px;
+            position: relative;
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.2),
+                inset 0 0 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Screw at top */
+        .hoop::before {
+            content: '';
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 30px;
+            background: #c0c0c0;
+            /* Metal */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem;
+            color: #e63946;
+            margin: 0;
+            /* Stitch effect text */
+            text-shadow:
+                2px 2px 0 #cc2936,
+                1px 1px 0 #333;
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            max-width: 400px;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1d3557;
+        }
+
+        .stitched-btn {
+            background: #457b9d;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 2px dashed #a8dadc;
+            border-radius: 10px;
+            box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .stitched-btn::after {
+            content: 'x x x x x';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #457b9d;
+            font-size: 10px;
+        }
+
+        /* Flower Pattern (CSS Art) */
+        .flower {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        .petal {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #ffb703;
+            border-radius: 50%;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hoop">
+        <!-- Flowers -->
+        <div class="flower" style="top: 100px; left: 100px;">
+            <div class="petal" style="top:0; left:20px;"></div>
+            <div class="petal" style="top:20px; left:40px;"></div>
+            <div class="petal" style="top:40px; left:20px;"></div>
+            <div class="petal" style="top:20px; left:0;"></div>
+            <div
+                style="position:absolute; top:25px; left:25px; width:30px; height:30px; background:#fb8500; border-radius:50%;">
+            </div>
+        </div>
+
+        <div class="flower" style="bottom: 100px; right: 100px;">
+            <div class="petal" style="top:0; left:20px;"></div>
+            <div class="petal" style="top:20px; left:40px;"></div>
+            <div class="petal" style="top:40px; left:20px;"></div>
+            <div class="petal" style="top:20px; left:0;"></div>
+            <div
+                style="position:absolute; top:25px; left:25px; width:30px; height:30px; background:#fb8500; border-radius:50%;">
+            </div>
+        </div>
+
+        <h1 style="position: relative; z-index: 10;">Handmade</h1>
+        <p style="position: relative; z-index: 10;">
+            Crafted with love and attention to every stitch. Bespoke solutions for your unique brand.
+        </p>
+        <a href="https://www.cuonghoa.website" class="stitched-btn">Start Crafting</a>
+    </div>
+
+</body>
+
+</html>

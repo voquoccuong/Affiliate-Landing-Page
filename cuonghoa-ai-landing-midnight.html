@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Automation Academy (Midnight Edition)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700;800&family=Work+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#131314',
+                        surface: '#1c1c1c',
+                        surfaceBorder: '#3a3a3a',
+                        textPrimary: '#e5e7eb',
+                        textSecondary: '#b8b8b8',
+                        accent: '#d97757',
+                        success: '#22c55e'
+                    },
+                    fontFamily: {
+                        sans: ['Work Sans', 'sans-serif'],
+                        heading: ['DM Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #131314;
+            color: #e5e7eb;
+            font-family: 'Work Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-heading {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .glass-card {
+            background-color: rgba(28, 28, 28, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid #3a3a3a;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: #d97757;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(217, 119, 87, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #e5e7eb 0%, #b8b8b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .accent-gradient-text {
+            background: linear-gradient(135deg, #d97757 0%, #d4a27f 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-50 border-b border-[#3a3a3a] bg-[#131314]/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <img src="assets/cuonghoaai-logo-web-dark-small.png" alt="Logo" class="h-8 w-auto">
+                    <span class="font-heading font-bold text-xl tracking-tight text-white">CuongHoa.AI</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#"
+                            class="text-textSecondary hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Trang
+                            chủ</a>
+                        <a href="#"
+                            class="text-white px-3 py-2 rounded-md text-sm font-medium border-b-2 border-accent">Khóa
+                            học</a>
+                        <a href="#"
+                            class="text-textSecondary hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Về
+                            tôi</a>
+                        <a href="#"
+                            class="bg-white text-black hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105">Đăng
+                            nhập</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://claudekit.cc/_next/static/media/grid.svg')] opacity-10"></div>
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 relative z-10 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-surfaceBorder mb-6">
+                <span class="flex h-2 w-2 rounded-full bg-success animate-pulse"></span>
+                <span class="text-xs font-medium text-textSecondary uppercase tracking-wider">Học viện AI
+                    Automation</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-heading font-bold tracking-tight mb-6">
+                Tự động hóa <br>
+                <span class="accent-gradient-text">để bứt phá doanh thu</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-textSecondary">
+                Làm chủ công nghệ, tối ưu quy trình và nhân bản hiệu suất làm việc với hệ thống khóa học Automation
+                chuyên sâu.
+            </p>
+            <div class="mt-10 flex justify-center gap-4">
+                <a href="#courses"
+                    class="font-heading font-bold px-8 py-4 bg-accent hover:bg-[#c06547] text-white rounded-xl transition-all shadow-[0_0_20px_rgba(217,119,87,0.3)] hover:shadow-[0_0_30px_rgba(217,119,87,0.5)]">
+                    Khám phá khóa học
+                </a>
+                <a href="#"
+                    class="font-heading font-bold px-8 py-4 bg-surface hover:bg-surfaceBorder border border-surfaceBorder text-textPrimary rounded-xl transition-all">
+                    Tư vấn lộ trình
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="border-y border-[#3a3a3a] bg-surface/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl font-heading font-bold text-white mb-1">5000+</div>
+                    <div class="text-sm text-textSecondary">Học viên</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-heading font-bold text-white mb-1">50+</div>
+                    <div class="text-sm text-textSecondary">Doanh nghiệp</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-heading font-bold text-white mb-1">100+</div>
+                    <div class="text-sm text-textSecondary">Quy trình</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-heading font-bold text-white mb-1">4.9/5</div>
+                    <div class="text-sm text-textSecondary">Đánh giá</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course List -->
+    <div id="courses" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl font-heading font-bold text-white mb-2">Danh sách khóa học</h2>
+                <p class="text-textSecondary">Các chương trình đào tạo từ cơ bản đến nâng cao</p>
+            </div>
+
+            <div class="flex gap-2">
+                <button
+                    class="px-4 py-2 rounded-lg bg-surface border border-surfaceBorder text-white text-sm hover:border-accent transition-colors">Tất
+                    cả</button>
+                <button
+                    class="px-4 py-2 rounded-lg bg-transparent border border-transparent text-textSecondary text-sm hover:text-white transition-colors">Automation</button>
+                <button
+                    class="px-4 py-2 rounded-lg bg-transparent border border-transparent text-textSecondary text-sm hover:text-white transition-colors">AI
+                    Content</button>
+            </div>
+        </div>
+
+        <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Courses will be injected here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#3a3a3a] bg-[#000000] pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="assets/cuonghoaai-logo-web-dark-small.png" alt="Logo"
+                            class="h-8 brightness-0 invert opacity-70">
+                    </div>
+                    <p class="text-textSecondary text-sm leading-relaxed">
+                        Học viện đào tạo AI Automation hàng đầu, giúp bạn làm chủ công nghệ và bứt phá sự nghiệp.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-4">Khóa học</h4>
+                    <ul class="space-y-2 text-sm text-textSecondary">
+                        <li><a href="#" class="hover:text-accent transition-colors">Automation cơ bản</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">AI Content Master</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Lark Suite Management</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">N8N Advanced</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-4">Tài nguyên</h4>
+                    <ul class="space-y-2 text-sm text-textSecondary">
+                        <li><a href="#" class="hover:text-accent transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Tài liệu miễn phí</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Cộng đồng</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Case Studies</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-4">Liên hệ</h4>
+                    <ul class="space-y-2 text-sm text-textSecondary">
+                        <li>support@cuonghoa.ai</li>
+                        <li>0909 123 456</li>
+                        <li>Hồ Chí Minh, Việt Nam</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-[#3a3a3a] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-[#525252]">&copy; 2024 CuongHoa.AI. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-[#525252] hover:text-white transition-colors"><svg class="w-5 h-5"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                        </svg></a>
+                    <a href="#" class="text-[#525252] hover:text-white transition-colors"><svg class="w-5 h-5"
+                            fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.072 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Data from courses.json
+        const data = {
+            "courses": [
+                {
+                    "title": "[S01] Tổng quan về Automation & kinh nghiệm làm nghề",
+                    "description": "Giới thiệu tổng quan về chương trình AI Automation In Action và chia sẻ kinh nghiệm làm nghề từ các dự án thực chiến",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 2900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Mindset", "Automation"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+                    "productURL": "https://go.cuonghoa.ai/s01-tong-quan-ve-automation-kinh-nghiem-lam-nghe"
+                },
+                {
+                    "title": "[S02] Thông báo tiền ra/vào & báo cáo từ Internet Banking",
+                    "description": "Tự động thông báo giao dịch ngân hàng và báo cáo biến động số dự tiền ra tiền vào theo thời gian thực (real-time).",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 1900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["SePay", "Lark", "n8n"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+                    "productURL": "https://go.cuonghoa.ai/tong-hop-bao-cao-tien-vao-ra-tu-dong-tu-internet-banking"
+                },
+                {
+                    "title": "[S03] Báo cáo doanh thu & vận hành khóa học tinh gọn",
+                    "description": "Đồng bộ đơn hàng từ website Woocommerce về LarkBase để vận hành nhanh.",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 2900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Wordpress", "SePay", "Lark", "n8n"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+                    "productURL": "https://go.cuonghoa.ai/bao-cao-doanh-thu-va-van-hanh-khoa-hoc-tinh-gon"
+                },
+                {
+                    "title": "[S04] Tự động hóa quy trình hợp đồng & công nợ",
+                    "description": "Xây dựng hệ thống quản lý báo giá hợp đồng phiếu thu…no-code.",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 4900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["SePay", "Lark", "n8n"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+                    "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-bao-gia-va-quan-ly-cong-no-tu-dong"
+                },
+                {
+                    "title": "[S05] Chăm sóc group chat Zalo bằng Zalo cá nhân",
+                    "description": "Lên lịch đăng bài tự động hóa lên nhiều nền tảng Facebook, Zalo (đặc biệt là Zalo group) dựa theo các nội dung tại file Google Sheet",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 2900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Make", "Pancake", "Facebook"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-3-20250909025510-8mrrg.png",
+                    "productURL": "https://go.cuonghoa.ai/cham-soc-group-chat-bang-zalo-ca-nhan"
+                },
+                {
+                    "title": "[S06] Tự động hóa hoạt động CSKH cho shop bán lẻ trên Shopee",
+                    "description": "Tự động đồng bộ đánh giá Shopee và cảnh báo ngay khi có review xấu để CSKH kịp thời xử lý",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 3900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Lark", "n8n", "Shopee"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-4-20250909025943-0n2dg.png",
+                    "productURL": "https://go.cuonghoa.ai/tu-dong-xu-ly-danh-gia-xau-shopee"
+                },
+                {
+                    "title": "[S07] Hệ thống kích hoạt bảo hành điện tử với AI Automation",
+                    "description": "Hệ thống bảo hành điện tử kết hợp thu thập thông tin khách hàng cho các kênh bán sàn (Shopee)",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 4900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Shopee", "ZNS", "n8n"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-5-20250909030520-awygw.png",
+                    "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-kich-hoat-bao-hanh-dien-tu"
+                },
+                {
+                    "title": "[S08] Bot tóm tắt nội dung nhóm chat",
+                    "description": "Trợ lý AI thông minh với báo cáo tự động, tóm tắt cuộc họp và theo dõi hiệu suất team real-time",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 4900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["AI", "n8n", "Zalo"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-6-20250909030937-euvfb.png",
+                    "productURL": "https://go.cuonghoa.ai/bot-tom-tat-noi-dung-nhom-chat"
+                },
+                {
+                    "title": "[S09] Quy trình sản xuất content Social với AI Automation",
+                    "description": "Thu thập bài viết website hoặc transcript Youtube từ URL nội dung được cung cấp (hoặc channel URL) & đúc kết insight từ nội dung và bình luận, hỗ trợ ý tưởng vô hạn cho đội content trong nhà mỗi ngày",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 7900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Make", "n8n", "AI"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png",
+                    "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-san-xuat-content-social"
+                },
+                {
+                    "title": "Tư duy đúng để xây dựng Website Ecommerce từ đầu",
+                    "description": "Chi sẻ kinh nghiệm xây dựng website Ecommerce tối ưu ngay từ đầu cho dân không chuyên",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 3000000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Ecommerce", "Website", "Mindset"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-9-20250909033712-ad8ma.png",
+                    "productURL": "https://go.cuonghoa.ai/tu-duy-xay-dung-website-ecom"
+                },
+                {
+                    "title": "ExpertOS 01",
+                    "description": "Giải pháp vận hành tinh gọn cho sự kiện và khóa học trên Ladi",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 4790000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Ladipage", "Automation"],
+                    "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-vclass-ladi-01-20251022142251-pdkyl.png",
+                    "productURL": "https://go.cuonghoa.ai/expertos-01"
+                },
+                {
+                    "title": "ExpertOS 02",
+                    "description": "Giải pháp vận hành khóa học tinh gọn & tự động hóa ExpertOS 02 (Nâng cấp của khóa ExpertOS 01)",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 6900000,
+                    "originalPrice": null,
+                    "status": "available",
+                    "tools": ["Ladipage", "Automation"],
+                    "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-vclass-ladi-01-1-20251022142341-c06en.png",
+                    "productURL": "https://go.cuonghoa.ai/expertos-02"
+                }
+            ]
+        };
+
+        const grid = document.getElementById('course-grid');
+
+        data.courses.forEach(course => {
+            const card = document.createElement('div');
+            card.className = 'glass-card rounded-2xl overflow-hidden flex flex-col h-full group';
+
+            const formattedPrice = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(course.price);
+
+            card.innerHTML = `
+                <div class="relative overflow-hidden aspect-video">
+                    <img src="${course.featureImage}" alt="${course.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#131314] to-transparent opacity-60"></div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="flex gap-2 mb-3 flex-wrap">
+                        ${course.tools.map(tool => `<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded border border-[#3a3a3a] bg-[#1c1c1c] text-textSecondary group-hover:border-accent/30 group-hover:text-accent transition-colors">${tool}</span>`).join('')}
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-textPrimary leading-tight mb-2 group-hover:text-white transition-colors">${course.title}</h3>
+                    <p class="text-textSecondary text-sm line-clamp-3 mb-4 flex-1">${course.description}</p>
+                    
+                    <div class="mt-auto pt-4 border-t border-[#3a3a3a] flex items-center justify-between">
+                        <div class="text-lg font-bold text-white">${formattedPrice}</div>
+                        <a href="${course.productURL}" class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white text-black hover:bg-accent hover:text-white transition-colors">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+
+</html>

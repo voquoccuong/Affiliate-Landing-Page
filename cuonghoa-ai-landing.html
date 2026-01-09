@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - AI Automation Academy</title>
+    <meta name="description" content="Học viện AI Automation thực chiến. Nâng cao hiệu suất với n8n, Lark, Make và AI.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7', // Brand Color
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49',
+                        },
+                        accent: {
+                            400: '#a78bfa',
+                            500: '#8b5cf6', // Purple Accent
+                            600: '#7c3aed',
+                        },
+                        dark: {
+                            900: '#0B0F19', // Deep background
+                            800: '#111827', // Card background
+                            700: '#1F2937', // Border
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-accent-500 selection:text-white">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-600/20 rounded-full blur-[120px] animate-pulse-slow">
+        </div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-accent-600/20 rounded-full blur-[120px] animate-pulse-slow"
+            style="animation-delay: 2s;"></div>
+        <div
+            class="absolute top-[40%] left-[50%] transform -translate-x-1/2 w-[60%] h-[60%] bg-slate-900/40 rounded-full blur-[100px]">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white font-bold font-display text-xl shadow-lg shadow-primary-500/20 group-hover:shadow-primary-500/40 transition-all">
+                    C
+                </div>
+                <span
+                    class="font-display font-bold text-xl tracking-tight text-white group-hover:text-primary-300 transition-colors">CuongHoa.AI</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#courses" class="hover:text-white transition-colors">Courses</a>
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#community" class="hover:text-white transition-colors">Community</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="#courses"
+                    class="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white text-sm font-medium transition-all backdrop-blur-sm">
+                    <span>Explore V-Class</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10 text-center">
+
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 text-xs font-medium mb-6 backdrop-blur-md animate-fade-in-up">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+                </span>
+                AI Automation In Action
+            </div>
+
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 leading-[1.1]">
+                Master the Art of <br />
+                <span class="gradient-text">AI Automation</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Unlock the power of <span class="text-white font-semibold">n8n, Lark, Make & AI</span> to build
+                automated systems that scale your business and free up your time.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#courses"
+                    class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-primary-600 to-accent-600 hover:from-primary-500 hover:to-accent-500 text-white font-semibold text-lg shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 transition-all flex items-center justify-center gap-2 group">
+                    Start Learning
+                    <i data-lucide="zap" class="w-5 h-5 group-hover:fill-current transition-all"></i>
+                </a>
+                <a href="https://www.facebook.com/groups/cuonghoa.ai" target="_blank"
+                    class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-white font-medium text-lg backdrop-blur-sm transition-all flex items-center justify-center gap-2">
+                    Join Community
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+            <!-- Stats/Trust -->
+            <div class="mt-20 pt-10 border-t border-white/5 flex flex-wrap justify-center gap-10 md:gap-20 opacity-70">
+                <div class="text-center">
+                    <div class="font-display text-3xl font-bold text-white mb-1">1000+</div>
+                    <div class="text-sm text-slate-500 uppercase tracking-wider">Students</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display text-3xl font-bold text-white mb-1">50+</div>
+                    <div class="text-sm text-slate-500 uppercase tracking-wider">Automations</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display text-3xl font-bold text-white mb-1">4.9/5</div>
+                    <div class="text-sm text-slate-500 uppercase tracking-wider">Rating</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tech Stack Strip -->
+    <div class="w-full border-y border-white/5 bg-black/20 backdrop-blur-sm overflow-hidden py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-sm text-slate-500 mb-6 font-medium">POWERED BY MODERN TECH STACK</p>
+            <div
+                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                <!-- Simple Text Logos for Stability, replaced with data-lucide icons where approaching -->
+                <div class="flex items-center gap-2 text-xl font-bold text-white"><span
+                        class="text-[#FF5C5C]">n8n</span></div>
+                <div class="flex items-center gap-2 text-xl font-bold text-white"><span
+                        class="text-[#00D4FF]">Lark</span></div>
+                <div class="flex items-center gap-2 text-xl font-bold text-white"><span
+                        class="text-[#6F42C1]">Make</span></div>
+                <div class="flex items-center gap-2 text-xl font-bold text-white"><span
+                        class="text-[#10A37F]">ChatGPT</span></div>
+                <div class="flex items-center gap-2 text-xl font-bold text-white"><span
+                        class="text-[#EE4D2D]">Shopee</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Section -->
+    <section id="courses" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="font-display text-3xl md:text-5xl font-bold mb-4">Featured <span
+                            class="text-primary-400">Courses</span></h2>
+                    <p class="text-slate-400 max-w-lg">Practical, hands-on courses designed to help you implement
+                        automation immediately.</p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex p-1 rounded-xl bg-slate-800/50 border border-white/5 mx-auto md:mx-0">
+                    <button
+                        class="px-6 py-2 rounded-lg bg-primary-600 text-white shadow-lg shadow-primary-600/20 text-sm font-medium transition-all">All</button>
+                    <button
+                        class="px-6 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 text-sm font-medium transition-all">vClass</button>
+                    <button
+                        class="px-6 py-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 text-sm font-medium transition-all">ExpertOS</button>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Courses will be injected here via JS -->
+                <div class="col-span-full py-20 text-center animate-pulse">
+                    <div
+                        class="inline-block w-8 h-8 border-4 border-primary-500 border-t-transparent rounded-full animate-spin mb-4">
+                    </div>
+                    <p class="text-slate-500">Loading courses...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-primary-900/10 sm:bg-transparent">
+            <div
+                class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-accent-600/10 rounded-full blur-[100px]">
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div
+                class="max-w-3xl mx-auto glass rounded-3xl p-10 md:p-16 border border-white/10 shadow-2xl shadow-black/50">
+                <div
+                    class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center text-white mx-auto mb-8 shadow-lg shadow-primary-500/30">
+                    <i data-lucide="users" class="w-8 h-8"></i>
+                </div>
+
+                <h2 class="font-display text-3xl md:text-5xl font-bold mb-6">Join the Community</h2>
+                <p class="text-lg text-slate-300 mb-10 leading-relaxed">
+                    Don't learn alone. Join thousands of automation enthusiasts, share your workflows, debugging tips,
+                    and grow together.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col items-center">
+                        <i data-lucide="message-square" class="w-6 h-6 text-primary-400 mb-2"></i>
+                        <span class="font-medium text-white">Q&A Support</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col items-center">
+                        <i data-lucide="share-2" class="w-6 h-6 text-accent-400 mb-2"></i>
+                        <span class="font-medium text-white">Share Blueprints</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex flex-col items-center">
+                        <i data-lucide="video" class="w-6 h-6 text-pink-400 mb-2"></i>
+                        <span class="font-medium text-white">Live Workshops</span>
+                    </div>
+                </div>
+
+                <button
+                    class="w-full sm:w-auto px-10 py-4 rounded-full bg-white text-slate-900 font-bold hover:bg-slate-100 transition-colors shadow-xl shadow-white/10 flex items-center justify-center gap-2 mx-auto">
+                    Access Community
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-900 border-t border-white/5 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <a href="#" class="flex items-center gap-2 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary-600 to-accent-600 flex items-center justify-center text-white font-bold font-display shadow-lg">
+                            C</div>
+                        <span class="font-display font-bold text-xl text-white">CuongHoa.AI</span>
+                    </a>
+                    <p class="text-slate-500 max-w-sm mb-6">
+                        Empowering individuals and businesses to achieve more with less through the power of AI and
+                        Automation.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all"><i
+                                data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all"><i
+                                data-lucide="youtube" class="w-5 h-5"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all"><i
+                                data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-6">Resources</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Courses</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Templates</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Community</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-6">Legal</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary-400 transition-colors">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/5 pt-8 text-center md:text-left flex flex-col md:flex-row justify-between items-center text-slate-600 text-sm">
+                <p>&copy; 2025 CuongHoa.AI. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <span>Designed with AI</span>
+                    <span>Powered by VibeCoding</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Course Data Embedded
+        const courseData = {
+            "courses": [
+                {
+                    "title": "[S01] Tổng quan về Automation & kinh nghiệm làm nghề",
+                    "description": "Giới thiệu tổng quan về chương trình AI Automation In Action và chia sẻ kinh nghiệm làm nghề từ các dự án thực chiến",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 2900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Mindset",
+                        "Automation"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+                    "productURL": "https://go.cuonghoa.ai/s01-tong-quan-ve-automation-kinh-nghiem-lam-nghe"
+                },
+                {
+                    "title": "[S02] Thông báo tiền ra/vào & báo cáo từ Internet Banking",
+                    "description": "Tự động thông báo giao dịch ngân hàng và báo cáo biến động số dự tiền ra tiền vào theo thời gian thực (real-time).",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 1900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": "2025-12-31 23:59:59",
+                    "tools": [
+                        "SePay",
+                        "Lark",
+                        "n8n"
+                    ],
+                    "authors": [
+                        {
+                            "name": "Nguyễn Văn An",
+                            "avatar": "N",
+                            "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                        },
+                        {
+                            "name": "Trần Thị Bình",
+                            "avatar": "T",
+                            "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                        }
+                    ],
+                    "featureImage": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+                    "productURL": "https://go.cuonghoa.ai/tong-hop-bao-cao-tien-vao-ra-tu-dong-tu-internet-banking"
+                },
+                {
+                    "title": "[S03] Báo cáo doanh thu & vận hành khóa học tinh gọn",
+                    "description": "Đồng bộ đơn hàng từ website Woocommerce về LarkBase để vận hành nhanh.",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 2900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": "2025-12-31 23:59:59",
+                    "tools": [
+                        "Wordpress",
+                        "SePay",
+                        "Lark",
+                        "n8n"
+                    ],
+                    "authors": [
+                        {
+                            "name": "Nguyễn Văn An",
+                            "avatar": "N",
+                            "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                        },
+                        {
+                            "name": "Trần Thị Bình",
+                            "avatar": "T",
+                            "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                        }
+                    ],
+                    "featureImage": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+                    "productURL": "https://go.cuonghoa.ai/bao-cao-doanh-thu-va-van-hanh-khoa-hoc-tinh-gon"
+                },
+                {
+                    "title": "[S04] Tự động hóa quy trình hợp đồng & công nợ",
+                    "description": "Xây dựng hệ thống quản lý báo giá hợp đồng phiếu thu…no-code.",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 4900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": "2025-12-31 23:59:59",
+                    "tools": [
+                        "SePay",
+                        "Lark",
+                        "n8n"
+                    ],
+                    "authors": [
+                        {
+                            "name": "Nguyễn Văn An",
+                            "avatar": "N",
+                            "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                        },
+                        {
+                            "name": "Trần Thị Bình",
+                            "avatar": "T",
+                            "gradient": "linear-gradient(135deg, #667eea, #764ba2)"
+                        }
+                    ],
+                    "featureImage": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+                    "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-bao-gia-va-quan-ly-cong-no-tu-dong"
+                },
+                {
+                    "title": "[S05] Chăm sóc group chat Zalo bằng Zalo cá nhân",
+                    "description": "Lên lịch đăng bài tự động hóa lên nhiều nền tảng Facebook, Zalo (đặc biệt là Zalo group) dựa theo các nội dung tại file Google Sheet",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 2900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Make",
+                        "Pancake",
+                        "Facebook"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-3-20250909025510-8mrrg.png",
+                    "productURL": "https://go.cuonghoa.ai/cham-soc-group-chat-bang-zalo-ca-nhan"
+                },
+                {
+                    "title": "[S06] Tự động hóa hoạt động CSKH cho shop bán lẻ trên Shopee",
+                    "description": "Tự động đồng bộ đánh giá Shopee và cảnh báo ngay khi có review xấu để CSKH kịp thời xử lý",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 3900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Lark",
+                        "n8n",
+                        "Shopee"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-4-20250909025943-0n2dg.png",
+                    "productURL": "https://go.cuonghoa.ai/tu-dong-xu-ly-danh-gia-xau-shopee"
+                },
+                {
+                    "title": "[S07] Hệ thống kích hoạt bảo hành điện tử với AI Automation",
+                    "description": "Hệ thống bảo hành điện tử kết hợp thu thập thông tin khách hàng cho các kênh bán sàn (Shopee)",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 4900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Shopee",
+                        "ZNS",
+                        "n8n"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-5-20250909030520-awygw.png",
+                    "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-kich-hoat-bao-hanh-dien-tu"
+                },
+                {
+                    "title": "[S08] Bot tóm tắt nội dung nhóm chat",
+                    "description": "Trợ lý AI thông minh với báo cáo tự động, tóm tắt cuộc họp và theo dõi hiệu suất team real-time",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 4900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "AI",
+                        "n8n",
+                        "Zalo"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-6-20250909030937-euvfb.png",
+                    "productURL": "https://go.cuonghoa.ai/bot-tom-tat-noi-dung-nhom-chat"
+                },
+                {
+                    "title": "[S09] Quy trình sản xuất content Social với AI Automation",
+                    "description": "Thu thập bài viết website hoặc transcript Youtube từ URL nội dung được cung cấp (hoặc channel URL) & đúc kết insight từ nội dung và bình luận, hỗ trợ ý tưởng vô hạn cho đội content trong nhà mỗi ngày",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 7900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Make",
+                        "n8n",
+                        "AI"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png",
+                    "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-san-xuat-content-social"
+                },
+                {
+                    "title": "Tư duy đúng để xây dựng Website Ecommerce từ đầu",
+                    "description": "Chi sẻ kinh nghiệm xây dựng website Ecommerce tối ưu ngay từ đầu cho dân không chuyên",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 3000000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Ecommerce",
+                        "Website",
+                        "Mindset"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-9-20250909033712-ad8ma.png",
+                    "productURL": "https://go.cuonghoa.ai/tu-duy-xay-dung-website-ecom"
+                },
+                {
+                    "title": "ExpertOS 01",
+                    "description": "Giải pháp vận hành tinh gọn cho sự kiện và khóa học trên Ladi",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 4790000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Ladipage",
+                        "Automation"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-vclass-ladi-01-20251022142251-pdkyl.png",
+                    "productURL": "https://go.cuonghoa.ai/expertos-01"
+                },
+                {
+                    "title": "ExpertOS 02",
+                    "description": "Giải pháp vận hành khóa học tinh gọn & tự động hóa ExpertOS 02 (Nâng cấp của khóa ExpertOS 01)",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 6900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Ladipage",
+                        "Automation"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-vclass-ladi-01-1-20251022142341-c06en.png",
+                    "productURL": "https://go.cuonghoa.ai/expertos-02"
+                },
+                {
+                    "title": "AI4B01 - Ứng dụng AI cơ bản cho tiệm bánh",
+                    "description": "Ứng dụng AI cơ bản cho người mới bắt đầu, tiết kiệm thời gian tự mò mẫm",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 499000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "AI",
+                        "ChatGPT",
+                        "Beginer"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-11-20250909034834-prepm.png",
+                    "productURL": "https://go.cuonghoa.ai/ung-dung-ai-co-ban-cho-tiem-banh"
+                },
+                {
+                    "title": "AI4B02 - Sáng tạo nội dung cho tiệm bánh",
+                    "description": "Ứng dụng AI 1 cách chuyên nghiệp trong việc sáng tạo nội dung và vận hành cho tiệm bánh",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 1790000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "available",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "AI",
+                        "ChatGPT",
+                        "Creative"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/image-12-20250909035013-uos1l.png",
+                    "productURL": "https://go.cuonghoa.ai/sang-tao-nang-cao-cho-chu-tiem-banh"
+                },
+                {
+                    "title": "EGA Content",
+                    "description": "Nội dung khóa học đang được cập nhật",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 6900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "coming-soon",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Content"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-mini-courses-4-3pt8-20250909041641-fvdnt.png",
+                    "productURL": "https://go.cuonghoa.ai/ega-content"
+                },
+                {
+                    "title": "Rekap Pro",
+                    "description": "Nội dung khóa học đang được cập nhật",
+                    "category": "vClass",
+                    "rating": 4.8,
+                    "price": 6900000,
+                    "originalPrice": null,
+                    "discount": null,
+                    "status": "coming-soon",
+                    "hasFlashSale": false,
+                    "flashSaleEnd": null,
+                    "tools": [
+                        "Recap"
+                    ],
+                    "authors": null,
+                    "featureImage": "https://w.ladicdn.com/22603/cuonghoaai-mini-courses-3-d0oe-20250909041747-rdnzi.png",
+                    "productURL": "https://go.cuonghoa.ai/rekap-pro"
+                }
+            ]
+        };
+
+        // Render Logic
+        const grid = document.getElementById('course-grid');
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price);
+        }
+
+        function createCourseCard(course) {
+            const isComingSoon = course.status === 'coming-soon';
+
+            return `
+                <div class="glass-card rounded-2xl overflow-hidden flex flex-col h-full group">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="${course.featureImage}" alt="${course.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        ${course.hasFlashSale ? `<div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide animate-pulse">Flash Sale</div>` : ''}
+                        ${isComingSoon ? `<div class="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-[2px]"><span class="bg-white/10 border border-white/20 text-white font-bold px-4 py-2 rounded-lg backdrop-blur-md">Coming Soon</span></div>` : ''}
+                    </div>
+                    
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Tools/Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${course.tools.map(tool => `
+                                <span class="px-2 py-1 rounded-md bg-primary-500/10 border border-primary-500/20 text-primary-300 text-xs font-medium">#{tool}</span>
+                            `).join('')}
+                        </div>
+
+                        <h3 class="font-display font-bold text-xl mb-3 line-clamp-2 min-h-[3.5rem] group-hover:text-primary-400 transition-colors">${course.title}</h3>
+                        <p class="text-slate-400 text-sm mb-6 line-clamp-3">${course.description}</p>
+                        
+                        <div class="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                            <div>
+                                <span class="block text-xs text-slate-500 mb-0.5">Price</span>
+                                <span class="font-bold text-white text-lg">${formatPrice(course.price)}</span>
+                            </div>
+                            <a href="${course.productURL}" target="_blank" class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-primary-500 hover:text-white transition-all transform hover:scale-110 shadow-lg shadow-white/10 hover:shadow-primary-500/30">
+                                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize
+        function init() {
+            grid.innerHTML = courseData.courses.map(createCourseCard).join('');
+            lucide.createIcons();
+
+            // Add staggered animation
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        }
+
+        // Run after DOM load
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark-900/90');
+            } else {
+                navbar.classList.remove('bg-dark-900/90');
+            }
+        });
+    </script>
+</body>
+
+</html>

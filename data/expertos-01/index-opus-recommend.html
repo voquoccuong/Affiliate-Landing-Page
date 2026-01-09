@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpertOS 01 - Tự động hóa 90% vận hành chỉ sau 1 đêm | CuongHoa.AI</title>
+    <meta name="description"
+        content="Sở hữu hệ thống tự động hóa đã kiểm chứng qua 4 năm. Tiết kiệm 4-6 giờ/ngày. Không cần biết code.">
+    <link rel="icon" href="https://static.ladipage.net/59378b82ffbdd7e524e82593/avatar-20250623143601-2miwu.png">
+
+    <!-- Google Fonts - Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        accent: {
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        },
+                        dark: {
+                            950: '#030712',
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(249, 115, 22, 0.3)' },
+                            '100%': { boxShadow: '0 0 40px rgba(249, 115, 22, 0.6)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background: linear-gradient(180deg, #030712 0%, #0f172a 100%);
+            color: #f8fafc;
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px -15px rgba(59, 130, 246, 0.25);
+        }
+
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.9));
+            border: 2px solid rgba(249, 115, 22, 0.3);
+            box-shadow: 0 0 60px -10px rgba(249, 115, 22, 0.2);
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(249, 115, 22, 0.6);
+            box-shadow: 0 0 80px -10px rgba(249, 115, 22, 0.4);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #f97316 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 40px -10px rgba(249, 115, 22, 0.5);
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Countdown timer styles */
+        .countdown-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        /* Testimonial card */
+        .testimonial-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Sticky CTA for mobile */
+        .sticky-cta {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body
+    class="antialiased min-h-screen flex flex-col font-sans selection:bg-accent-500/30 selection:text-white overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/5 transition-all duration-300">
+        <div class="container mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <img src="https://w.ladicdn.com/s550x400/59378b82ffbdd7e524e82593/cuonghoaai-logo-web-dark-small-20250627003922-8kucd.png"
+                    alt="CuongHoa.AI" class="h-8 md:h-10 w-auto">
+            </a>
+
+            <div class="hidden md:flex items-center gap-6 text-sm">
+                <a href="#problem" class="text-slate-400 hover:text-white transition-colors">Vấn đề</a>
+                <a href="#solution" class="text-slate-400 hover:text-white transition-colors">Giải pháp</a>
+                <a href="#testimonials" class="text-slate-400 hover:text-white transition-colors">Đánh giá</a>
+                <a href="#faq" class="text-slate-400 hover:text-white transition-colors">FAQ</a>
+            </div>
+
+            <a href="#pricing"
+                class="hidden sm:flex px-5 py-2.5 rounded-full cta-button text-white font-semibold text-sm shadow-lg">
+                Đăng ký ngay
+            </a>
+        </div>
+    </nav>
+
+    <!-- Background Effects -->
+    <div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+        <div class="absolute top-20 left-1/4 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-[150px]"></div>
+        <div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent-500/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="relative pt-28 pb-16 md:pt-40 md:pb-24 container mx-auto px-4 md:px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+            <!-- Text Content -->
+            <div class="lg:w-1/2 text-center lg:text-left z-10">
+                <!-- Badge -->
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-500/10 border border-accent-500/30 text-accent-400 text-sm font-medium mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-accent-500"></span>
+                    </span>
+                    🔥 Flash Sale - Chỉ còn 24h
+                </div>
+
+                <!-- Headline with specific number -->
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-[1.15]">
+                    Tự động hóa <span class="gradient-text">90% vận hành</span> chỉ sau 1 đêm
+                </h1>
+
+                <p class="text-lg md:text-xl text-slate-400 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                    Sở hữu <strong class="text-white">hệ thống đã kiểm chứng 4 năm</strong>. Tiết kiệm 4-6 giờ/ngày.
+                    <span class="text-accent-400 font-semibold">Không cần biết code.</span>
+                </p>
+
+                <!-- Countdown Timer -->
+                <div class="flex items-center justify-center lg:justify-start gap-3 mb-8" x-data="countdown()">
+                    <div class="countdown-box rounded-lg px-3 py-2 text-center min-w-[60px]">
+                        <div class="text-2xl md:text-3xl font-bold text-white" x-text="hours">00</div>
+                        <div class="text-xs text-slate-500 uppercase">Giờ</div>
+                    </div>
+                    <span class="text-2xl text-slate-600">:</span>
+                    <div class="countdown-box rounded-lg px-3 py-2 text-center min-w-[60px]">
+                        <div class="text-2xl md:text-3xl font-bold text-white" x-text="minutes">00</div>
+                        <div class="text-xs text-slate-500 uppercase">Phút</div>
+                    </div>
+                    <span class="text-2xl text-slate-600">:</span>
+                    <div class="countdown-box rounded-lg px-3 py-2 text-center min-w-[60px]">
+                        <div class="text-2xl md:text-3xl font-bold text-accent-500" x-text="seconds">00</div>
+                        <div class="text-xs text-slate-500 uppercase">Giây</div>
+                    </div>
+                </div>
+
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                    <a href="#pricing"
+                        class="w-full sm:w-auto px-8 py-4 rounded-full cta-button text-white font-bold text-lg shadow-xl flex items-center justify-center gap-2 animate-glow">
+                        Sở hữu ngay với giá ưu đãi
+                        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://youtu.be/MKzQhHlx8DQ" target="_blank"
+                        class="w-full sm:w-auto px-6 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium text-lg transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="play-circle" class="w-5 h-5"></i>
+                        Xem Demo
+                    </a>
+                </div>
+
+                <!-- Social Proof Mini -->
+                <div class="mt-10 flex items-center justify-center lg:justify-start gap-4">
+                    <div class="flex -space-x-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Linh"
+                            class="w-10 h-10 rounded-full border-2 border-dark-900 bg-slate-700" alt="User">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Minh"
+                            class="w-10 h-10 rounded-full border-2 border-dark-900 bg-slate-600" alt="User">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Hoa"
+                            class="w-10 h-10 rounded-full border-2 border-dark-900 bg-slate-500" alt="User">
+                        <div
+                            class="w-10 h-10 rounded-full border-2 border-dark-900 bg-primary-600 flex items-center justify-center text-xs font-bold text-white">
+                            +1k</div>
+                    </div>
+                    <div class="text-sm text-slate-400">
+                        <span class="text-white font-semibold">1,200+</span> học viên đã tin dùng
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="lg:w-1/2 relative z-10 w-full">
+                <div
+                    class="relative rounded-2xl overflow-hidden glass shadow-2xl shadow-primary-500/10 border border-white/10 group">
+                    <img src="https://w.ladicdn.com/s900x750/59378b82ffbdd7e524e82593/hero-section-20250731093119-zarcz.jpg"
+                        alt="ExpertOS Automation Dashboard"
+                        class="w-full h-auto object-cover transform group-hover:scale-105 transition-all duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent">
+                    </div>
+
+                    <!-- Floating Badge -->
+                    <div
+                        class="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6 md:right-auto glass p-4 rounded-xl flex items-center gap-3 animate-float">
+                        <div
+                            class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center text-green-400">
+                            <i data-lucide="check-circle-2" class="w-7 h-7"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs text-slate-400">Trạng thái hệ thống</div>
+                            <div class="font-bold text-white">Đang hoạt động tự động</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem Section -->
+    <section class="py-20 bg-dark-950/50" id="problem">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Bạn đang <span class="text-red-400">lãng phí</span> bao
+                    nhiêu giờ mỗi ngày?</h2>
+                <p class="text-slate-400 text-lg">Nếu bạn đang gặp phải những vấn đề này, ExpertOS 01 chính là giải pháp
+                    cho bạn.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                <!-- Problem 1 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute -top-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i data-lucide="clock" class="w-32 h-32"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center text-red-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="hourglass" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Tốn 4-6 giờ/ngày cho việc thủ công</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Nhập liệu, check mail, xác nhận chuyển khoản, gửi
+                        link khóa học... Công việc lặp lại mỗi ngày khiến bạn kiệt sức.</p>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute -top-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i data-lucide="alert-triangle" class="w-32 h-32"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="x-circle" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Sai sót & Mất khách hàng</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Quên gửi link, nhầm đơn hàng, khách phàn nàn vì
+                        chờ đợi quá lâu. Uy tín thương hiệu bị ảnh hưởng nghiêm trọng.</p>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                    <div class="absolute -top-4 -right-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i data-lucide="code-2" class="w-32 h-32"></i>
+                    </div>
+                    <div
+                        class="w-14 h-14 rounded-2xl bg-yellow-500/10 flex items-center justify-center text-yellow-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="terminal-square" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Sợ kỹ thuật, không biết code</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Muốn tự động hóa nhưng không biết bắt đầu từ đâu.
+                        Thuê dev thì chi phí cao và khó kiểm soát.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / Value Stack -->
+    <section class="py-24 relative overflow-hidden" id="solution">
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+
+                <!-- Left: Content -->
+                <div class="lg:w-1/2">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/30 text-primary-400 text-sm font-medium mb-6">
+                        <i data-lucide="zap" class="w-4 h-4"></i>
+                        Giải pháp trọn gói
+                    </div>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                        Copy & Paste.<br>
+                        <span class="text-slate-400">Chạy ngay trong vài giờ.</span>
+                    </h2>
+                    <p class="text-slate-400 text-lg mb-10 leading-relaxed">
+                        Chúng tôi đã đóng gói <strong class="text-white">4 năm kinh nghiệm</strong> vận hành tự động hoá
+                        vào một giải pháp duy nhất. Bạn chỉ cần làm theo hướng dẫn và bắt đầu sử dụng ngay.
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Item 1 -->
+                        <div class="flex gap-5 group">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-400 shrink-0 group-hover:scale-110 transition-transform border border-green-500/20">
+                                <i data-lucide="layout-template" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1 text-lg">Template Landing Page (Giá trị 2tr)</h4>
+                                <p class="text-slate-400 text-sm">Full Section đã kiểm chứng hiệu quả. Kèm Thank You
+                                    Page tối ưu chuyển đổi.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="flex gap-5 group">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 shrink-0 group-hover:scale-110 transition-transform border border-blue-500/20">
+                                <i data-lucide="bell-ring" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1 text-lg">Hệ thống Automation (Giá trị 3tr)</h4>
+                                <p class="text-slate-400 text-sm">Tự động gửi nhắc thanh toán, xác nhận đơn, thông báo
+                                    Zoom qua Email/Zalo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="flex gap-5 group">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0 group-hover:scale-110 transition-transform border border-purple-500/20">
+                                <i data-lucide="video" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1 text-lg">20+ Video Hướng dẫn (Giá trị 3tr)</h4>
+                                <p class="text-slate-400 text-sm">Cầm tay chỉ việc từng bước. Người không rành công nghệ
+                                    cũng làm được ngay.</p>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="flex gap-5 group">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0 group-hover:scale-110 transition-transform border border-cyan-500/20">
+                                <i data-lucide="headphones" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white mb-1 text-lg">Premium Support 12 tháng (Giá trị 2.26tr)
+                                </h4>
+                                <p class="text-slate-400 text-sm">Hỗ trợ trực tiếp qua Zalo/Lark từ chuyên gia khi cần.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Pricing Card -->
+                <div class="lg:w-1/2 w-full lg:sticky lg:top-28" id="pricing">
+                    <div
+                        class="pricing-card rounded-3xl p-6 md:p-10 relative overflow-hidden transition-all duration-500">
+                        <!-- Glow Effect -->
+                        <div class="absolute top-0 right-0 w-48 h-48 bg-accent-500/20 rounded-full blur-[100px]"></div>
+
+                        <div class="relative z-10 text-center">
+                            <!-- Flash Sale Badge -->
+                            <div
+                                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/20 border border-red-500/40 text-red-400 text-sm font-bold mb-6 animate-pulse-slow">
+                                <i data-lucide="flame" class="w-4 h-4"></i>
+                                Ưu đãi giới hạn - Chỉ còn vài suất
+                            </div>
+
+                            <p class="text-slate-400 uppercase tracking-widest text-sm font-bold mb-3">TRỌN GÓI EXPERTOS
+                                01</p>
+
+                            <div class="flex items-center justify-center gap-4 mb-2">
+                                <span class="text-2xl md:text-3xl text-slate-500 line-through">10.260.000đ</span>
+                                <span
+                                    class="inline-block bg-red-500/20 text-red-400 border border-red-500/40 px-3 py-1 rounded-lg text-sm font-bold">-53%</span>
+                            </div>
+
+                            <div class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-2 tracking-tight">
+                                4.790.000<span class="text-2xl text-slate-400 align-top">đ</span>
+                            </div>
+                            <p class="text-accent-400 font-medium mb-8">Sở hữu vĩnh viễn + Update trọn đời</p>
+
+                            <!-- Checklist -->
+                            <div class="space-y-3 mb-8 bg-black/30 p-5 rounded-2xl border border-white/5 text-left">
+                                <div class="flex items-center gap-3 text-sm text-slate-300">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 shrink-0"></i>
+                                    <span>Tự động gửi nhắc thanh toán & huỷ đơn</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-300">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 shrink-0"></i>
+                                    <span>Template Landing Page chuyển đổi cao</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-300">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 shrink-0"></i>
+                                    <span>Premium Q&A Channel hỗ trợ 12 tháng</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-slate-300">
+                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-green-400 shrink-0"></i>
+                                    <span>Checklist vận hành tránh sai sót</span>
+                                </div>
+                            </div>
+
+                            <a href="#"
+                                class="block w-full py-5 rounded-xl cta-button text-white font-bold text-center text-xl shadow-2xl animate-glow">
+                                SỞ HỮU NGAY HÔM NAY
+                            </a>
+
+                            <div class="flex items-center justify-center gap-4 mt-5 text-xs text-slate-500">
+                                <span class="flex items-center gap-1"><i data-lucide="shield-check" class="w-4 h-4"></i>
+                                    Hoàn tiền 7 ngày</span>
+                                <span class="flex items-center gap-1"><i data-lucide="lock" class="w-4 h-4"></i> Thanh
+                                    toán an toàn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-dark-950/50" id="testimonials">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Học viên nói gì về ExpertOS 01?</h2>
+                <p class="text-slate-400 text-lg">Hơn 1,200 người đã thay đổi cách vận hành doanh nghiệp của họ.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-1 mb-4 text-yellow-400">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">"Sau khi cài ExpertOS, mình tiết kiệm được
+                        <strong class="text-white">hơn 10 triệu tiền thuê nhân sự</strong> mỗi tháng. Mọi thứ tự động
+                        hết, việc của mình chỉ là kiểm tra report."
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ThanhHa"
+                            class="w-10 h-10 rounded-full bg-slate-700" alt="User">
+                        <div>
+                            <div class="font-semibold text-white text-sm">Thanh Hà</div>
+                            <div class="text-xs text-slate-500">Chủ khóa học Online</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-1 mb-4 text-yellow-400">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">"Trước kia tổ chức 1 webinar mất 2 ngày chuẩn
+                        bị. Giờ chỉ mất <strong class="text-white">30 phút setup</strong> là xong, hệ thống lo hết từ
+                        A-Z. Quá đã!"</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=MinhTu"
+                            class="w-10 h-10 rounded-full bg-slate-700" alt="User">
+                        <div>
+                            <div class="font-semibold text-white text-sm">Minh Tú</div>
+                            <div class="text-xs text-slate-500">Event Organizer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 rounded-2xl">
+                    <div class="flex items-center gap-1 mb-4 text-yellow-400">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">"Mình không biết code nhưng làm theo video
+                        được luôn. Support nhanh, <strong class="text-white">hỏi gì trả lời đấy</strong>. Đầu tư rất
+                        đáng."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=NgocAnh"
+                            class="w-10 h-10 rounded-full bg-slate-700" alt="User">
+                        <div>
+                            <div class="font-semibold text-white text-sm">Ngọc Anh</div>
+                            <div class="text-xs text-slate-500">Solopreneur</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20" id="faq">
+        <div class="container mx-auto px-4 md:px-6 max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Câu hỏi thường gặp</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div x-data="{ open: true }" class="glass-card rounded-xl overflow-hidden">
+                    <button @click="open = !open"
+                        class="w-full text-left p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <span class="font-semibold pr-4">Tôi không biết lập trình có làm được không?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-300"
+                            :class="{'rotate-180': open}"></i>
+                    </button>
+                    <div x-show="open" x-collapse
+                        class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        <strong class="text-white">Hoàn toàn được!</strong> ExpertOS 01 được thiết kế chuyên biệt cho
+                        người không chuyên kỹ thuật (No-code). Chúng tôi cung cấp template có sẵn, bạn chỉ cần làm theo
+                        video hướng dẫn từng bước.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div x-data="{ open: false }" class="glass-card rounded-xl overflow-hidden">
+                    <button @click="open = !open"
+                        class="w-full text-left p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <span class="font-semibold pr-4">Sau khi thanh toán tôi sẽ nhận được gì?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-300"
+                            :class="{'rotate-180': open}"></i>
+                    </button>
+                    <div x-show="open" x-collapse
+                        class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Ngay sau khi thanh toán thành công, hệ thống sẽ tự động gửi email kích hoạt tài khoản học và
+                        link truy cập vào kho tài liệu template. Bạn cũng sẽ được mời vào nhóm hỗ trợ Premium Zalo/Lark.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div x-data="{ open: false }" class="glass-card rounded-xl overflow-hidden">
+                    <button @click="open = !open"
+                        class="w-full text-left p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <span class="font-semibold pr-4">Chính sách hoàn tiền như thế nào?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-300"
+                            :class="{'rotate-180': open}"></i>
+                    </button>
+                    <div x-show="open" x-collapse
+                        class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Chúng tôi cam kết <strong class="text-white">hoàn tiền 100% trong vòng 7 ngày</strong> đầu tiên
+                        nếu bạn cảm thấy chương trình không phù hợp hoặc không mang lại giá trị như cam kết. Không cần
+                        giải thích lý do.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div x-data="{ open: false }" class="glass-card rounded-xl overflow-hidden">
+                    <button @click="open = !open"
+                        class="w-full text-left p-6 flex items-center justify-between hover:bg-white/5 transition-colors">
+                        <span class="font-semibold pr-4">Chương trình phù hợp với ai?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-300"
+                            :class="{'rotate-180': open}"></i>
+                    </button>
+                    <div x-show="open" x-collapse
+                        class="px-6 pb-6 text-slate-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        ExpertOS 01 phù hợp với: Solopreneur, chủ khóa học online, người tổ chức sự kiện/webinar, SME
+                        muốn tối ưu vận hành mà không cần thuê thêm nhân sự IT.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 bg-gradient-to-b from-dark-950 to-dark-900">
+        <div class="container mx-auto px-4 md:px-6 text-center max-w-3xl">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Đừng lãng phí thêm thời gian</h2>
+            <p class="text-slate-400 text-lg mb-8">Tham gia chương trình này và bắt đầu hành trình tối ưu hóa doanh
+                nghiệp của bạn ngay hôm nay.</p>
+            <a href="#pricing"
+                class="inline-flex items-center gap-2 px-10 py-5 rounded-full cta-button text-white font-bold text-xl shadow-2xl animate-glow">
+                Sở hữu ExpertOS 01 ngay
+                <i data-lucide="arrow-right" class="w-6 h-6"></i>
+            </a>
+            <p class="text-sm text-slate-500 mt-6 flex items-center justify-center gap-2">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                Cam kết hoàn tiền 100% trong 7 ngày nếu không hài lòng
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark-950 border-t border-white/5 pt-12 pb-8">
+        <div class="container mx-auto px-4 md:px-6 text-center">
+            <a href="#" class="inline-flex items-center gap-3 mb-6">
+                <img src="https://w.ladicdn.com/s550x400/59378b82ffbdd7e524e82593/cuonghoaai-logo-web-dark-small-20250627003922-8kucd.png"
+                    alt="CuongHoa.AI" class="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity">
+            </a>
+            <p class="text-slate-500 text-sm mb-6">
+                Giải pháp tự động hóa dành cho Solopreneur & SME.<br>
+                Được phát triển bởi CuongHoa.AI & Egany.
+            </p>
+            <div class="text-slate-600 text-xs">
+                &copy; 2025 CuongHoa.AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky CTA for Mobile -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 sticky-cta p-4 md:hidden">
+        <a href="#pricing"
+            class="flex items-center justify-center gap-2 w-full py-4 rounded-full cta-button text-white font-bold text-lg shadow-xl">
+            <span>Đăng ký ngay</span>
+            <span class="text-sm opacity-80">4.790.000đ</span>
+        </a>
+    </div>
+
+    <!-- Alpine.js -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Countdown Timer Function (for Alpine.js)
+        function countdown() {
+            return {
+                hours: '24',
+                minutes: '00',
+                seconds: '00',
+                init() {
+                    // Set end time to 24 hours from now
+                    const endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+
+                    const updateTimer = () => {
+                        const now = new Date().getTime();
+                        const distance = endTime - now;
+
+                        if (distance < 0) {
+                            this.hours = '00';
+                            this.minutes = '00';
+                            this.seconds = '00';
+                            return;
+                        }
+
+                        this.hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                        this.minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                        this.seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+                    };
+
+                    updateTimer();
+                    setInterval(updateTimer, 1000);
+                }
+            };
+        }
+
+        // Sticky Navbar Logic
+        const navbar = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 50) {
+                navbar.classList.add('bg-dark-950/90', 'backdrop-blur-xl');
+            } else {
+                navbar.classList.remove('bg-dark-950/90', 'backdrop-blur-xl');
+            }
+        });
+    </script>
+</body>
+
+</html>

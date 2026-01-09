@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Side Scroll</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #f0f0f0;
+            color: #1a1a1a;
+            overflow: hidden;
+            /* Hide default scroll */
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* Horizontal Container */
+        .wrapper {
+            display: flex;
+            height: 100vh;
+            width: fit-content;
+            /* Will grow with content */
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* Section Styling */
+        .section {
+            height: 100vh;
+            min-width: 100vw;
+            /* Intro is full screen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px;
+            position: relative;
+            border-right: 1px solid #ddd;
+        }
+
+        .section-intro {
+            background: #111;
+            color: white;
+            flex-direction: column;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        h1 {
+            font-size: 8rem;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .scroll-hint {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            animation: bounceRight 2s infinite;
+        }
+
+        @keyframes bounceRight {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateX(0);
+            }
+
+            40% {
+                transform: translateX(30px);
+            }
+
+            60% {
+                transform: translateX(15px);
+            }
+        }
+
+        /* Course Gallery */
+        .gallery-track {
+            display: flex;
+            height: 100vh;
+            align-items: center;
+            padding: 0 10vw;
+            gap: 5vw;
+        }
+
+        .course-poster {
+            min-width: 50vh;
+            /* Based on height to keep aspect ratio */
+            height: 70vh;
+            background: white;
+            position: relative;
+            transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-poster:hover {
+            transform: scale(1.05) translateY(-20px);
+            z-index: 10;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        .poster-img {
+            flex: 2;
+            width: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s;
+        }
+
+        .course-poster:hover .poster-img {
+            filter: grayscale(0%);
+        }
+
+        .poster-content {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .poster-num {
+            font-size: 5rem;
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            color: transparent;
+            -webkit-text-stroke: 2px #111;
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .poster-content h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-btn {
+            background: #111;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            text-align: center;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #333;
+        }
+
+        /* Mouse Wheel Handler Script Needed */
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: #111;
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="wrapper" id="scrollContainer">
+        <!-- Intro Section -->
+        <section class="section section-intro">
+            <div>
+                <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px;">The Gallery</p>
+                <h1>Automated<br>Excellence</h1>
+                <p style="max-width: 500px; font-size: 1.2rem; line-height: 1.6;">
+                    A curated exhibition of systems designed to reclaim your time.
+                    Scroll to explore the collection.
+                </p>
+            </div>
+            <div class="scroll-hint">
+                SCROLL <i class="ph-bold ph-arrow-right"></i>
+            </div>
+        </section>
+
+        <!-- Gallery Track -->
+        <div class="gallery-track">
+
+            <!-- Poster 1 -->
+            <article class="course-poster">
+                <span class="poster-num">01</span>
+                <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" class="poster-img"
+                    alt="Mindset">
+                <div class="poster-content">
+                    <div>
+                        <h3>Automation Mindset</h3>
+                        <p>The foundation of all efficient systems.</p>
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; font-size: 1.5rem; margin-bottom: 10px;">2.900.000đ</div>
+                        <a href="#" class="cta-btn">View Detail</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Poster 2 -->
+            <article class="course-poster">
+                <span class="poster-num">02</span>
+                <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" class="poster-img" alt="Bank">
+                <div class="poster-content">
+                    <div>
+                        <h3>Banking Sync</h3>
+                        <p>Real-time financial telemetry.</p>
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; font-size: 1.5rem; margin-bottom: 10px;">1.900.000đ</div>
+                        <a href="#" class="cta-btn">View Detail</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Poster 3 -->
+            <article class="course-poster">
+                <span class="poster-num">03</span>
+                <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" class="poster-img" alt="AI">
+                <div class="poster-content">
+                    <div>
+                        <h3>AI Content Engine</h3>
+                        <p>Scale your voice infinitely.</p>
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; font-size: 1.5rem; margin-bottom: 10px;">7.900.000đ</div>
+                        <a href="#" class="cta-btn">View Detail</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Poster 4 -->
+            <article class="course-poster">
+                <span class="poster-num">04</span>
+                <img src="https://w.ladicdn.com/22603/image-20250909040425-zw_ho.png" class="poster-img" alt="Ladi">
+                <div class="poster-content">
+                    <div>
+                        <h3>LadiPage Systems</h3>
+                        <p>High conversion landing page structures.</p>
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; font-size: 1.5rem; margin-bottom: 10px;">6.900.000đ</div>
+                        <a href="#" class="cta-btn">View Detail</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Section End -->
+            <div class="section"
+                style="min-width: 50vw; background: white; border: none; flex-direction: column; text-align: center;">
+                <h2>End of Exhibition</h2>
+                <p>Ready to start?</p>
+                <br>
+                <a href="#" class="cta-btn">Join All Courses</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('scrollContainer');
+        const progressBar = document.getElementById('progressBar');
+
+        // Transform vertical scroll to horizontal
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                // e.preventDefault(); // Optional: block vertical scroll to force horizontal
+                container.scrollLeft += e.deltaY;
+            }
+        });
+
+        // Update progress bar
+        container.addEventListener('scroll', () => {
+            const maxScroll = container.scrollWidth - container.clientWidth;
+            const currentScroll = container.scrollLeft;
+            const percentage = (currentScroll / maxScroll) * 100;
+            progressBar.style.width = percentage + '%';
+        });
+    </script>
+</body>
+
+</html>

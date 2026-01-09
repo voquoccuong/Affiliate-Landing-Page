@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - 40 Concepts</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f3f4f6;
+            color: #1f2937;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            padding: 3rem 1.5rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #111827;
+        }
+
+        p.subtitle {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #6b7280;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin: 4rem 0 1.5rem;
+            color: #374151;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-tag {
+            background: #e5e7eb;
+            color: #374151;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .section-tag.new {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #3b82f6;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        /* Tag Colors */
+        .tag.blue {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .tag.green {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .tag.purple {
+            background: #f3e8ff;
+            color: #7e22ce;
+        }
+
+        .tag.red {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        .tag.orange {
+            background: #ffedd5;
+            color: #9a3412;
+        }
+
+        .tag.gray {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .tag.teal {
+            background: #ccfbf1;
+            color: #0f766e;
+        }
+
+        .tag.pink {
+            background: #fce7f3;
+            color: #be185d;
+        }
+
+        .tag.gold {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .tag.cyan {
+            background: #cffafe;
+            color: #155e75;
+        }
+
+        .tag.yellow {
+            background: #fef9c3;
+            color: #854d0e;
+        }
+
+        .tag.black {
+            background: #111;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        p.desc {
+            color: #4b5563;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0;
+            flex-grow: 1;
+        }
+
+        .arrow {
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>CuongHoa.AI Design System</h1>
+        <p class="subtitle">60 Unique Landing Page Concepts</p>
+
+        <h3 class="section-title">Batch 16: Abstract & Conceptual <span class="section-tag new">Finale</span></h3>
+        <div class="grid">
+            <a href="demo-91-negative-space.html" class="card" target="_blank">
+                <div class="card-icon">⚪</div>
+                <h2>Negative Space</h2>
+                <p class="desc">Extreme minimalism. Less is more.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-92-typography.html" class="card" target="_blank">
+                <div class="card-icon">Aa</div>
+                <h2>Typography</h2>
+                <p class="desc">Text as image. Font personality.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-93-monospaced.html" class="card" target="_blank">
+                <div class="card-icon">⌨️</div>
+                <h2>Monospaced</h2>
+                <p class="desc">Technical documentation style.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-94-blur-gradient.html" class="card" target="_blank">
+                <div class="card-icon">🌫️</div>
+                <h2>Blur Gradient</h2>
+                <p class="desc">Ethereal softness and calm.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-95-glitch.html" class="card" target="_blank">
+                <div class="card-icon">👾</div>
+                <h2>Glitch</h2>
+                <p class="desc">Digital noise and errors.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-96-inverted.html" class="card" target="_blank">
+                <div class="card-icon">🌗</div>
+                <h2>Inverted</h2>
+                <p class="desc">High contrast black and white.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-97-illusion.html" class="card" target="_blank">
+                <div class="card-icon">🌀</div>
+                <h2>Optical Illusion</h2>
+                <p class="desc">Mind-bending perception tricks.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-98-ascii.html" class="card" target="_blank">
+                <div class="card-icon">#_</div>
+                <h2>ASCII Art</h2>
+                <p class="desc">Text-based imagery.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-99-void.html" class="card" target="_blank">
+                <div class="card-icon">⚫</div>
+                <h2>The Void</h2>
+                <p class="desc">Absolute minimalist darkness.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-100-celebration.html" class="card" target="_blank">
+                <div class="card-icon">🎉</div>
+                <h2>Celebration</h2>
+                <p class="desc">The 100th Demo Finale!</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+        </div>
+
+        <h3 class="section-title">Batch 15: Interactive & Gamified <span class="section-tag new">Latest</span></h3>
+        <div class="grid">
+            <a href="demo-81-rpg-sheet.html" class="card" target="_blank">
+                <div class="card-icon">📜</div>
+                <h2>RPG Sheet</h2>
+                <p class="desc">Character stats and inventory.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-82-visual-novel.html" class="card" target="_blank">
+                <div class="card-icon">🌸</div>
+                <h2>Visual Novel</h2>
+                <p class="desc">Anime style storytelling.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-83-dos-terminal.html" class="card" target="_blank">
+                <div class="card-icon">💻</div>
+                <h2>DOS Terminal</h2>
+                <p class="desc">Retro command line interface.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-84-pokedex.html" class="card" target="_blank">
+                <div class="card-icon">📟</div>
+                <h2>Handheld Analyzer</h2>
+                <p class="desc">Pokedex style device info.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-85-music-player.html" class="card" target="_blank">
+                <div class="card-icon">🎵</div>
+                <h2>Music Player</h2>
+                <p class="desc">Clean audio interface.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-86-map-explorer.html" class="card" target="_blank">
+                <div class="card-icon">🗺️</div>
+                <h2>Map Explorer</h2>
+                <p class="desc">GPS navigation style.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-87-webtop-os.html" class="card" target="_blank">
+                <div class="card-icon">🖥️</div>
+                <h2>Web Desktop OS</h2>
+                <p class="desc">Windows 95 style web app.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-88-comic-book.html" class="card" target="_blank">
+                <div class="card-icon">💬</div>
+                <h2>Comic Book</h2>
+                <p class="desc">Panels and speech bubbles.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-89-slot-machine.html" class="card" target="_blank">
+                <div class="card-icon">🎰</div>
+                <h2>Slot Machine</h2>
+                <p class="desc">Casino luck interface.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-90-elevator-panel.html" class="card" target="_blank">
+                <div class="card-icon">🔼</div>
+                <h2>Elevator Panel</h2>
+                <p class="desc">Physical button tactile feel.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+        </div>
+
+        <h3 class="section-title">Batch 14: Materials & Textures <span class="section-tag new">Latest</span></h3>
+        <div class="grid">
+            <a href="demo-71-denim.html" class="card" target="_blank">
+                <div class="card-icon">👖</div>
+                <h2>Denim</h2>
+                <p class="desc">Jeans fabric and stitching.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-72-leather.html" class="card" target="_blank">
+                <div class="card-icon">💼</div>
+                <h2>Leather</h2>
+                <p class="desc">Luxury grain and gold emboss.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-73-chalkboard.html" class="card" target="_blank">
+                <div class="card-icon">🖍️</div>
+                <h2>Chalkboard</h2>
+                <p class="desc">Dusty board and hand lettering.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-74-blueprint.html" class="card" target="_blank">
+                <div class="card-icon">📐</div>
+                <h2>Blueprint</h2>
+                <p class="desc">Technical architectural drawing.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-75-cardboard.html" class="card" target="_blank">
+                <div class="card-icon">📦</div>
+                <h2>Cardboard</h2>
+                <p class="desc">Eco packaging texture.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-76-chrome.html" class="card" target="_blank">
+                <div class="card-icon">💿</div>
+                <h2>Liquid Chrome</h2>
+                <p class="desc">Shiny metal and reflections.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-77-plastic.html" class="card" target="_blank">
+                <div class="card-icon">🍬</div>
+                <h2>Plastic Wrap</h2>
+                <p class="desc">Transparent glossy overlay.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-78-embroidery.html" class="card" target="_blank">
+                <div class="card-icon">🧵</div>
+                <h2>Embroidery</h2>
+                <p class="desc">Stitched thread on fabric.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-79-stained-glass.html" class="card" target="_blank">
+                <div class="card-icon">⛪</div>
+                <h2>Stained Glass</h2>
+                <p class="desc">Colored light transparency.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-80-ice.html" class="card" target="_blank">
+                <div class="card-icon">❄️</div>
+                <h2>Ice/Frost</h2>
+                <p class="desc">Cold frozen glass texture.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+        </div>
+
+        <h3 class="section-title">Batch 13: Cultural & Atmospheric <span class="section-tag new">Latest</span></h3>
+        <div class="grid">
+            <a href="demo-61-zen-garden.html" class="card" target="_blank">
+                <div class="card-icon">🎋</div>
+                <h2>Zen Garden</h2>
+                <p class="desc">Sand rakes and stone peace.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-62-nordic.html" class="card" target="_blank">
+                <div class="card-icon">🏔️</div>
+                <h2>Nordic Minimal</h2>
+                <p class="desc">Icy blue hygiene.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-63-tropical.html" class="card" target="_blank">
+                <div class="card-icon">🌴</div>
+                <h2>Tropical Modern</h2>
+                <p class="desc">Lush greens and humidity.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-64-desert.html" class="card" target="_blank">
+                <div class="card-icon">🏜️</div>
+                <h2>Desert Heat</h2>
+                <p class="desc">Warm dunes and mirages.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-65-tokyo-night.html" class="card" target="_blank">
+                <div class="card-icon">🗼</div>
+                <h2>Tokyo Night</h2>
+                <p class="desc">Neon rain and cyberpunk city.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-66-mediterranean.html" class="card" target="_blank">
+                <div class="card-icon">🌊</div>
+                <h2>Mediterranean</h2>
+                <p class="desc">White stone and deep blue sea.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-67-tech-lab.html" class="card" target="_blank">
+                <div class="card-icon">🔬</div>
+                <h2>Tech Lab</h2>
+                <p class="desc">Sterile white research facility.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-68-medieval.html" class="card" target="_blank">
+                <div class="card-icon">📜</div>
+                <h2>Medieval Scroll</h2>
+                <p class="desc">Ancient parchment and wax.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-69-space-station.html" class="card" target="_blank">
+                <div class="card-icon">🚀</div>
+                <h2>Space Station</h2>
+                <p class="desc">Orbital view and metallic.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-70-underwater.html" class="card" target="_blank">
+                <div class="card-icon">🐠</div>
+                <h2>Underwater</h2>
+                <p class="desc">Deep blue caustics.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+        </div>
+
+        <h3 class="section-title">Batch 12: Modern Art & Experimental <span class="section-tag new">2024</span></h3>
+        <div class="grid">
+            <a href="demo-56-surreal.html" class="card" target="_blank">
+                <div class="card-icon">🍏</div>
+                <h2>Surrealist Dream</h2>
+                <p class="desc">Floating clouds, Magritte style.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-57-popart.html" class="card" target="_blank">
+                <div class="card-icon">💥</div>
+                <h2>Pop Art</h2>
+                <p class="desc">Warhol, Halftones, CMYK vibrant.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-58-concrete.html" class="card" target="_blank">
+                <div class="card-icon">🏢</div>
+                <h2>Concrete Brutalism</h2>
+                <p class="desc">Raw Gray, Architectural, Bold.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-59-watercolor.html" class="card" target="_blank">
+                <div class="card-icon">🎨</div>
+                <h2>Watercolor</h2>
+                <p class="desc">Soft Paint, Bleed, Texture.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-60-collage.html" class="card" target="_blank">
+                <div class="card-icon">✂</div>
+                <h2>Mixed Media Collage</h2>
+                <p class="desc">Ripped Paper, Tape, Grunge, DIY.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+        </div>
+
+        <h3 class="section-title">Batch 11: Classical & Timeless <span class="section-tag new">New</span></h3>
+        <div class="grid">
+            <a href="demo-51-artdeco.html" class="card" target="_blank">
+                <div class="card-icon">♦</div>
+                <h2>Art Deco</h2>
+                <p class="desc">Gatsby, Gold, Geometric lines.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-52-renaissance.html" class="card" target="_blank">
+                <div class="card-icon">❦</div>
+                <h2>Renaissance</h2>
+                <p class="desc">Old Paper, Serif, Framed Art.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-53-newspaper.html" class="card" target="_blank">
+                <div class="card-icon">📰</div>
+                <h2>Vintage Newspaper</h2>
+                <p class="desc">Blackletter, Multi-column, Ink.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-54-letterpress.html" class="card" target="_blank">
+                <div class="card-icon">✒</div>
+                <h2>Letterpress</h2>
+                <p class="desc">Embossed, Floral, Sepia tones.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+            <a href="demo-55-academia.html" class="card" target="_blank">
+                <div class="card-icon">🎓</div>
+                <h2>Dark Academia</h2>
+                <p class="desc">Leather, Wood, Gold Leaf, Mystery.</p>
+                <div class="arrow">Xem Demo &rarr;</div>
+            </a>
+        </div>
+
+        <h3 class="section-title">Batch 10: Special & Niche (The Collection)
+            <div class="grid">
+                <a href="demo-46-luxury.html" class="card" target="_blank">
+                    <div class="card-icon">💎</div>
+                    <h2>E-Commerce Luxury</h2>
+                    <p class="desc">High-end fashion aesthetic.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+                <a href="demo-47-nature.html" class="card" target="_blank">
+                    <div class="card-icon">🌿</div>
+                    <h2>Nature Organic</h2>
+                    <p class="desc">Sustainable growth vibes.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+                <a href="demo-48-security.html" class="card" target="_blank">
+                    <div class="card-icon">🛡️</div>
+                    <h2>Cyber Security</h2>
+                    <p class="desc">Enterprise protection theme.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+                <a href="demo-49-fog.html" class="card" target="_blank">
+                    <div class="card-icon">🌫️</div>
+                    <h2>Abstract Fog</h2>
+                    <p class="desc">Ethereal mystery and blur.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+                <a href="demo-50-singularity.html" class="card" target="_blank">
+                    <div class="card-icon">🌌</div>
+                    <h2>The Singularity</h2>
+                    <p class="desc">The Ultimate Artificial Intelligence.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+            </div>
+
+            <h3 class="section-title">Batch 9: Future Tech & Art <span class="section-tag new">New</span></h3>
+            <div class="grid">
+                <a href="demo-41-hud.html" class="card" target="_blank">
+                    <div class="card-icon">🔮</div>
+                    <h2>Holographic HUD</h2>
+                    <p class="desc">Sci-Fi Iron Man style interface.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+                <a href="demo-42-particles.html" class="card" target="_blank">
+                    <div class="card-icon">🕸️</div>
+                    <h2>Particle Network</h2>
+                    <p class="desc">Interactive connecting nodes.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+                <a href="demo-43-clay.html" class="card" target="_blank">
+                    <div class="card-icon">🧸</div>
+                    <h2>Claymorphism</h2>
+                    <p class="desc">Soft 3D puffy elements.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+                <a href="demo-44-bauhaus.html" class="card" target="_blank">
+                    <div class="card-icon">🎨</div>
+                    <h2>Bauhaus Art</h2>
+                    <p class="desc">Geometric primary colors.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+                <a href="demo-45-vcr.html" class="card" target="_blank">
+                    <div class="card-icon">📼</div>
+                    <h2>Retro VCR</h2>
+                    <p class="desc">VHS glitch and analog horror.</p>
+                    <div class="arrow">Xem Demo &rarr;</div>
+                </a>
+            </div>
+
+
+            <h3 class="section-title">Batch 8: Ultra Modern
+                <div class="grid">
+                    <a href="demo-36-linear.html" class="card" target="_blank">
+                        <span class="tag purple">Concept 36</span>
+                        <h2>Linear SaaS</h2>
+                        <p class="desc">The new standard for dark mode SaaS. Micro-borders and glows.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-37-vision.html" class="card" target="_blank">
+                        <span class="tag blue">Concept 37</span>
+                        <h2>VisionOS Spatial</h2>
+                        <p class="desc">Apple Vision Pro UI. Glass, depth, and 3D space.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-38-bento-pro.html" class="card" target="_blank">
+                        <span class="tag gray">Concept 38</span>
+                        <h2>Bento Pro</h2>
+                        <p class="desc">High density command center grid. Interactive widgets.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-39-parallax.html" class="card" target="_blank">
+                        <span class="tag black">Concept 39</span>
+                        <h2>Parallax Scroll</h2>
+                        <p class="desc">Full page scroll snapping. Cinematic entrance animations.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-40-spotlight.html" class="card" target="_blank">
+                        <span class="tag black">Concept 40</span>
+                        <h2>Interactive Spotlight</h2>
+                        <p class="desc">Mouse tracking torch/flashlight reveal effect. Mystery vibe.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                </div>
+
+
+                <h3 class="section-title">Batch 7: Artistic & Experimental (New) <span
+                        class="section-tag new">New</span>
+                </h3>
+                <div class="grid">
+                    <a href="demo-31-brutalist.html" class="card" target="_blank">
+                        <span class="tag red">Concept 31</span>
+                        <h2>Brutalist Magazine</h2>
+                        <p class="desc">Raw, overlapping, chaotic. High fashion aesthetic.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-32-fluid.html" class="card" target="_blank">
+                        <span class="tag pink">Concept 32</span>
+                        <h2>Fluid Gradient</h2>
+                        <p class="desc">Soft lava lamp background. Organic shapes and motion.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-33-terminal.html" class="card" target="_blank">
+                        <span class="tag green">Concept 33</span>
+                        <h2>Cyber Terminal</h2>
+                        <p class="desc">Hacker dashboard. Command line interface.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-34-zen.html" class="card" target="_blank">
+                        <span class="tag gold">Concept 34</span>
+                        <h2>Zen Minimal</h2>
+                        <p class="desc">Japanese aesthetic. Vertical text support. Negative space.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-35-neon.html" class="card" target="_blank">
+                        <span class="tag cyan">Concept 35</span>
+                        <h2>Neon Synthwave</h2>
+                        <p class="desc">80s Retro Future. Perspective grid and glowing sun.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                </div>
+
+
+                <h3 class="section-title">Batch 6: Creative & Impressive</h3>
+                <div class="grid">
+                    <a href="demo-26-isometric.html" class="card" target="_blank">
+                        <span class="tag purple">Concept 26</span>
+                        <h2>Isometric Grid</h2>
+                        <p class="desc">3D Tilted plane. Floating block Interaction.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-27-kinetic.html" class="card" target="_blank">
+                        <span class="tag red">Concept 27</span>
+                        <h2>Kinetic Typography</h2>
+                        <p class="desc">Marquee Text. High Energy Motion.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-28-glass-pro.html" class="card" target="_blank">
+                        <span class="tag blue">Concept 28</span>
+                        <h2>Glass Pro</h2>
+                        <p class="desc">Advanced Blur. Apple/macOS Aesthetic.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-29-console.html" class="card" target="_blank">
+                        <span class="tag green">Concept 29</span>
+                        <h2>Retro Console</h2>
+                        <p class="desc">8-bit Pixel Art. Gamified UX.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-30-roadmap.html" class="card" target="_blank">
+                        <span class="tag cyan">Concept 30</span>
+                        <h2>Journey Roadmap</h2>
+                        <p class="desc">Explore the path. Interactive Timeline.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                </div>
+
+                <h3 class="section-title">Batch 5: Clean & Impressive</h3>
+                <div class="grid">
+                    <a href="demo-21-mesh.html" class="card" target="_blank">
+                        <span class="tag purple">Concept 21</span>
+                        <h2>Gradient Mesh</h2>
+                        <p class="desc">Modern Tech/SaaS. Animated background.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-22-split.html" class="card" target="_blank">
+                        <span class="tag black">Concept 22</span>
+                        <h2>Split Synergy</h2>
+                        <p class="desc">Sticky Left pane, Scrollable Right pane.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-23-masonry.html" class="card" target="_blank">
+                        <span class="tag red">Concept 23</span>
+                        <h2>Masonry Gallery</h2>
+                        <p class="desc">Pinterest Style Visual discovery.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-24-accordion.html" class="card" target="_blank">
+                        <span class="tag gold">Concept 24</span>
+                        <h2>Accordion Hero</h2>
+                        <p class="desc">Interactive vertical slices.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+
+                    <a href="demo-25-app.html" class="card" target="_blank">
+                        <span class="tag blue">Concept 25</span>
+                        <h2>Minimalist App</h2>
+                        <p class="desc">Mobile-First UI simulation.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                </div>
+
+                <!-- Links to previous batches exist in file system but hidden for brevity here if needed -->
+                <!-- Just link the first few batches normally -->
+
+                <h3 class="section-title">Batch 4: Interactive</h3>
+                <div class="grid">
+                    <a href="demo-16-chat.html" class="card" target="_blank">
+                        <span class="tag blue">Concept 16</span>
+                        <h2>Chat Assistant</h2>
+                        <p class="desc">Conversational UI Bot.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                    <a href="demo-17-editorial.html" class="card" target="_blank">
+                        <span class="tag gray">Concept 17</span>
+                        <h2>The Editorial</h2>
+                        <p class="desc">Newspaper/Magazine Layout.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                    <a href="demo-18-streaming.html" class="card" target="_blank">
+                        <span class="tag red">Concept 18</span>
+                        <h2>Streaming</h2>
+                        <p class="desc">Netflix Style.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                    <a href="demo-19-stack.html" class="card" target="_blank">
+                        <span class="tag pink">Concept 19</span>
+                        <h2>Card Stack</h2>
+                        <p class="desc">Swipe Deck.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                    <a href="demo-20-dashboard.html" class="card" target="_blank">
+                        <span class="tag green">Concept 20</span>
+                        <h2>Analytics</h2>
+                        <p class="desc">SaaS Admin Dashboard.</p>
+                        <div class="arrow">Xem Demo &rarr;</div>
+                    </a>
+                </div>
+
+    </div>
+
+</body>
+
+</html>

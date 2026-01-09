@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medieval Scroll - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap');
+
+        :root {
+            --parchment: #E6D2B5;
+            --parchment-dark: #Ccb997;
+            --ink: #2b1d0e;
+            --gold: #C5A059;
+            --red-seal: #8B0000;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+            /* Subtle wood texture */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'IM Fell English', serif;
+            color: var(--ink);
+        }
+
+        .scroll-container {
+            position: relative;
+            width: 800px;
+            filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+        }
+
+        .scroll-paper {
+            background-color: var(--parchment);
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            padding: 4rem 6rem;
+            min-height: 500px;
+            position: relative;
+            box-shadow: inset 0 0 100px rgba(139, 69, 19, 0.2);
+            /* Torn edges effect crudely simulated for simplicity in pure CSS without complex SVG clips */
+            mask-image: linear-gradient(to bottom,
+                    transparent 1%, black 5%, black 95%, transparent 99%);
+        }
+
+        /* Rollers */
+        .roller-top,
+        .roller-bottom {
+            height: 40px;
+            background: linear-gradient(to right, #463420, #6f5539, #463420);
+            border-radius: 20px;
+            position: absolute;
+            width: 110%;
+            left: -5%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            z-index: 10;
+        }
+
+        .roller-top {
+            top: -20px;
+        }
+
+        .roller-bottom {
+            bottom: -20px;
+        }
+
+        /* Knobs */
+        .knob-l,
+        .knob-r {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, var(--gold), #554020);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: inset -2px -2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .roller-top .knob-l {
+            left: -30px;
+        }
+
+        .roller-top .knob-r {
+            right: -30px;
+        }
+
+        .roller-bottom .knob-l {
+            left: -30px;
+        }
+
+        .roller-bottom .knob-r {
+            right: -30px;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 3rem;
+            text-align: center;
+            border-bottom: 2px solid var(--ink);
+            padding-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .drop-cap {
+            float: left;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 4.5rem;
+            line-height: 0.8;
+            margin-right: 0.5rem;
+            margin-bottom: -0.5rem;
+            color: var(--red-seal);
+        }
+
+        p {
+            font-size: 1.3rem;
+            text-align: justify;
+            line-height: 1.4;
+        }
+
+        .seal {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #a00000, #500000);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cc0000;
+            font-family: 'Cinzel Decorative', cursive;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            border: 5px dashed rgba(0, 0, 0, 0.2);
+            transform: rotate(-15deg);
+        }
+
+        .cta-quill {
+            display: block;
+            text-align: center;
+            margin-top: 3rem;
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 1.5rem;
+            color: var(--ink);
+            text-decoration: none;
+            border: 2px solid var(--ink);
+            padding: 10px 30px;
+            width: max-content;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.3s;
+        }
+
+        .cta-quill:hover {
+            background: var(--ink);
+            color: var(--parchment);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scroll-container">
+        <div class="roller-top">
+            <div class="knob-l"></div>
+            <div class="knob-r"></div>
+        </div>
+
+        <div class="scroll-paper">
+            <h1>The Royal Decree</h1>
+
+            <p>
+                <span class="drop-cap">H</span>ear ye, hear ye! Let it be known throughout the land that the finest
+                digital crafts are now available for your perusal.
+                Our guild of code-smiths has forged a new alliance to bring forth prosperity and high conversion rates.
+            </p>
+            <p>
+                Whether thou seekest gold, glory, or merely a responsive layout, we stand ready to serve the realm.
+            </p>
+
+            <a href="https://www.cuonghoa.website" class="cta-quill">Join the Guild</a>
+
+            <div class="seal">
+                APPROVED
+            </div>
+        </div>
+
+        <div class="roller-bottom">
+            <div class="knob-l"></div>
+            <div class="knob-r"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

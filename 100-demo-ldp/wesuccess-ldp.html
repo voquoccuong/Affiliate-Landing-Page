@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeSuccess - Bộ Công Cụ AI Cho Solopreneur</title>
+    <!-- Fonts: Be Vietnam Pro -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            /* Colors */
+            --bg-primary: #111111;
+            --bg-secondary: #0A0A0A;
+            --bg-card: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --accent: #C9A962;
+            --success: #22C55E;
+            --primary-glow: rgba(34, 197, 94, 0.5);
+
+            /* Dimensions */
+            --container-width: 1200px;
+            --radius-lg: 24px;
+            --radius-btn: 12px;
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .text-dim {
+            color: var(--text-secondary);
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .gap-2 {
+            gap: 8px;
+        }
+
+        .gap-4 {
+            gap: 16px;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2;
+        }
+
+        .hero-heading {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #fff 0%, #ccc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            font-weight: 700;
+            text-align: center;
+            border-radius: var(--radius-btn);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--success);
+            color: white;
+            padding: 20px 48px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            box-shadow: 0 0 30px rgba(34, 197, 94, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 0 50px rgba(34, 197, 94, 0.5);
+        }
+
+        /* --- Sections --- */
+
+        /* Hero */
+        .hero-section {
+            padding: 100px 0 80px;
+            position: relative;
+            background: radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+        }
+
+        .badge-hero {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            margin-bottom: 24px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--success);
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .feature-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 100px 0;
+            background-color: var(--bg-secondary);
+        }
+
+        /* Product Grid */
+        .product-section {
+            padding: 80px 0;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .product-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #222;
+        }
+
+        .card-body {
+            padding: 24px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        /* Pricing */
+        .pricing-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+
+        .price-box {
+            background: rgba(34, 197, 94, 0.05);
+            border: 2px solid var(--success);
+            padding: 60px;
+            border-radius: 32px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .price-tag {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--success);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+        }
+
+        /* Affiliate */
+        .affiliate-section {
+            padding: 80px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-heading {
+                font-size: 2.5rem;
+            }
+
+            .section-heading {
+                font-size: 2rem;
+            }
+
+            .btn-primary {
+                width: 100%;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <div class="badge-hero">Bundle AI Tools - Dành cho Solopreneur</div>
+            <p class="text-accent" style="font-weight: 600; margin-bottom: 10px;">Ra mắt Bundle 2025!</p>
+            <h1 class="hero-heading">
+                Bộ Công Cụ AI Hoàn Chỉnh<br>Cho Solopreneur Việt Nam!
+            </h1>
+            <p class="text-dim" style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 40px;">
+                Tất cả tools bạn cần để tạo content, quản lý công việc và scale business - trong một bundle duy nhất.
+            </p>
+
+            <div style="margin-bottom: 30px;">
+                <span style="display: block; font-weight: 600; margin-bottom: 10px; color: var(--success);">
+                    Giá trị thực: <span style="text-decoration: line-through; color: #666;">27.493.000đ</span>
+                </span>
+                <a href="#pricing" class="btn btn-primary">Sở Hữu Bundle Ngay Hôm Nay</a>
+                <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">*Ưu đãi kết thúc khi hết slot!</p>
+            </div>
+
+            <div class="hero-features">
+                <div class="feature-pill"><i class="ph-fill ph-user"></i> SOLOPRENEUR</div>
+                <div class="feature-pill"><i class="ph-fill ph-robot"></i> AI TOOLS</div>
+                <div class="feature-pill"><i class="ph-fill ph-infinity"></i> LIFETIME ACCESS</div>
+                <div class="feature-pill"><i class="ph-fill ph-users-three"></i> GROUP PRIVATE</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container text-center">
+            <h2 class="section-heading">Làm Việc Một Mình, Nhưng Phải<br>Đóng 10 Vai Trò Khác Nhau</h2>
+            <p class="text-dim" style="max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+                Designer hôm nay. Marketer ngày mai. Accountant cuối tuần. Những đêm thức trắng, mệt mỏi với đống việc
+                không tên và áp lực từ khách hàng.
+                <br><br>
+                Bạn có thấy mình trong đó không?
+            </p>
+        </div>
+    </section>
+
+    <!-- Product Showcase -->
+    <section class="product-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading">8 "Nhân Viên AI" Trong Một Gói</h2>
+                <p class="text-dim">Tự động hóa công việc kinh doanh của bạn.</p>
+            </div>
+
+            <div class="product-grid">
+                <!-- 1 -->
+                <div class="product-card">
+                    <img src="https://wesuccess.app/_next/image?url=%2Fimages%2Fwesub-app.png&w=640&q=75"
+                        class="card-img" alt="WeSub">
+                    <div class="card-body">
+                        <h3 class="card-title">WeSub</h3>
+                        <p class="text-dim">Dịch phụ đề AI tự động 100+ ngôn ngữ. Xử lý video trong vài phút.</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="product-card">
+                    <img src="https://wesuccess.app/_next/image?url=%2Fimages%2Fweaistudio-app.png&w=640&q=75"
+                        class="card-img" alt="WeAIStudio">
+                    <div class="card-body">
+                        <h3 class="card-title">WeAIStudio</h3>
+                        <p class="text-dim">Tạo ảnh người mẫu ảo và sản phẩm chuyên nghiệp không cần Studio.</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="product-card">
+                    <img src="https://wesuccess.app/_next/image?url=%2Fimages%2Fweproductstudio-app.png&w=640&q=75"
+                        class="card-img" alt="WeProduct">
+                    <div class="card-body">
+                        <h3 class="card-title">WeProductStudio</h3>
+                        <p class="text-dim">Nâng cấp ảnh sản phẩm thô thành ảnh thương mại điện tử cao cấp.</p>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="product-card">
+                    <img src="https://wesuccess.app/_next/image?url=%2Fimages%2Ftoebook-app.png&w=640&q=75"
+                        class="card-img" alt="ToEbook">
+                    <div class="card-body">
+                        <h3 class="card-title">ToEbook</h3>
+                        <p class="text-dim">Dịch tài liệu PDF tiếng Anh sang tiếng Việt giữ nguyên định dạng.</p>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="product-card">
+                    <img src="https://wesuccess.app/_next/image?url=%2Fimages%2Fyoutube-manager-app.png&w=640&q=75"
+                        class="card-img" alt="YouTube">
+                    <div class="card-body">
+                        <h3 class="card-title">YouTube Manager</h3>
+                        <p class="text-dim">Quản lý kênh, lập lịch và phân tích hiệu quả video.</p>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="product-card">
+                    <img src="https://wesuccess.app/_next/image?url=%2Fimages%2Finstagram-manager-app.png&w=640&q=75"
+                        class="card-img" alt="Instagram">
+                    <div class="card-body">
+                        <h3 class="card-title">Instagram Manager</h3>
+                        <p class="text-dim">Tự động đăng bài, quản lý feed và tương tác follower.</p>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="product-card">
+                    <img src="https://wesuccess.app/_next/image?url=%2Fimages%2Ftiktok-manager-app.png&w=640&q=75"
+                        class="card-img" alt="TikTok">
+                    <div class="card-body">
+                        <h3 class="card-title">TikTok Manager</h3>
+                        <p class="text-dim">Trending research và quản lý hàng loạt tài khoản TikTok.</p>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="product-card">
+                    <img src="https://wesuccess.app/_next/image?url=%2Fimages%2Ffacebook-manager-app.jpg&w=640&q=75"
+                        class="card-img" alt="Facebook">
+                    <div class="card-body">
+                        <h3 class="card-title">Facebook Manager</h3>
+                        <p class="text-dim">Nuôi Fanpage, Profile và Group hoàn toàn tự động.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-heading">Đầu Tư Một Lần. Lợi Nhuận Trọn Đời.</h2>
+            <div class="price-box">
+                <div style="margin-bottom: 20px;">TRỌN BỘ 8 APPS + BONUS</div>
+                <div class="price-original">27.493.000đ</div>
+                <div class="price-tag">6.999.000đ</div>
+                <p style="margin-bottom: 40px; color: var(--text-secondary);">Thanh toán 1 lần duy nhất. Không phí duy
+                    trì.</p>
+                <a href="#" class="btn btn-primary" style="min-width: 300px;">Mua Ngay</a>
+                <p style="margin-top: 20px; font-size: 0.9rem;">
+                    <i class="ph-fill ph-check-circle" style="color: var(--success);"></i> Hoàn tiền 100% trong 30 ngày
+                    nếu không hài lòng.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Affiliate Section -->
+    <section class="affiliate-section">
+        <div class="container text-center">
+            <div
+                style="background: linear-gradient(135deg, #111, #222); padding: 60px; border-radius: 24px; border: 1px solid #333;">
+                <h2 class="section-heading text-accent">WESUCCESS PARTNER</h2>
+                <h3 style="font-size: 2rem; margin-bottom: 20px;">Nhận <span style="color: var(--success);">40% Hoa
+                        Hồng</span> Mỗi Đơn</h3>
+                <p class="text-dim" style="max-width: 600px; margin: 0 auto 30px;">
+                    Chương trình Affiliate hấp dẫn nhất 2025. Kiếm ~2.800.000đ cho mỗi sale bạn giới thiệu. Chỉ cần 3
+                    sale là bạn đã hoàn vốn mua tool.
+                </p>
+                <button class="btn" style="border: 1px solid white; color: white; padding: 15px 30px;">
+                    Đăng Ký Partner
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p style="margin-bottom: 10px; font-weight: 700;">WeSuccess © 2025</p>
+            <div class="gap-4 flex-center" style="font-size: 0.8rem;">
+                <a href="#">Terms of Service</a>
+                <span style="opacity: 0.3;">|</span>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

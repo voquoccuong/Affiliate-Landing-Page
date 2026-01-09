@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Roadmap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0f172a;
+            color: white;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 150px 20px 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Timeline */
+        .timeline-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-bottom: 150px;
+        }
+
+        /* The Line */
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #1e293b;
+            transform: translateX(-50%);
+        }
+
+        /* Progress Line (Animated on Scroll) */
+        .timeline-progress {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 4px;
+            background: #38bdf8;
+            transform: translateX(-50%);
+            height: 0;
+            /* JS will change this */
+            transition: height 0.1s;
+            box-shadow: 0 0 15px #38bdf8;
+            border-radius: 4px;
+        }
+
+        .step {
+            position: relative;
+            margin-bottom: 100px;
+            width: 50%;
+            padding: 0 40px;
+            opacity: 0.3;
+            transition: all 0.5s;
+            transform: translateY(20px);
+        }
+
+        .step.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .step:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        /* Dot */
+        .dot {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: #1e293b;
+            border-radius: 50%;
+            z-index: 10;
+            border: 4px solid #0f172a;
+            transition: all 0.3s;
+        }
+
+        .step:nth-child(odd) .dot {
+            right: -50px;
+        }
+
+        /* 40px padding + 10px half width */
+        .step:nth-child(even) .dot {
+            left: -50px;
+        }
+
+        .step.active .dot {
+            background: #38bdf8;
+            box-shadow: 0 0 20px #38bdf8;
+            transform: scale(1.5);
+        }
+
+        .step-content {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .step-content::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+
+        .step:nth-child(odd) .step-content::before {
+            right: -10px;
+            border-left: 10px solid #1e293b;
+        }
+
+        .step:nth-child(even) .step-content::before {
+            left: -10px;
+            border-right: 10px solid #1e293b;
+        }
+
+        h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .price {
+            color: #38bdf8;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .description {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .btn-step {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 16px;
+            background: #334155;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn-step:hover {
+            background: #475569;
+        }
+
+        /* Floating Start Button at bottom */
+        .start-journey {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .btn-glow {
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 20px 50px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div style="font-weight:800; font-size:1.2rem;">CuongHoa.AI</div>
+        <div style="font-size:0.9rem; color:#94a3b8;">Your Roadmap to Success</div>
+    </div>
+
+    <div class="hero">
+        <h1>The Automation Journey</h1>
+        <p>From manual struggle to automated freedom. Follow the path.</p>
+    </div>
+
+    <div class="timeline-container">
+        <div class="timeline-line"></div>
+        <div class="timeline-progress" id="progressLine"></div>
+
+        <!-- Step 1 -->
+        <div class="step">
+            <div class="dot"></div>
+            <div class="step-content">
+                <span class="price">Level 1</span>
+                <h3>Automation Mindset</h3>
+                <p class="description">
+                    Everything starts here. Rewire your brain to identify inefficiencies.
+                    Stop working hard, start thinking smart.
+                </p>
+                <a href="#" class="btn-step">Start Here</a>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <div class="dot"></div>
+            <div class="step-content">
+                <span class="price">Level 2</span>
+                <h3>Finance Bot</h3>
+                <p class="description">
+                    Gain clarity. Automate your cash flow tracking.
+                    Visualize your runway without lifting a finger.
+                </p>
+                <a href="#" class="btn-step">Unlock Module</a>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <div class="dot"></div>
+            <div class="step-content">
+                <span class="price">Level 3</span>
+                <h3>Content Engine</h3>
+                <p class="description">
+                    Scale your voice. Use AI to generate months of content.
+                    Dominate social media with automated workflows.
+                </p>
+                <a href="#" class="btn-step">Unlock Module</a>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+            <div class="dot"></div>
+            <div class="step-content">
+                <span class="price">Level 4</span>
+                <h3>System Architecture</h3>
+                <p class="description">
+                    Connect it all together. LadiPage, CRM, Email.
+                    Build the machine that runs while you sleep.
+                </p>
+                <a href="#" class="btn-step">Unlock Module</a>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step">
+            <div class="dot"></div>
+            <div class="step-content">
+                <span class="price">Mastery</span>
+                <h3>Full Bundle Access</h3>
+                <p class="description">
+                    Get every tool, every script, every strategy.
+                    Complete the transformation.
+                </p>
+                <a href="#" class="btn-step">Get All Access</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="start-journey">
+        <button class="btn-glow">BEGIN JOURNEY</button>
+    </div>
+
+    <script>
+        // Scroll Animation Logic
+        window.addEventListener('scroll', () => {
+            const steps = document.querySelectorAll('.step');
+            const progressLine = document.getElementById('progressLine');
+            const triggerBottom = window.innerHeight * 0.8;
+
+            // Calculate progress line height based on scroll
+            // This is a rough approximation for the demo
+            const totalHeight = document.querySelector('.timeline-container').offsetHeight;
+            const scrollPercent = (window.scrollY + window.innerHeight / 2) / document.body.scrollHeight;
+            let barHeight = window.scrollY + window.innerHeight / 2 - 250;
+            if (barHeight < 0) barHeight = 0;
+            if (barHeight > totalHeight) barHeight = totalHeight;
+            progressLine.style.height = `${barHeight}px`;
+
+            steps.forEach(step => {
+                const stepTop = step.getBoundingClientRect().top;
+                if (stepTop < triggerBottom) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        });
+
+        // Trigger initial check
+        window.dispatchEvent(new Event('scroll'));
+    </script>
+
+</body>
+
+</html>

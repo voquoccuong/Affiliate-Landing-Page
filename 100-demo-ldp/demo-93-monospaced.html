@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monospaced - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fdf6e3;
+            /* Solarized Light base */
+            color: #657b83;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            display: grid;
+            grid-template-columns: 250px 1fr 200px;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Nav */
+        .sidebar {
+            background: #eee8d5;
+            padding: 2rem;
+            border-right: 1px solid #d3d0c2;
+        }
+
+        .nav-group {
+            margin-bottom: 2rem;
+        }
+
+        .nav-header {
+            font-weight: 600;
+            color: #b58900;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .nav-link {
+            display: block;
+            color: #586e75;
+            text-decoration: none;
+            padding: 2px 0;
+        }
+
+        .nav-link:hover {
+            color: #268bd2;
+        }
+
+        .nav-link.active {
+            color: #268bd2;
+            border-left: 2px solid #268bd2;
+            padding-left: 10px;
+            margin-left: -12px;
+        }
+
+        /* Main Content */
+        main {
+            padding: 3rem 4rem;
+            max-width: 900px;
+        }
+
+        h1 {
+            color: #268bd2;
+            font-weight: 600;
+            font-size: 2.5rem;
+            margin-top: 0;
+            border-bottom: 1px solid #d3d0c2;
+            padding-bottom: 1rem;
+        }
+
+        .meta {
+            font-size: 0.8rem;
+            color: #93a1a1;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        code {
+            background: #eee8d5;
+            padding: 2px 5px;
+            border-radius: 3px;
+            color: #d33682;
+        }
+
+        pre {
+            background: #002b36;
+            /* Solarized Dark */
+            color: #839496;
+            padding: 1.5rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        /* Syntax Highlight sim */
+        .k {
+            color: #859900;
+        }
+
+        /* keyword */
+        .s {
+            color: #2aa198;
+        }
+
+        /* string */
+        .c {
+            color: #586e75;
+            font-style: italic;
+        }
+
+        /* comment */
+        .f {
+            color: #268bd2;
+        }
+
+        /* function */
+
+        .btn-outline {
+            display: inline-block;
+            border: 1px solid #268bd2;
+            color: #268bd2;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 3px;
+            margin-top: 1rem;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            background: #268bd2;
+            color: #fdf6e3;
+        }
+
+        /* Right TOC */
+        .toc {
+            padding: 2rem;
+            font-size: 0.8rem;
+        }
+
+        .toc-header {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc li {
+            margin-bottom: 5px;
+            color: #93a1a1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="nav-group">
+            <div class="nav-header">Getting Started</div>
+            <a href="#" class="nav-link">Introduction</a>
+            <a href="#" class="nav-link active">Installation</a>
+            <a href="#" class="nav-link">Architecture</a>
+        </div>
+        <div class="nav-group">
+            <div class="nav-header">Components</div>
+            <a href="#" class="nav-link">Buttons</a>
+            <a href="#" class="nav-link">Forms</a>
+            <a href="#" class="nav-link">Modals</a>
+        </div>
+    </aside>
+
+    <main>
+        <h1>Raw Documentation</h1>
+        <div class="meta">
+            <span>v2.4.0</span>
+            <span>Last updated: 2024-12-30</span>
+            <span>Author: CuongHoa</span>
+        </div>
+
+        <p>
+            Welcome to the raw code aesthetic. This style prioritizes information density and readability for technical
+            users.
+            No distractions, just the <code>data</code> you need.
+        </p>
+
+        <h3>Quick Start</h3>
+        <p>Initialize the landing page generator with the following command:</p>
+
+        <pre><code><span class="c"># Install via NPM</span>
+<span class="f">npm</span> install @cuonghoa/landing-page-cli
+
+<span class="c"># Initialize project</span>
+<span class="k">const</span> app = <span class="f">require</span>(<span class="s">'cuonghoa'</span>);
+app.<span class="f">generate</span>({
+    style: <span class="s">'monospaced'</span>,
+    theme: <span class="s">'solarized'</span>
+});</code></pre>
+
+        <p>This will create a structured directory perfect for documentation, technical specs, or developer portfolios.
+        </p>
+
+        <a href="https://www.cuonghoa.website" class="btn-outline">View Full API Reference</a>
+    </main>
+
+    <aside class="toc">
+        <div class="toc-header">On this page</div>
+        <ul>
+            <li>Quick Start</li>
+            <li>Configuration</li>
+            <li>Theme Options</li>
+            <li>Benchmarks</li>
+        </ul>
+    </aside>
+
+</body>
+
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Soft Automation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.7);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            --text: #2d3748;
+            --primary: #4fd1c5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            background: linear-gradient(45deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Nav */
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            background: white;
+            color: #e73c7e;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 40px 0 80px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: white;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card-hero {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Cards */
+        .cards_wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            width: 350px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.65);
+        }
+
+        .card-icon {
+            background: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #23a6d5;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .price-chip {
+            background: white;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            color: #e73c7e;
+            display: inline-block;
+        }
+
+        /* Blobs */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(180deg, rgba(47, 184, 255, 0.42) 31.77%, #5c9df1 100%);
+            mix-blend-mode: color-dodge;
+            -webkit-filter: blur(50px);
+            filter: blur(50px);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+            animation: blob-move 10s infinite alternate;
+        }
+
+        .blob-2 {
+            top: 200px;
+            right: -100px;
+            background: linear-gradient(180deg, rgba(244, 47, 255, 0.42) 31.77%, #cb5cf1 100%);
+            animation-direction: alternate-reverse;
+        }
+
+        @keyframes blob-move {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(50px, 50px) rotate(10deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="blob"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">Cloud.AI</div>
+            <a href="#" class="btn">Login</a>
+        </nav>
+
+        <section class="hero">
+            <h1>Make Automation<br>Feel Like Magic.</h1>
+            <div class="glass-card-hero">
+                Dễ dàng, mượt mà và hiệu quả. Khám phá các khóa học giúp bạn tự động hóa công việc nhàm chán để tận
+                hưởng cuộc sống.
+            </div>
+        </section>
+
+        <section class="cards_wrap">
+            <!-- Box 1 -->
+            <div class="card">
+                <div class="card-icon" style="color: #e73c7e;">
+                    <i class="ph-fill ph-brain"></i>
+                </div>
+                <h3>Automation Mindset</h3>
+                <p>Khởi đầu nhẹ nhàng với tư duy hệ thống. Hiểu cách máy móc làm việc thay bạn.</p>
+                <div class="price-chip">2.900.000đ</div>
+            </div>
+
+            <!-- Box 2 -->
+            <div class="card">
+                <div class="card-icon" style="color: #23d5ab;">
+                    <i class="ph-fill ph-bank"></i>
+                </div>
+                <h3>Banking Sync</h3>
+                <p>Tiền ting ting là báo ngay. Quản lý tài chính tự động hoàn toàn.</p>
+                <div class="price-chip">1.900.000đ</div>
+            </div>
+
+            <!-- Box 3 -->
+            <div class="card">
+                <div class="card-icon" style="color: #ee7752;">
+                    <i class="ph-fill ph-magic-wand"></i>
+                </div>
+                <h3>AI Content Wizard</h3>
+                <p>Biến ý tưởng thành bài viết Viral chỉ trong vài giây với phép thuật AI.</p>
+                <div class="price-chip">7.900.000đ</div>
+            </div>
+        </section>
+
+        <footer style="text-align: center; color: white; margin-top: 60px; font-weight: 600;">
+            Made with <i class="ph-fill ph-heart"></i> for Humans
+        </footer>
+    </div>
+</body>
+
+</html>

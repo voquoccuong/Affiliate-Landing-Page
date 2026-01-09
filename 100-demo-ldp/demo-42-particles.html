@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Particles</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #canvas-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
+            /* Let clicks pass through to canvas if needed, mostly for visual */
+        }
+
+        h1 {
+            color: #66fcf1;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+            letter-spacing: 2px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #fff;
+        }
+
+        .btn-glow {
+            pointer-events: auto;
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            color: #66fcf1;
+            border: 2px solid #45a29e;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            border-radius: 5px;
+        }
+
+        .btn-glow:hover {
+            background: #45a29e;
+            color: #0b0c10;
+            box-shadow: 0 0 30px rgba(69, 162, 158, 0.6);
+        }
+
+        .stats-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(11, 12, 16, 0.8);
+            border-top: 1px solid #1f2833;
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #45a29e;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="canvas-bg"></canvas>
+
+    <div class="content">
+        <h1>NEURAL NET</h1>
+        <p>Connecting the dots between Intelligence and Automation.
+            A fully integrated AI ecosystem.</p>
+        <a href="#" class="btn-glow">Connect Now</a>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-num">1M+</span>
+            <span class="stat-label">Connections</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">50k</span>
+            <span class="stat-label">Nodes Active</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">0.01s</span>
+            <span class="stat-label">Latency</span>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas-bg');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+
+        // Config
+        const particleCount = 100;
+        const connectionDistance = 150;
+        const mouseDistance = 200;
+
+        let mouse = { x: null, y: null };
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1;
+                this.vy = (Math.random() - 0.5) * 1;
+                this.size = Math.random() * 2 + 1;
+                this.color = '#45a29e';
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off edges
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Mouse interaction
+                if (mouse.x != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < mouseDistance) {
+                        const forceDirectionX = dx / distance;
+                        const forceDirectionY = dy / distance;
+                        const force = (mouseDistance - distance) / mouseDistance;
+
+                        // Push away lightly
+                        const directionX = forceDirectionX * force * 2;
+                        const directionY = forceDirectionY * force * 2;
+
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw connections
+                for (let j = i; j < particles.length; j++) {
+                    let dx = particles[i].x - particles[j].x;
+                    let dy = particles[i].y - particles[j].y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(69, 162, 158, ${1 - distance / connectionDistance})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+    </script>
+</body>
+
+</html>

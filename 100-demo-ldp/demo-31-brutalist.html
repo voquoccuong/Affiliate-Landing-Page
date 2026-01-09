@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Brutal</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courier+Prime:wght@400;700&family=Helvetica+Now+Display:wght@900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f2f2f2;
+            color: #000;
+            font-family: 'Courier Prime', monospace;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            border-bottom: 4px solid #000;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: #f2f2f2;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            letter-spacing: -2px;
+            transform: scaleY(1.5);
+        }
+
+        .date {
+            border: 1px solid #000;
+            padding: 5px 10px;
+            border-radius: 50%;
+            transform: rotate(15deg);
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            min-height: 80vh;
+            border-bottom: 4px solid #000;
+        }
+
+        .hero-text {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 4px solid #000;
+        }
+
+        h1 {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 6rem;
+            line-height: 0.8;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
+            mix-blend-mode: difference;
+            color: #fff;
+            /* mix-blend with image if overlapping */
+            color: #000;
+        }
+
+        .hero-img-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.5);
+            transition: all 0.2s;
+        }
+
+        .hero-img:hover {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .sticker {
+            position: absolute;
+            background: #ff00ff;
+            color: white;
+            padding: 20px;
+            font-weight: bold;
+            border-radius: 50%;
+            top: 20px;
+            right: 20px;
+            transform: rotate(-10deg);
+            z-index: 10;
+        }
+
+        /* MARQUEE */
+        .marquee-strip {
+            background: #000;
+            color: #fff;
+            padding: 15px 0;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 900;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 1.5rem;
+            border-bottom: 4px solid #000;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 10s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* GRID SECTION */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+        }
+
+        .grid-item {
+            border-right: 4px solid #000;
+            border-bottom: 4px solid #000;
+            padding: 20px;
+            min-height: 400px;
+            position: relative;
+            transition: background 0.2s;
+        }
+
+        .grid-item:last-child {
+            border-right: none;
+        }
+
+        .grid-item:hover {
+            background: #ffff00;
+        }
+
+        .grid-item h2 {
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .item-img {
+            width: 80%;
+            height: 200px;
+            object-fit: cover;
+            border: 2px solid #000;
+            display: block;
+            margin-bottom: 20px;
+            filter: grayscale(100%);
+        }
+
+        .grid-item:hover .item-img {
+            filter: grayscale(0%);
+            transform: translate(5px, 5px);
+            box-shadow: -5px -5px 0 #000;
+        }
+
+        .btn-brutal {
+            border: 2px solid #000;
+            background: white;
+            color: black;
+            padding: 10px 20px;
+            font-family: 'Courier Prime', monospace;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0 #000;
+            transition: all 0.1s;
+        }
+
+        .btn-brutal:hover {
+            background: #000;
+            color: #fff;
+            box-shadow: 2px 2px 0 #000;
+            transform: translate(2px, 2px);
+        }
+
+        /* OVERLAPPING SECTION */
+        .overlap-section {
+            padding: 100px 40px;
+            position: relative;
+            background: #0000ff;
+            color: white;
+            overflow: hidden;
+            border-bottom: 4px solid #000;
+        }
+
+        .floating-text {
+            font-size: 5rem;
+            font-family: 'Abril Fatface', cursive;
+            position: absolute;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .circle-c {
+            width: 300px;
+            height: 300px;
+            background: #ff0000;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: exclusion;
+        }
+
+        .content-box {
+            border: 4px solid #fff;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        @media(max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text {
+                border-right: none;
+                border-bottom: 4px solid #000;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-item {
+                border-right: none;
+            }
+
+            h1 {
+                font-size: 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="date">EST. 2025</div>
+        <div class="logo">CUONGHOA<br>AGENCY</div>
+        <button class="btn-brutal">LOGIN</button>
+    </div>
+
+    <div class="hero">
+        <div class="hero-text">
+            <span>ISSUE #01: AUTOMATION</span>
+            <h1>CHAOS <br>&amp; ORDER</h1>
+            <p>
+                We dismantle the manual workflow and reconstruct it with pure silicon logic.
+                This is not a course. It is an operating system update for your brain.
+            </p>
+            <div style="margin-top: 40px;">
+                <button class="btn-brutal" style="background:#000; color:#fff;">NON-COMPLIANCE</button>
+                <button class="btn-brutal">ACCESS</button>
+            </div>
+        </div>
+        <div class="hero-img-container">
+            <div class="sticker">NEW<br>DROP</div>
+            <img src="https://images.unsplash.com/photo-1592496001020-d31bd830651f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                class="hero-img">
+        </div>
+    </div>
+
+    <div class="marquee-strip">
+        <div class="marquee-content">
+            // AUTOMATE OR DIE // SCALE INFINITELY // REVENUE IS VANITY // PROFIT IS SANITY //
+            // AUTOMATE OR DIE // SCALE INFINITELY // REVENUE IS VANITY // PROFIT IS SANITY //
+        </div>
+    </div>
+
+    <div class="content-grid">
+
+        <!-- Item 1 -->
+        <div class="grid-item">
+            <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" class="item-img">
+            <h2>Finance<br>Protocol</h2>
+            <p>Track every penny. No emotion. Just data.</p>
+            <button class="btn-brutal">INSPECT</button>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="grid-item">
+            <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" class="item-img">
+            <h2>Content<br>Factory</h2>
+            <p>Mass production of meme warfare.</p>
+            <button class="btn-brutal">DEPLOY</button>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="grid-item">
+            <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" class="item-img">
+            <h2>Mindset<br>Shift</h2>
+            <p>Delete the employee partition. Install founder.exe.</p>
+            <button class="btn-brutal">REBOOT</button>
+        </div>
+
+    </div>
+
+    <div class="overlap-section">
+        <div class="floating-text" style="top:10px; left:10px;">SYSTEM</div>
+        <div class="floating-text" style="bottom:10px; right:10px;">FAILURE</div>
+        <div class="circle-c"></div>
+
+        <div class="content-box">
+            <h2 style="font-family:'Helvetica'; font-weight:900; text-transform:uppercase;">The Full Stack</h2>
+            <p>
+                Get the entire suite. We don't sell pieces. We sell the whole machine.
+                Are you ready to unplug?
+            </p>
+            <button class="btn-brutal" style="width:100%; margin-top:20px;">BUY NOW (6.999.000)</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

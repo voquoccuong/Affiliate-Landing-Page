@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Swiss Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f4f4f4;
+            --black: #111;
+            --red: #ff3300;
+            --grid-color: #ddd;
+            --spacing: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--black);
+            font-family: 'Inter', Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+            border-top: 10px solid var(--red);
+        }
+
+        /* The Grid Overlay */
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            max-width: 1440px;
+            margin: 0 auto;
+            border-left: 1px solid var(--grid-color);
+            position: relative;
+        }
+
+        /* Vertical Grid Lines Background */
+        .wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent calc((100% / 12) - 1px),
+                    var(--grid-color) calc((100% / 12) - 1px),
+                    var(--grid-color) calc(100% / 12));
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            grid-column: 1 / -1;
+            padding: 60px 20px;
+            border-bottom: 1px solid var(--black);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .brand {
+            font-family: 'Anton', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
+
+        .meta-info {
+            font-size: 0.9rem;
+            text-align: right;
+            font-weight: 700;
+        }
+
+        /* Hero */
+        .hero {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            border-bottom: 1px solid var(--black);
+            min-height: 600px;
+        }
+
+        .hero-left {
+            grid-column: 1 / 8;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid var(--grid-color);
+        }
+
+        .hero-right {
+            grid-column: 8 / -1;
+            background: var(--red);
+            color: white;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 0.95;
+            margin-bottom: 40px;
+        }
+
+        /* Course List */
+        .course-list {
+            grid-column: 1 / -1;
+        }
+
+        .course-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 200px 200px;
+            border-bottom: 1px solid var(--black);
+            align-items: stretch;
+        }
+
+        .course-row:hover {
+            background-color: white;
+        }
+
+        .c-index,
+        .c-title,
+        .c-price,
+        .c-action {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            border-right: 1px solid var(--grid-color);
+        }
+
+        .c-index {
+            font-weight: 700;
+            justify-content: center;
+            color: var(--red);
+        }
+
+        .c-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .c-action {
+            border-right: none;
+            justify-content: center;
+        }
+
+        .btn {
+            background: var(--black);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--red);
+        }
+
+        /* Footer */
+        footer {
+            grid-column: 1 / -1;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .hero-left {
+                grid-column: 1 / -1;
+                border-right: none;
+            }
+
+            .course-row {
+                grid-template-columns: 50px 1fr;
+                grid-template-rows: auto auto;
+            }
+
+            .c-price,
+            .c-action {
+                grid-column: span 2;
+                border-right: none;
+                padding-top: 0;
+            }
+
+            .c-index {
+                grid-row: span 2;
+            }
+
+            .c-title {
+                border-right: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header>
+            <div class="brand">
+                CuongHoa<br>
+                <span style="color: var(--red);">Agency.</span>
+            </div>
+            <div class="meta-info">
+                EST. 2024<br>
+                SYSTEMS ARCHITECTURE<br>
+                VIETNAM
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-left">
+                <h1>
+                    Objective.<br>
+                    Functional.<br>
+                    Automated.
+                </h1>
+                <p style="max-width: 400px; font-weight: 500;">
+                    We eliminate chaos through precise system design. Stop relying on luck. Start relying on
+                    engineering.
+                </p>
+                <a href="#catalogue" class="btn" style="width: fit-content; margin-top: 40px;">View Catalogue ↘</a>
+            </div>
+            <div class="hero-right">
+                Efficiency is beauty
+            </div>
+        </section>
+
+        <section class="course-list" id="catalogue">
+            <div class="course-row"
+                style="background: #e5e5e5; font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">
+                <div class="c-index">No.</div>
+                <div class="c-title">Module Name</div>
+                <div class="c-price">Investment</div>
+                <div class="c-action">Status</div>
+            </div>
+
+            <!-- Item 1 -->
+            <div class="course-row">
+                <div class="c-index">01</div>
+                <div class="c-title">[S01] Automation Mindset Foundation</div>
+                <div class="c-price">2.900.000 VND</div>
+                <div class="c-action"><a href="#" class="btn">Access</a></div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="course-row">
+                <div class="c-index">02</div>
+                <div class="c-title">[S02] Financial Reporting Systems</div>
+                <div class="c-price">1.900.000 VND</div>
+                <div class="c-action"><a href="#" class="btn">Access</a></div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="course-row">
+                <div class="c-index">03</div>
+                <div class="c-title">[S03] Ecommerce Operations (Woo)</div>
+                <div class="c-price">2.900.000 VND</div>
+                <div class="c-action"><a href="#" class="btn">Access</a></div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="course-row">
+                <div class="c-index">04</div>
+                <div class="c-title">[S09] AI Content Generation</div>
+                <div class="c-price">7.900.000 VND</div>
+                <div class="c-action"><a href="#" class="btn">Access</a></div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="course-row">
+                <div class="c-index">05</div>
+                <div class="c-title">[ExpertOS] LadiPage Systems</div>
+                <div class="c-price">6.900.000 VND</div>
+                <div class="c-action"><a href="#" class="btn">Access</a></div>
+            </div>
+        </section>
+
+        <footer>
+            <div>© CuongHoa.AI</div>
+            <div>Information Architecture</div>
+            <div>Scroll to Top ↑</div>
+        </footer>
+    </div>
+
+</body>
+
+</html>

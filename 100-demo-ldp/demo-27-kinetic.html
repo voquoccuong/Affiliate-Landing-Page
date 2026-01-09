@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Kinetic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Archivo', sans-serif;
+            background-color: #0d0d0d;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 40px;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-family: 'Anton', sans-serif;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .cta-fixed {
+            position: fixed;
+            top: 20px;
+            right: 40px;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .btn-bold {
+            background: white;
+            color: black;
+            padding: 15px 30px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* Marquee Section */
+        .marquee-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .marquee-line {
+            white-space: nowrap;
+            font-size: 15vw;
+            line-height: 0.9;
+            text-transform: uppercase;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px #333;
+            animation: marquee 20s linear infinite;
+        }
+
+        .highlight-text {
+            color: #E50914;
+            -webkit-text-stroke: 0;
+        }
+
+        .white-text {
+            color: white;
+            -webkit-text-stroke: 0;
+        }
+
+        .marquee-line:nth-child(even) {
+            animation-direction: reverse;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(-20%);
+            }
+
+            100% {
+                transform: translateX(20%);
+            }
+
+            /* simple illusion of move */
+        }
+
+        /* Actually scrolling marquee needs duplicate content to loop seamlessly, 
+           but for a static CSS demo, we can just move it back and forth or create a very long line. */
+
+        .scrolling-wrapper {
+            display: flex;
+            width: 300%;
+        }
+
+        /* Content Sections */
+        .section-content {
+            padding: 100px 40px;
+            border-top: 1px solid #333;
+        }
+
+        .grid-2 {
+            display: flex;
+            gap: 40px;
+        }
+
+        .left {
+            flex: 1;
+        }
+
+        .right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        h2 {
+            font-size: 5rem;
+            line-height: 0.9;
+            margin-bottom: 40px;
+            color: #E50914;
+        }
+
+        p {
+            font-size: 1.5rem;
+            font-family: 'Helvetica', sans-serif;
+            font-weight: 300;
+            line-height: 1.4;
+            max-width: 600px;
+            color: #ccc;
+        }
+
+        .img-block {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            transition: all 0.5s;
+        }
+
+        .img-block:hover {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        /* Footer */
+        .footer-big {
+            height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #E50914;
+            color: black;
+            text-align: center;
+        }
+
+        .big-link {
+            font-size: 10vw;
+            text-decoration: none;
+            color: black;
+            font-weight: 900;
+            line-height: 0.9;
+        }
+
+        .big-link:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">CUONGHOA.AI</div>
+    </div>
+
+    <div class="cta-fixed">
+        <button class="btn-bold">Get Bundle</button>
+    </div>
+
+    <!-- Section 1: Kinetic Hero -->
+    <div class="marquee-container">
+        <div class="marquee-line">Unlock <span class="white-text">Potential</span> Build <span
+                class="highlight-text">Systems</span></div>
+        <div class="marquee-line"><span class="highlight-text">Automate</span> Everything <span
+                class="white-text">Scale</span> Now</div>
+        <div class="marquee-line">Create <span class="white-text">Content</span> Generate <span
+                class="highlight-text">Revenue</span></div>
+    </div>
+
+    <!-- Section 2: Statement -->
+    <div class="section-content">
+        <div class="grid-2">
+            <div class="left">
+                <h2>STOP <br>WASTING <br>TIME</h2>
+            </div>
+            <div class="right">
+                <p>
+                    Manual work is the enemy of growth.
+                    We build the tools that build the business.
+                    Welcome to the era of the AI-augmented solopreneur.
+                </p>
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                    class="img-block">
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Visuals -->
+    <div class="section-content">
+        <div class="grid-2">
+            <div class="left">
+                <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" class="img-block"
+                    style="height: 500px;">
+            </div>
+            <div class="right">
+                <h2>PURE <br>DATA <br>POWER</h2>
+                <p>
+                    Finance. Content. Operations.
+                    Unified in one dashboard.
+                </p>
+                <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" class="img-block">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-big">
+        <a href="#" class="big-link">START<br>NOW</a>
+    </div>
+
+    <script>
+        // Simple scroll speed effect for marquee (Simulated)
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const lines = document.querySelectorAll('.marquee-line');
+            lines.forEach((line, index) => {
+                const speed = (index + 1) * 0.5;
+                const direction = index % 2 === 0 ? 1 : -1;
+                line.style.transform = `translateX(${scrolled * speed * direction}px)`;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

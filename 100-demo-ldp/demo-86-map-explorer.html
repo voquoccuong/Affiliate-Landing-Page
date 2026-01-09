@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Explorer - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+
+        #map-container {
+            width: 100%;
+            height: 100%;
+            background: #e6e3df;
+            /* Map beige */
+            position: relative;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Fake abstract map shapes */
+        .map-shape {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .block-1 {
+            top: 10%;
+            left: 10%;
+            width: 200px;
+            height: 150px;
+            clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+        }
+
+        .block-2 {
+            top: 30%;
+            left: 40%;
+            width: 300px;
+            height: 200px;
+            clip-path: polygon(20% 0%, 100% 0, 100% 80%, 0% 100%);
+        }
+
+        .block-3 {
+            bottom: 10%;
+            right: 10%;
+            width: 250px;
+            height: 300px;
+            clip-path: polygon(0 20%, 100% 0, 80% 100%, 0% 80%);
+        }
+
+        .park {
+            background: #cde2b6;
+            position: absolute;
+            top: 20%;
+            left: 60%;
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+        }
+
+        .water {
+            position: absolute;
+            background: #aadaff;
+            height: 60px;
+            width: 100%;
+            top: 50%;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Roads */
+        .road {
+            position: absolute;
+            background: #fff;
+            border: 2px solid #ddd;
+        }
+
+        .road-v {
+            width: 30px;
+            height: 100%;
+            left: 30%;
+            top: 0;
+        }
+
+        .road-h {
+            height: 30px;
+            width: 100%;
+            top: 40%;
+            left: 0;
+        }
+
+        .road-orange {
+            background: #fee696;
+            width: 15px;
+            height: 100%;
+            left: 30.5%;
+            /* Inside road-v */
+            border: none;
+            z-index: 2;
+        }
+
+        /* Pins */
+        .pin {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            z-index: 10;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .pin svg {
+            width: 100%;
+            height: 100%;
+            fill: #ea4335;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+        }
+
+        .pin:hover {
+            transform: translateY(-10px) scale(1.1);
+        }
+
+        .tooltip {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            display: none;
+            font-weight: 500;
+        }
+
+        .pin:hover .tooltip {
+            display: block;
+        }
+
+        /* UI Overlay */
+        .ui-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            z-index: 100;
+        }
+
+        .search-bar {
+            display: flex;
+            background: #f1f3f4;
+            padding: 10px;
+            border-radius: 8px;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .ui-panel h1 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .btn-directions {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            width: fit-content;
+        }
+
+        .btn-directions:hover {
+            background: #1558b0;
+        }
+
+        .gps-arrow {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #4285f4;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 10px rgba(66, 133, 244, 0.2);
+            top: 70%;
+            left: 20%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(66, 133, 244, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(66, 133, 244, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(66, 133, 244, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map-container">
+        <!-- Abstract Shapes -->
+        <div class="water"></div>
+        <div class="park"></div>
+        <div class="map-shape block-1"></div>
+        <div class="map-shape block-2"></div>
+        <div class="map-shape block-3"></div>
+
+        <div class="road road-v"></div>
+        <div class="road road-orange"></div>
+        <div class="road road-h"></div>
+
+        <!-- Pin -->
+        <div class="pin" style="top: 35%; left: 45%;">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+            <div class="tooltip">
+                <strong>Destination Found</strong><br>
+                4.9 ⭐ (500 reviews)
+            </div>
+        </div>
+
+        <div class="gps-arrow"></div>
+
+        <!-- UI -->
+        <div class="ui-panel">
+            <div class="search-bar">
+                <span>🔍</span> Search here...
+            </div>
+            <h1>CuongHoa HQ</h1>
+            <p style="color: #666; margin-bottom: 20px; line-height: 1.5;">
+                Somewhere in the digital realm. <br>
+                Open 24/7 for business.
+            </p>
+            <a href="https://www.cuonghoa.website" class="btn-directions">
+                <span>🔷</span> Directions
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

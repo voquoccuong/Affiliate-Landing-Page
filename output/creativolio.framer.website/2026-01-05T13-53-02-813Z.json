@@ -1,0 +1,348 @@
+{
+  "url": "https://creativolio.framer.website/",
+  "extractedAt": "2026-01-05T13:53:02.808Z",
+  "logo": {
+    "source": "img",
+    "url": "https://framerusercontent.com/images/Ofy1oLUJCbLG7RnqZrm1cW2y2t4.png",
+    "width": 270,
+    "height": 270,
+    "alt": "Brand Image",
+    "safeZone": {
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    }
+  },
+  "favicons": [
+    {
+      "type": "icon",
+      "url": "https://framerusercontent.com/sites/icons/default-favicon-light.v1.png",
+      "sizes": null
+    },
+    {
+      "type": "icon",
+      "url": "https://framerusercontent.com/sites/icons/default-favicon-dark.v1.png",
+      "sizes": null
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://framerusercontent.com/sites/icons/default-touch-icon.v3.png",
+      "sizes": null
+    },
+    {
+      "type": "apple-touch-icon",
+      "url": "https://framerusercontent.com/sites/icons/default-touch-icon.v3.png",
+      "sizes": null
+    },
+    {
+      "type": "favicon.ico",
+      "url": "https://creativolio.framer.website/favicon.ico",
+      "sizes": null
+    }
+  ],
+  "colors": {
+    "semantic": {},
+    "palette": [
+      {
+        "color": "rgb(255, 255, 255)",
+        "normalized": "#ffffff",
+        "count": 85,
+        "confidence": "high",
+        "sources": []
+      },
+      {
+        "color": "rgb(46, 46, 46)",
+        "normalized": "#2e2e2e",
+        "count": 60,
+        "confidence": "high",
+        "sources": []
+      },
+      {
+        "color": "rgb(149, 149, 149)",
+        "normalized": "#959595",
+        "count": 38,
+        "confidence": "high",
+        "sources": []
+      }
+    ],
+    "cssVariables": {}
+  },
+  "typography": {
+    "styles": [
+      {
+        "context": "heading-1",
+        "family": "Geist",
+        "fallbacks": "Geist Placeholder",
+        "size": "250px (15.63rem)",
+        "weight": 600,
+        "lineHeight": "1.00",
+        "spacing": "-7.5px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Geist",
+        "fallbacks": "Geist Placeholder",
+        "size": "48px (3.00rem)",
+        "weight": 600,
+        "lineHeight": "1.00",
+        "spacing": "-2.88px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Geist",
+        "fallbacks": "Geist Placeholder",
+        "size": "40px (2.50rem)",
+        "weight": 600,
+        "lineHeight": "1.00",
+        "spacing": "-2px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Geist",
+        "fallbacks": "Geist Placeholder",
+        "size": "24px (1.50rem)",
+        "weight": 600,
+        "lineHeight": "1.00",
+        "spacing": "-1.2px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Geist",
+        "fallbacks": "Geist Placeholder",
+        "size": "20px (1.25rem)",
+        "weight": 500,
+        "lineHeight": "1.20",
+        "spacing": "-1px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Geist",
+        "fallbacks": "Geist Placeholder",
+        "size": "20px (1.25rem)",
+        "weight": 600,
+        "lineHeight": "1.00",
+        "spacing": "-1px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Geist",
+        "fallbacks": "Geist Placeholder",
+        "size": "18px (1.13rem)",
+        "weight": 600,
+        "lineHeight": "1.00",
+        "spacing": "-0.9px",
+        "transform": null
+      },
+      {
+        "context": "caption",
+        "family": "Geist",
+        "fallbacks": "Geist Placeholder",
+        "size": "14px (0.88rem)",
+        "weight": 500,
+        "lineHeight": "1.00",
+        "spacing": "-0.7px",
+        "transform": null
+      },
+      {
+        "context": "caption",
+        "family": "Inter Tight",
+        "fallbacks": "Inter Tight Placeholder",
+        "size": "14px (0.88rem)",
+        "weight": 700,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "12px (0.75rem)",
+        "weight": 400,
+        "lineHeight": null,
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "caption",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "12px (0.75rem)",
+        "weight": 400,
+        "lineHeight": null,
+        "spacing": null,
+        "transform": null
+      }
+    ],
+    "sources": {
+      "googleFonts": [],
+      "adobeFonts": false,
+      "variableFonts": false
+    }
+  },
+  "spacing": {
+    "scaleType": "8px",
+    "commonValues": [
+      {
+        "px": "10px",
+        "rem": "0.63rem",
+        "count": 4,
+        "numericValue": 10
+      },
+      {
+        "px": "15px",
+        "rem": "0.94rem",
+        "count": 12,
+        "numericValue": 15
+      },
+      {
+        "px": "16px",
+        "rem": "1.00rem",
+        "count": 8,
+        "numericValue": 16
+      },
+      {
+        "px": "20px",
+        "rem": "1.25rem",
+        "count": 10,
+        "numericValue": 20
+      },
+      {
+        "px": "32px",
+        "rem": "2.00rem",
+        "count": 2,
+        "numericValue": 32
+      },
+      {
+        "px": "40px",
+        "rem": "2.50rem",
+        "count": 17,
+        "numericValue": 40
+      },
+      {
+        "px": "80px",
+        "rem": "5.00rem",
+        "count": 10,
+        "numericValue": 80
+      },
+      {
+        "px": "100px",
+        "rem": "6.25rem",
+        "count": 1,
+        "numericValue": 100
+      }
+    ]
+  },
+  "borderRadius": {
+    "values": [
+      {
+        "value": "6px",
+        "count": 24,
+        "elements": [
+          "div",
+          "a",
+          "img"
+        ],
+        "confidence": "high",
+        "numericValue": 6
+      },
+      {
+        "value": "8px",
+        "count": 12,
+        "elements": [
+          "div",
+          "img"
+        ],
+        "confidence": "high",
+        "numericValue": 8
+      },
+      {
+        "value": "10px",
+        "count": 2,
+        "elements": [
+          "Get Template Button",
+          "div"
+        ],
+        "confidence": "low",
+        "numericValue": 10
+      }
+    ]
+  },
+  "borders": {
+    "combinations": []
+  },
+  "shadows": [
+    {
+      "shadow": "rgba(102, 102, 102, 0.25) 0px 2px 10px 0px",
+      "count": 1,
+      "confidence": "low"
+    },
+    {
+      "shadow": "rgba(0, 0, 0, 0.26) 0px 0.636953px 1.14652px -1.125px, rgba(0, 0, 0, 0.24) 0px 1.9316px 3.47689px -2.25px, rgba(0, 0, 0, 0.192) 0px 5.10612px 9.19102px -3.375px, rgba(0, 0, 0, 0.03) 0px 16px 28.8px -4.5px",
+      "count": 1,
+      "confidence": "low"
+    }
+  ],
+  "components": {
+    "buttons": [],
+    "inputs": {
+      "text": [],
+      "checkbox": [],
+      "radio": [],
+      "select": []
+    },
+    "links": [
+      {
+        "color": "rgb(0, 0, 238)",
+        "textDecoration": "none",
+        "fontWeight": "400",
+        "states": {
+          "default": {
+            "color": "rgb(0, 0, 238)",
+            "textDecoration": "underline"
+          },
+          "hover": {
+            "color": "var(--framer-link-hover-text-color, var(--framer-link-text-color, var(--framer-text-color, #000)))",
+            "textDecoration": "var(--framer-link-hover-text-decoration, var(--framer-link-text-decoration, var(--framer-text-decoration, none)))"
+          }
+        }
+      }
+    ],
+    "badges": {
+      "all": [],
+      "byVariant": {
+        "error": [],
+        "warning": [],
+        "success": [],
+        "info": [],
+        "neutral": []
+      }
+    }
+  },
+  "breakpoints": [
+    {
+      "px": "0px"
+    },
+    {
+      "px": "809px"
+    },
+    {
+      "px": "810px"
+    },
+    {
+      "px": "1199px"
+    },
+    {
+      "px": "1439px"
+    }
+  ],
+  "iconSystem": [],
+  "frameworks": []
+}

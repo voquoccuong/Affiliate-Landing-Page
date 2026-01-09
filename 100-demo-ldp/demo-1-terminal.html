@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Future Automation</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --bg-card: rgba(20, 20, 30, 0.6);
+            --primary: #00ff9d;
+            --primary-dim: rgba(0, 255, 157, 0.1);
+            --accent: #7000ff;
+            --text-main: #ffffff;
+            --text-muted: #8b9bb4;
+            --border: rgba(255, 255, 255, 0.1);
+            --glow: 0 0 20px rgba(0, 255, 157, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 157, 0.1) 0%, transparent 20%);
+        }
+
+        /* Utilities */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #ffffff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #000;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 10px var(--primary-dim);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-dim);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-dim);
+            box-shadow: 0 0 15px var(--primary-dim);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.9)),
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2670&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .terminal-text {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .glitch-wrapper {
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* Grid Background Effect */
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            right: -10%;
+            width: 50%;
+            height: 100%;
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(1000px) rotateY(-30deg) rotateX(10deg);
+            opacity: 0.2;
+            z-index: -1;
+            mask-image: linear-gradient(to bottom, black, transparent);
+        }
+
+        /* Stats Section */
+        .stats-bar {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 2rem 0;
+            margin: 4rem 0;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(5px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Courses Section */
+        .section-title {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding-bottom: 4rem;
+        }
+
+        .course-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: var(--glow);
+        }
+
+        .card-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, var(--bg-dark), transparent);
+            opacity: 0.6;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .card-badges {
+            position: absolute;
+            top: -15px;
+            left: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--bg-dark);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            border-radius: 4px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            margin-top: 0.5rem;
+            min-height: 3.5rem;
+            /* Ensure uniform height */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 4.2em;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .price {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .tools-list {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-icon {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent
+            }
+        }
+
+        .typing-effect {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid var(--primary);
+            white-space: nowrap;
+            animation:
+                typing 3.5s steps(40, end),
+                blink .75s step-end infinite;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .grid-bg {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">>_ CUONGHOA.AI</div>
+                <a href="#" class="btn btn-primary">Khám phá ngay <i class="ph ph-arrow-right"></i></a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="grid-bg"></div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="terminal-text">> SYSTEM_READY: Initiating...</span>
+                <div class="glitch-wrapper">
+                    <h1>Tự Động Hóa <br> <span class="text-gradient">Doanh Nghiệp Của Bạn</span></h1>
+                </div>
+                <p>
+                    Giải phóng sức người, tối ưu vận hành với các giải pháp AI và Automation thực chiến.
+                    Học từ kinh nghiệm làm dự án thực tế, áp dụng ngay vào công việc.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#courses" class="btn btn-primary">Xem khóa học</a>
+                    <a href="#" class="btn btn-outline">Tư vấn giải pháp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Khóa học Thực chiến</p>
+                </div>
+                <div class="stat-item">
+                    <h3>2000+</h3>
+                    <p>Học viên tham gia</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>Doanh nghiệp tin dùng</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9/5</h3>
+                    <p>Đánh giá trung bình</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="container">
+        <div class="section-title">
+            <div>
+                <span class="terminal-text">> DETECTED_MODULES: 15</span>
+                <h2>Danh Sách Khóa Học</h2>
+            </div>
+            <a href="#" class="btn btn-outline">Xem tất cả <i class="ph ph-list"></i></a>
+        </div>
+
+        <div class="courses-grid" id="courseGrid">
+            <!-- Courses will be injected here via JS -->
+        </div>
+    </section>
+
+    <footer style="border-top: 1px solid var(--border); padding: 4rem 0; margin-top: 4rem; background: #000;">
+        <div class="container" style="text-align: center;">
+            <div class="logo" style="margin-bottom: 1rem; font-size: 2rem;">>_ CUONGHOA.AI</div>
+            <p style="color: var(--text-muted);">© 2025 CuongHoa AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const courses = [
+            {
+                "title": "[S01] Tổng quan về Automation & kinh nghiệm làm nghề",
+                "description": "Giới thiệu tổng quan về chương trình AI Automation In Action và chia sẻ kinh nghiệm làm nghề từ các dự án thực chiến",
+                "price": 2900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+                "tools": ["Mindset", "Automation"]
+            },
+            {
+                "title": "[S02] Thông báo tiền ra/vào & báo cáo từ Internet Banking",
+                "description": "Tự động thông báo giao dịch ngân hàng và báo cáo biến động số dự tiền ra tiền vào theo thời gian thực.",
+                "price": 1900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+                "tools": ["SePay", "Lark", "n8n"]
+            },
+            {
+                "title": "[S03] Báo cáo doanh thu & vận hành khóa học tinh gọn",
+                "description": "Đồng bộ đơn hàng từ website Woocommerce về LarkBase để vận hành nhanh.",
+                "price": 2900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+                "tools": ["Wordpress", "SePay", "Lark"]
+            },
+            {
+                "title": "[S04] Tự động hóa quy trình hợp đồng & công nợ",
+                "description": "Xây dựng hệ thống quản lý báo giá hợp đồng phiếu thu…no-code.",
+                "price": 4900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+                "tools": ["SePay", "Lark", "n8n"]
+            },
+            {
+                "title": "[S05] Chăm sóc group chat Zalo bằng Zalo cá nhân",
+                "description": "Lên lịch đăng bài tự động hóa lên nhiều nền tảng Facebook, Zalo (đặc biệt là Zalo group).",
+                "price": 2900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-3-20250909025510-8mrrg.png",
+                "tools": ["Make", "Pancake"]
+            },
+            {
+                "title": "[S09] Quy trình sản xuất content Social với AI Automation",
+                "description": "Thu thập bài viết website hoặc transcript Youtube & đúc kết insight từ nội dung.",
+                "price": 7900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png",
+                "tools": ["Make", "n8n", "AI"]
+            }
+        ];
+
+        const grid = document.getElementById('courseGrid');
+
+        courses.forEach(course => {
+            const priceFormatted = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(course.price);
+
+            const toolsHtml = course.tools.slice(0, 3).map(tool =>
+                `<span class="badge">${tool}</span>`
+            ).join('');
+
+            const card = document.createElement('div');
+            card.className = 'course-card';
+            card.innerHTML = `
+                <div class="card-image">
+                    <img src="${course.featureImage}" alt="${course.title}" loading="lazy">
+                    <div class="card-overlay"></div>
+                </div>
+                <div class="card-content">
+                    <div class="card-badges">
+                        ${toolsHtml}
+                    </div>
+                    <h3 class="card-title">${course.title}</h3>
+                    <p class="card-desc">${course.description}</p>
+                    <div class="card-footer">
+                        <span class="price">${priceFormatted}</span>
+                        <a href="#" class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Chi tiết</a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Add random typing effect re-trigger
+        setInterval(() => {
+            const terminal = document.querySelector('.terminal-text');
+            terminal.style.animation = 'none';
+            terminal.offsetHeight; /* trigger reflow */
+            terminal.style.animation = null;
+        }, 8000);
+    </script>
+</body>
+
+</html>

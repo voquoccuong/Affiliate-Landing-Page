@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordic Minimal Concept - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;700&display=swap');
+
+        :root {
+            --bg: #EAEFF2;
+            --accent: #2C3E50;
+            --text: #34495E;
+            --white: #FFFFFF;
+            --wood: #D4B483;
+            /* Subtle accent */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Manrope', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 80px;
+            background: var(--white);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem 0;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 10;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--accent);
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+        }
+
+        .menu-dots div {
+            width: 6px;
+            height: 6px;
+            background: var(--text);
+            border-radius: 50%;
+            margin: 6px 0;
+            opacity: 0.5;
+        }
+
+        .main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            height: 100%;
+        }
+
+        .hero-text {
+            padding: 6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .label {
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            font-size: 0.8rem;
+            color: #8899A6;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 200;
+            line-height: 1.1;
+            margin: 0 0 2rem 0;
+            color: var(--accent);
+        }
+
+        h1 strong {
+            font-weight: 700;
+            display: block;
+        }
+
+        .desc {
+            font-weight: 400;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 400px;
+        }
+
+        .btn {
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            padding: 1.2rem 2.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            width: fit-content;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #1a252f;
+            padding-right: 3.5rem;
+        }
+
+        .visual-area {
+            position: relative;
+            background: #D9E2E9;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle-bg {
+            position: absolute;
+            width: 80vh;
+            height: 80vh;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFFEF7, #f0f0f0);
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.05);
+            /* animation */
+            animation: breathe 10s ease-in-out infinite;
+        }
+
+        .img-placeholder {
+            width: 400px;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1517816428103-7dc26ec87ff6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            z-index: 5;
+            box-shadow: -30px 30px 0px rgba(44, 62, 80, 0.1);
+        }
+
+        .stat-box {
+            position: absolute;
+            background: var(--white);
+            padding: 2rem;
+            bottom: 10%;
+            left: 10%;
+            z-index: 6;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            min-width: 200px;
+        }
+
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+        <div class="menu-dots">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="logo">CuongHoa</div>
+    </aside>
+
+    <main class="main">
+        <div class="hero-text">
+            <div class="label">Architecture of Code</div>
+            <h1>Functional <strong>Simplicity</strong></h1>
+            <p class="desc">
+                Clean lines, thoughtful spaces, and purposeful design.
+                Our digital solutions bring the serenity of the North to your business chaos.
+            </p>
+            <a href="https://www.cuonghoa.website" class="btn">DISCOVER MORE &rarr;</a>
+        </div>
+
+        <div class="visual-area">
+            <div class="circle-bg"></div>
+            <div class="img-placeholder"></div>
+            <div class="stat-box">
+                <div class="stat-num">98%</div>
+                <div class="stat-label">Efficiency Rating</div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

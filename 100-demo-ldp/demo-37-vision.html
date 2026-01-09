@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Vision</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', 'Inter', sans-serif;
+            background-color: #000;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* The Spatial Container */
+        .spatial-window {
+            background: rgba(180, 180, 180, 0.25);
+            /* Lighter, more premium glass */
+            backdrop-filter: blur(50px) saturate(150%);
+            -webkit-backdrop-filter: blur(50px) saturate(150%);
+            width: 1000px;
+            height: 700px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform: perspective(1000px) rotateX(2deg);
+            transition: transform 0.5s ease;
+        }
+
+        .spatial-window:hover {
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        /* Sidebar similar to iPadOS/visionOS */
+        .app-shell {
+            display: flex;
+            height: 100%;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: rgba(0, 0, 0, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menu-item {
+            padding: 12px 18px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+            /* "Pop" effect */
+        }
+
+        .menu-item i {
+            font-size: 1.3rem;
+        }
+
+        .search-bar {
+            background: rgba(0, 0, 0, 0.2);
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            width: 100%;
+            margin-bottom: 20px;
+            font-family: inherit;
+        }
+
+        .search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Main Content */
+        .content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p.subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        /* Floating Cards */
+        .glass-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .spatial-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .spatial-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
+
+        .card-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .spatial-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .spatial-card p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Bottom Bar (Home Bar) */
+        .home-bar {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            opacity: 0.8;
+        }
+
+        /* Glow effect behind window */
+        .glow-behind {
+            position: absolute;
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glow-behind"></div>
+
+    <div class="spatial-window">
+        <div class="app-shell">
+
+            <div class="sidebar">
+                <input type="text" class="search-bar" placeholder="Search">
+                <div class="menu-item active">
+                    <i class="ph-fill ph-house"></i> Home
+                </div>
+                <div class="menu-item">
+                    <i class="ph-fill ph-app-store-logo"></i> Apps
+                </div>
+                <div class="menu-item">
+                    <i class="ph-fill ph-users"></i> People
+                </div>
+                <div class="menu-item">
+                    <i class="ph-fill ph-gear"></i> Settings
+                </div>
+            </div>
+
+            <div class="content">
+                <h1>Welcome Back</h1>
+                <p class="subtitle">Your immersive workspace is ready.</p>
+
+                <div class="glass-grid">
+
+                    <div class="spatial-card">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                            class="card-img">
+                        <h3>Automation Hub</h3>
+                        <p>Manage all bots from one view.</p>
+                    </div>
+
+                    <div class="spatial-card">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80"
+                            class="card-img">
+                        <h3>Deep Learning</h3>
+                        <p>Train your personal AI models.</p>
+                    </div>
+
+                    <div class="spatial-card">
+                        <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" class="card-img">
+                        <h3>Analytics</h3>
+                        <p>Visualize data in 3D space.</p>
+                    </div>
+
+                    <div class="spatial-card">
+                        <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" class="card-img">
+                        <h3>Finance</h3>
+                        <p>Track revenue streams.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="home-bar"></div>
+    </div>
+
+</body>
+
+</html>

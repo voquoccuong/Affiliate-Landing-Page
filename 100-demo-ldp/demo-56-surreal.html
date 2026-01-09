@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Surreal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@300;400&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+            background-color: #87CEEB;
+            /* Sky blue */
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        /* Clouds Background */
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            height: 100px;
+            width: 300px;
+            opacity: 0.9;
+            filter: blur(5px);
+            animation: floatClouds 60s linear infinite;
+        }
+
+        .cloud::after {
+            content: "";
+            position: absolute;
+            top: -50px;
+            left: 50px;
+            height: 100px;
+            width: 100px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .cloud::before {
+            content: "";
+            position: absolute;
+            top: -70px;
+            right: 50px;
+            height: 140px;
+            width: 140px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .c1 {
+            top: 10%;
+            left: -20%;
+            transform: scale(0.6);
+            animation-duration: 80s;
+        }
+
+        .c2 {
+            top: 40%;
+            left: -10%;
+            transform: scale(0.8);
+            animation-duration: 50s;
+            animation-delay: -20s;
+        }
+
+        .c3 {
+            top: 70%;
+            left: -30%;
+            transform: scale(0.5);
+            animation-duration: 90s;
+            animation-delay: -10s;
+        }
+
+        .c4 {
+            top: 20%;
+            right: -20%;
+            transform: scale(0.7);
+            animation-duration: 70s;
+            animation-delay: -30s;
+            animation-direction: reverse;
+        }
+
+        @keyframes floatClouds {
+            from {
+                left: -400px;
+            }
+
+            to {
+                left: 120%;
+            }
+        }
+
+        /* Floating Door/Window */
+        .door-frame {
+            position: relative;
+            width: 400px;
+            height: 600px;
+            background: #2c3e50;
+            padding: 20px;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.3);
+            transform: rotateY(-20deg) rotateX(5deg);
+            transition: transform 0.5s;
+            z-index: 10;
+        }
+
+        .door-frame:hover {
+            transform: rotateY(0deg) rotateX(0deg);
+        }
+
+        .inner-void {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* Green Apple / Bowler Hat vibe */
+        .floating-obj {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.5));
+            animation: bob 3s ease-in-out infinite;
+        }
+
+        @keyframes bob {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        h1 {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 80%;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .btn-dream {
+            background: white;
+            color: black;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-dream:hover {
+            transform: scale(1.1);
+            background: #f0f0f0;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            font-style: italic;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+    <div class="cloud c4"></div>
+
+    <div class="door-frame">
+        <div class="inner-void">
+            <div class="floating-obj">🍏</div>
+            <h1>This is not<br>a pipe.</h1>
+            <p>It is an automated system disguised as art. Reality is negotiable.</p>
+            <a href="#" class="btn-dream">Wake Up</a>
+            <div class="caption">CuongHoa.AI - The Surrealist Collection</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

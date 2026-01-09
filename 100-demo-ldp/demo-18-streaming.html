@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Stream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #141414;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', cursive;
+            color: #E50914;
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .nav-links a {
+            color: #e5e5e5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #b3b3b3;
+        }
+
+        /* Hero */
+        .hero {
+            height: 80vh;
+            width: 100%;
+            background-image:
+                linear-gradient(to bottom, transparent 70%, #141414 100%),
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 50px;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 0.9;
+        }
+
+        .hero-desc {
+            width: 40%;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.4;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-play {
+            background-color: white;
+            color: black;
+        }
+
+        .btn-play:hover {
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        .btn-info {
+            background-color: rgba(109, 109, 110, 0.7);
+            color: white;
+        }
+
+        .btn-info:hover {
+            background-color: rgba(109, 109, 110, 0.4);
+        }
+
+        /* Rows */
+        .row {
+            padding: 20px 0 20px 50px;
+            margin-bottom: 20px;
+        }
+
+        .row h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .row-posters {
+            display: flex;
+            overflow-y: hidden;
+            overflow-x: auto;
+            gap: 10px;
+            padding-right: 50px;
+        }
+
+        /* Hide scrollbar */
+        .row-posters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .poster {
+            width: 250px;
+            /* Aspect ratio approx 16:9 for thumbnails or 2:3 for posters */
+            height: 140px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .poster:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+
+        .poster-wrapper {
+            position: relative;
+        }
+
+        .poster-meta {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(transparent, black);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .poster:hover+.poster-meta,
+        .posterWrapper:hover .poster-meta {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px;
+            color: gray;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .match-score {
+            color: #46d369;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">CUONGHOA.AI</div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Series</a>
+            <a href="#">New & Popular</a>
+            <a href="#">My List</a>
+        </div>
+        <div style="margin-left: auto;">
+            <i class="ph-fill ph-magnifying-glass" style="font-size: 20px; margin-right: 20px;"></i>
+            <i class="ph-fill ph-bell" style="font-size: 20px;"></i>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1 class="hero-title">AUTOMATION<br>REVOLUTION</h1>
+        <div class="hero-desc">
+            In a world where time is money, one system rises to reclaim it all.
+            Witness the cutting-edge technology that is changing the business landscape forever.
+        </div>
+        <div class="hero-btns">
+            <button class="btn btn-play">
+                <i class="ph-fill ph-play"></i> Start Learning
+            </button>
+            <button class="btn btn-info">
+                <i class="ph-fill ph-info"></i> More Info
+            </button>
+        </div>
+    </div>
+
+    <!-- Row 1 -->
+    <div class="row">
+        <h2>Trending Now</h2>
+        <div class="row-posters">
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" alt="Mindset">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" alt="Finance">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" alt="Content">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-20250909040425-zw_ho.png" alt="More">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" alt="More">
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+        <h2>Top Picks for You</h2>
+        <div class="row-posters">
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" alt="Content">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-20250909040425-zw_ho.png" alt="Mindset">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster"
+                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    alt="Tech">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster"
+                    src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    alt="Tech">
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row">
+        <h2>Because you watched 'Manual Labor'</h2>
+        <div class="row-posters">
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" alt="Finance">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster" src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" alt="Content">
+            </div>
+            <div class="poster-wrapper">
+                <img class="poster"
+                    src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                    alt="Tech">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 CuongHoa.AI, Inc.</p>
+    </footer>
+
+</body>
+
+</html>

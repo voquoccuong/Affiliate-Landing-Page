@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Garden Concept - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;600&family=Zen+Maru+Gothic:wght@300;500;700&display=swap');
+
+        :root {
+            --sand: #F7F5E6;
+            --stone-dark: #4A4A4A;
+            --stone-light: #8C8C8C;
+            --moss: #6B8C42;
+            --raked-shadow: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--sand);
+            /* Radial gradient to mimic raked sand circles */
+            background-image:
+                repeating-radial-gradient(circle at 80% 20%,
+                    transparent 0,
+                    transparent 20px,
+                    var(--raked-shadow) 21px,
+                    transparent 22px),
+                repeating-radial-gradient(circle at 20% 80%,
+                    transparent 0,
+                    transparent 30px,
+                    var(--raked-shadow) 31px,
+                    transparent 32px),
+                repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(0, 0, 0, 0.02) 11px,
+                    transparent 12px);
+            font-family: 'Zen Maru Gothic', sans-serif;
+            color: var(--stone-dark);
+            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        /* Stone Elements using CSS shapes */
+        .stone {
+            position: absolute;
+            background: linear-gradient(145deg, var(--stone-light), var(--stone-dark));
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+            box-shadow:
+                15px 15px 30px rgba(0, 0, 0, 0.2),
+                -5px -5px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .stone-1 {
+            width: 120px;
+            height: 80px;
+            top: 15%;
+            left: 10%;
+            z-index: 1;
+        }
+
+        .stone-2 {
+            width: 80px;
+            height: 60px;
+            top: 25%;
+            left: 15%;
+            z-index: 2;
+            background: linear-gradient(145deg, #666, #333);
+        }
+
+        .stone-3 {
+            width: 200px;
+            height: 140px;
+            bottom: 10%;
+            right: 15%;
+            z-index: 1;
+            border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+        }
+
+        .moss-patch {
+            position: absolute;
+            background-color: var(--moss);
+            border-radius: 50%;
+            filter: blur(1px);
+            opacity: 0.8;
+        }
+
+        .content {
+            position: relative;
+            z-index: 20;
+        }
+
+        h1 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            margin: 0;
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+        }
+
+        h1 span {
+            display: block;
+            margin-left: 2rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-top: 2rem;
+            max-width: 450px;
+            color: #555;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 3rem;
+            border: 1px solid var(--stone-dark);
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--stone-dark);
+            font-weight: 600;
+            transition: all 0.4s ease;
+            background: transparent;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .cta-btn:hover {
+            background: var(--stone-dark);
+            color: var(--sand);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.5em;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        /* Ambient Animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .stone-3 {
+            animation: float 8s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="stone stone-1"></div>
+    <div class="stone stone-2"></div>
+    <div class="stone stone-3">
+        <div class="moss-patch" style="width: 40px; height: 30px; top: 10px; left: 30px;"></div>
+    </div>
+
+    <div class="vertical-text">静寂と創造</div>
+
+    <div class="container">
+        <div class="content">
+            <h1>Mindfulness <span>Marketing</span></h1>
+            <p>
+                Create campaigns that resonate with peace and clarity.
+                Our approach strips away the noise, leaving only what matters.
+                Find balance in your growth metrics.
+            </p>
+            <a href="https://www.cuonghoa.website" class="cta-btn">Begin Journey</a>
+        </div>
+
+        <div class="card">
+            <h3>Harmony Metrics</h3>
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; align-items: flex-end; height: 150px;">
+                <div
+                    style="background: var(--stone-dark); width: 40px; height: 60%; border-radius: 20px 20px 0 0; opacity: 0.2;">
+                </div>
+                <div
+                    style="background: var(--stone-dark); width: 40px; height: 80%; border-radius: 20px 20px 0 0; opacity: 0.4;">
+                </div>
+                <div
+                    style="background: var(--stone-dark); width: 40px; height: 40%; border-radius: 20px 20px 0 0; opacity: 0.3;">
+                </div>
+                <div style="background: var(--moss); width: 40px; height: 100%; border-radius: 20px 20px 0 0;"></div>
+            </div>
+            <p style="font-size: 0.9rem; margin-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 1rem;">
+                Growth that feels natural, organic, and sustainable.
+            </p>
+        </div>
+    </div>
+
+</body>
+
+</html>

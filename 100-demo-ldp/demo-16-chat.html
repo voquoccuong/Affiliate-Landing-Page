@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            background: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header */
+        .chat-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            z-index: 10;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00C6FF, #0072FF);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .header-info h2 {
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+
+        .header-info p {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+        }
+
+        /* Messages Area */
+        .messages-area {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .msg-bot {
+            align-self: flex-start;
+            background: white;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            color: #1a1a1a;
+        }
+
+        .msg-user {
+            align-self: flex-end;
+            background: #0084ff;
+            color: white;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .timestamp {
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: 5px;
+            text-align: right;
+            display: block;
+        }
+
+        .msg-user .timestamp {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Course Card in Chat */
+        .course-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            width: 280px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .course-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .card-price {
+            color: #0084ff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .card-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #f0f2f5;
+            color: #1a1a1a;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .card-btn:hover {
+            background: #e4e6eb;
+        }
+
+        /* Quick Replies */
+        .quick-replies {
+            padding: 10px 20px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            background: white;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .reply-chip {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #0084ff;
+            color: #0084ff;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .reply-chip:hover {
+            background: #0084ff;
+            color: white;
+        }
+
+        /* Typing Indicator */
+        .typing {
+            display: flex;
+            gap: 4px;
+            padding: 10px 15px;
+            background: white;
+            border-radius: 18px;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            width: fit-content;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #ccc;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0);
+            }
+
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="chat-container">
+        <!-- Header -->
+        <header class="chat-header">
+            <div class="avatar"><i class="ph-fill ph-robot"></i></div>
+            <div class="header-info">
+                <h2>CuongHoa AI Assistant</h2>
+                <p><span class="status-dot"></span>Online • Replies instantly</p>
+            </div>
+        </header>
+
+        <!-- Messages -->
+        <div class="messages-area" id="messages">
+            <!-- Initial Messages -->
+            <div class="message msg-bot">
+                Xin chào! 👋 Mình là trợ lý AI của Cường Hòa.
+                <span class="timestamp">Just now</span>
+            </div>
+            <div class="message msg-bot">
+                Mình ở đây để giúp bạn tìm giải pháp tự động hóa phù hợp nhất. Bạn đang quan tâm đến điều gì hôm nay?
+                <span class="timestamp">Just now</span>
+            </div>
+        </div>
+
+        <!-- Quick Replies (Footer) -->
+        <div class="quick-replies" id="replies">
+            <button class="reply-chip" onclick="handleReply('start')">Cho người mới bắt đầu</button>
+            <button class="reply-chip" onclick="handleReply('finance')">Quản lý tài chính</button>
+            <button class="reply-chip" onclick="handleReply('content')">Tạo Content tự động</button>
+        </div>
+    </div>
+
+    <script>
+        const messagesArea = document.getElementById('messages');
+        const repliesArea = document.getElementById('replies');
+
+        function scrollToBottom() {
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+
+        function showTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing';
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = '<div class="dot"></div><div class="dot"></div><div class="dot"></div>';
+            messagesArea.appendChild(typingDiv);
+            scrollToBottom();
+        }
+
+        function removeTyping() {
+            const typing = document.getElementById('typing-indicator');
+            if (typing) typing.remove();
+        }
+
+        function addBotMessage(text, cardHTML = null) {
+            showTyping();
+
+            setTimeout(() => {
+                removeTyping();
+
+                if (text) {
+                    const msgDiv = document.createElement('div');
+                    msgDiv.className = 'message msg-bot';
+                    msgDiv.innerHTML = text + '<span class="timestamp">Just now</span>';
+                    messagesArea.appendChild(msgDiv);
+                }
+
+                if (cardHTML) {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'msg-bot'; // Wrapper for alignment
+                    cardDiv.style.background = 'transparent';
+                    cardDiv.style.boxShadow = 'none';
+                    cardDiv.style.padding = '0';
+                    cardDiv.innerHTML = cardHTML;
+                    messagesArea.appendChild(cardDiv);
+                }
+
+                scrollToBottom();
+            }, 1000 + Math.random() * 500); // Simulate network latency
+        }
+
+        function addUserMessage(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message msg-user';
+            msgDiv.innerHTML = text + '<span class="timestamp">Just now</span>';
+            messagesArea.appendChild(msgDiv);
+            scrollToBottom();
+        }
+
+        function handleReply(option) {
+            if (option === 'start') {
+                addUserMessage("Mình là người mới, nên bắt đầu từ đâu?");
+                addBotMessage("Tuyệt vời! Để xây nhà cao, móng phải chắc. Mình đề xuất khóa học nền tảng này:");
+                addBotMessage(null, `
+                    <div class="course-card">
+                        <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png">
+                        <div class="card-content">
+                            <div class="card-title">Automation Mindset</div>
+                            <span class="card-price">2.900.000đ</span>
+                            <a href="#" class="card-btn">Xem chi tiết</a>
+                        </div>
+                    </div>
+                `);
+            }
+            else if (option === 'finance') {
+                addUserMessage("Mình muốn tự động hóa báo cáo tài chính.");
+                addBotMessage("Hiểu rồi. Việc check app ngân hàng thủ công rất tốn thời gian. Đây là giải pháp cho bạn:");
+                addBotMessage(null, `
+                    <div class="course-card">
+                        <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png">
+                        <div class="card-content">
+                            <div class="card-title">Banking Report Auto</div>
+                            <span class="card-price">1.900.000đ</span>
+                            <a href="#" class="card-btn">Xem chi tiết</a>
+                        </div>
+                    </div>
+                `);
+            }
+            else if (option === 'content') {
+                addUserMessage("Làm sao để tạo content tự động?");
+                addBotMessage("Content là vua. Nhưng AI là hoàng hậu quyền lực. Khóa học này sẽ giúp bạn nhân bản nội dung vô hạn:");
+                addBotMessage(null, `
+                    <div class="course-card">
+                        <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png">
+                        <div class="card-content">
+                            <div class="card-title">AI Content Machine</div>
+                            <span class="card-price">7.900.000đ</span>
+                            <a href="#" class="card-btn">Xem chi tiết</a>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+    </script>
+</body>
+
+</html>

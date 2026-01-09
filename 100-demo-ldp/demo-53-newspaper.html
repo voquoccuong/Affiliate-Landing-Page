@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Tribune</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chomsky&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fcf6e6;
+            /* Off-white newsprint */
+            color: #111;
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            line-height: 1.5;
+            overflow-x: hidden;
+            border-top: 10px solid #111;
+        }
+
+        .paper-texture {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            border-bottom: 4px double #111;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .meta-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #111;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        h1.masthead {
+            font-family: 'Chomsky', 'Playfair Display', serif;
+            /* Chomsky is a blackletter font often available on Google or similar, falling back to Playfair */
+            font-size: 6rem;
+            margin: 0;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .sub-masthead {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Main Story */
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .deck {
+            font-size: 1.5rem;
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 40px;
+            color: #333;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .columns {
+            column-count: 3;
+            column-gap: 40px;
+            column-rule: 1px solid #111;
+            text-align: justify;
+        }
+
+        .columns p {
+            margin-bottom: 20px;
+            text-indent: 1.5em;
+            /* Traditional news indent */
+        }
+
+        .columns p:first-of-type {
+            text-indent: 0;
+        }
+
+        .drop-cap {
+            float: left;
+            font-size: 4rem;
+            line-height: 0.8;
+            margin-right: 8px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+        }
+
+        .main-img {
+            width: 100%;
+            filter: grayscale(100%) contrast(120%);
+            margin-bottom: 10px;
+            border: 1px solid #111;
+        }
+
+        .caption {
+            font-size: 0.8rem;
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Call to Action */
+        .cta-box {
+            border: 2px solid #111;
+            padding: 30px;
+            text-align: center;
+            margin-top: 40px;
+            background: #fff;
+        }
+
+        .cta-box h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .btn-news {
+            background: #111;
+            color: white;
+            padding: 15px 30px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .btn-news:hover {
+            background: #333;
+            text-decoration: underline;
+        }
+
+        /* Breaking News Ticker */
+        .ticker {
+            background: #111;
+            color: white;
+            padding: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 50;
+        }
+
+        @media(max-width: 800px) {
+            .columns {
+                column-count: 1;
+            }
+
+            h1.masthead {
+                font-size: 3.5rem;
+            }
+
+            .headline {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="paper-texture"></div>
+
+    <div class="container">
+        <header>
+            <div class="meta-header">
+                <span>Vol. CXXV No. 42</span>
+                <span>Ho Chi Minh City, Tuesday, December 30, 2025</span>
+                <span>Price: $1.00</span>
+            </div>
+            <h1 class="masthead">The Daily Chronicle</h1>
+            <div class="sub-masthead">"Truth in Automation, Clarity in Purpose"</div>
+        </header>
+
+        <article>
+            <h2 class="headline">REVOLUTION IN DIGITAL EFFICIENCY</h2>
+            <p class="deck">Experts declare a new era of productivity has dawned upon the local markets, driven by
+                superior machine intelligence.</p>
+
+            <div class="columns">
+                <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                    class="main-img">
+                <div class="caption">FIGURE 1: Mechanics of the new digital engine.</div>
+
+                <p><span class="drop-cap">I</span>t was a morning unlike any other when the announcement broke. The
+                    antiquated methods of manual labor, long held as the industry standard, have officially been
+                    rendered obsolete. In their place rises a robust, tireless infrastructure capable of processing
+                    tasks at speeds hitherto unimagined.</p>
+
+                <p>Critics initially scoffed at the notion of "one-click" solutions, citing the complexity of modern
+                    commerce. However, demonstrations held at the Grand Hall yesterday silenced even the most staunch
+                    skeptics. The system operated flawlessly, weaving through data with the grace of a master weaver.
+                </p>
+
+                <p>"The future is not merely coming," declared the Chief Engineer. "It is already here, and it speaks
+                    the language of efficiency." This sentiment was echoed by early adopters who have seen their yields
+                    double within a fortnight.</p>
+
+                <p>Citizens are advised to upgrade their protocols immediately to avoid being left in the annals of
+                    history. The march of progress waits for no man, and this steam-engine of code is gaining momentum
+                    by the hour.</p>
+            </div>
+
+            <div class="cta-box">
+                <h3>Subscribe to the Future</h3>
+                <p>Join over 50,000 intellectuals and pioneers who receive the daily digest of progress.</p>
+                <a href="#" class="btn-news">Read The Full Report</a>
+            </div>
+
+        </article>
+
+    </div>
+
+    <div class="ticker">
+        BREAKING: STOCKS RISE AS AUTOMATION ADOPTION HITS ALL-TIME HIGH /// EXTRA: MANUAL INPUT DECLARED INEFFICIENT ///
+        WEATHER: CLEAR SKIES FOR CLOUD COMPUTING
+    </div>
+
+</body>
+
+</html>

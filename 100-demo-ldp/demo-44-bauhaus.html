@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Bauhaus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Work+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bauhaus-red: #d93025;
+            --bauhaus-blue: #1a73e8;
+            --bauhaus-yellow: #f9ab00;
+            --bauhaus-black: #202124;
+            --bauhaus-white: #f1f3f4;
+        }
+
+        body {
+            background-color: #fcefe2;
+            /* Slight off-white paper */
+            color: var(--bauhaus-black);
+            font-family: 'Work Sans', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 20px solid #202124;
+        }
+
+        .composition {
+            display: grid;
+            grid-template-columns: 350px 1fr 200px;
+            grid-template-rows: 200px 1fr 150px;
+            gap: 20px;
+            width: 1200px;
+            height: 800px;
+            transform: rotate(-2deg);
+        }
+
+        /* Geometric Elements */
+        .circle {
+            background: var(--bauhaus-red);
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            grid-column: 3;
+            grid-row: 1;
+        }
+
+        .square {
+            background: var(--bauhaus-blue);
+            width: 100%;
+            height: 100%;
+            grid-column: 1;
+            grid-row: 3;
+            position: relative;
+        }
+
+        .square::after {
+            content: "";
+            position: absolute;
+            background: rgba(0, 0, 0, 0.1);
+            width: 50%;
+            height: 100%;
+        }
+
+        .rect {
+            background: var(--bauhaus-yellow);
+            grid-column: 2;
+            grid-row: 2;
+            /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%); */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 200px solid var(--bauhaus-black);
+            grid-column: 1;
+            grid-row: 2;
+            align-self: center;
+            justify-self: center;
+            transform: rotate(-15deg);
+        }
+
+        /* Content */
+        .title-block {
+            grid-column: 1 / span 2;
+            grid-row: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 5rem;
+            line-height: 0.85;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: -2px;
+        }
+
+        h1 span {
+            color: var(--bauhaus-white);
+            -webkit-text-stroke: 2px var(--bauhaus-black);
+        }
+
+        .desc-block {
+            grid-column: 3;
+            grid-row: 2;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-weight: 600;
+            font-size: 1.2rem;
+            align-self: start;
+            justify-self: center;
+            border-left: 5px solid var(--bauhaus-black);
+            padding-left: 20px;
+            height: 100%;
+        }
+
+        .cta-block {
+            grid-column: 2;
+            grid-row: 3;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bauhaus-black);
+            color: white;
+            padding: 0 40px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-family: 'Archivo Black', sans-serif;
+        }
+
+        /* Micro-interactions */
+        a.btn-bau {
+            background: var(--bauhaus-white);
+            color: var(--bauhaus-black);
+            text-decoration: none;
+            padding: 15px 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        a.btn-bau:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 5px 5px 0 var(--bauhaus-red);
+        }
+
+        /* Lines */
+        .lines {
+            background: repeating-linear-gradient(45deg,
+                    var(--bauhaus-black),
+                    var(--bauhaus-black) 2px,
+                    transparent 2px,
+                    transparent 10px);
+            grid-column: 3;
+            grid-row: 3;
+        }
+
+        /* Responsive */
+        @media(max-width: 900px) {
+            body {
+                border: none;
+                overflow: auto;
+                display: block;
+                padding: 20px;
+            }
+
+            .composition {
+                display: flex;
+                flex-direction: column;
+                transform: rotate(0);
+                width: 100%;
+                height: auto;
+            }
+
+            .circle,
+            .square,
+            .triangle,
+            .lines {
+                height: 200px;
+                width: 200px;
+                margin: 0 auto;
+            }
+
+            .circle {
+                order: -1;
+            }
+
+            .desc-block {
+                writing-mode: horizontal-tb;
+                border-left: none;
+                border-top: 5px solid black;
+                padding-top: 20px;
+                padding-left: 0;
+                height: auto;
+                margin: 20px 0;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .cta-block {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="composition">
+
+        <div class="circle"></div>
+
+        <div class="title-block">
+            <h1>Form<br><span>Follows</span><br>Function</h1>
+        </div>
+
+        <div class="triangle"></div>
+
+        <div class="rect">
+            <h2 style="font-size:2rem; font-weight:800; transform: rotate(-5deg);">AUTOMATION<br>IS ART</h2>
+        </div>
+
+        <div class="desc-block">
+            THE ESSENCE OF CREATIVITY IS TO REMOVE THE SUPERFLUOUS.
+        </div>
+
+        <div class="square"></div>
+
+        <div class="cta-block">
+            <div class="price">2.9M</div>
+            <a href="#" class="btn-bau">ACQUIRE</a>
+        </div>
+
+        <div class="lines"></div>
+
+    </div>
+
+</body>
+
+</html>

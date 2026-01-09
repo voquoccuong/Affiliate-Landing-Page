@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverted - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .half {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem;
+            box-sizing: border-box;
+            transition: all 0.5s ease;
+        }
+
+        .left {
+            background: #000;
+            color: #fff;
+        }
+
+        .right {
+            background: #fff;
+            color: #000;
+        }
+
+        h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: 8rem;
+            text-transform: uppercase;
+            line-height: 0.8;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 400px;
+            margin-top: 2rem;
+        }
+
+        /* The Inversion Interaction */
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .container:hover .left {
+            background: #fff;
+            color: #000;
+        }
+
+        .container:hover .right {
+            background: #000;
+            color: #fff;
+        }
+
+        .btn-invert {
+            display: inline-block;
+            margin-top: 3rem;
+            padding: 1rem 2rem;
+            border: 2px solid currentColor;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: fit-content;
+        }
+
+        .btn-invert:hover {
+            /* Invert the button itself too */
+            background: currentColor;
+            color: inherit;
+            /* This trick is tricky with currentcolor, so lets manipulate colors */
+        }
+
+        .left .btn-invert:hover {
+            color: #000;
+            background: #fff;
+        }
+
+        /* Default state */
+        .right .btn-invert:hover {
+            color: #fff;
+            background: #000;
+        }
+
+        /* When global hover, invert these logic */
+        .container:hover .left .btn-invert:hover {
+            color: #fff;
+            background: #000;
+        }
+
+        .container:hover .right .btn-invert:hover {
+            color: #000;
+            background: #fff;
+        }
+
+        .circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="left">
+            <h1>Black</h1>
+            <p>
+                Darkness defines the light. Absorption of all color.
+                Powerful, elegant, and timeless mystery.
+            </p>
+            <a href="https://www.cuonghoa.website" class="btn-invert">Join the Dark Side</a>
+        </div>
+
+        <div class="right">
+            <h1>White</h1>
+            <p>
+                Light defines the shape. Reflection of all wavelengths.
+                Pure, clean, and infinite possibility.
+            </p>
+            <a href="https://www.cuonghoa.website" class="btn-invert">See the Light</a>
+        </div>
+
+        <div class="circle"></div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Sheet - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Roboto+Mono:wght@400;700&display=swap');
+
+        body {
+            background-color: #2b2b2b;
+            color: #333;
+            font-family: 'MedievalSharp', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+        }
+
+        .sheet {
+            background: #fdf5e6;
+            width: 800px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid #d4c5a6;
+            position: relative;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #333;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        .attributes {
+            background: #eee;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .attr-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: bold;
+        }
+
+        .stat-circle {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            font-size: 1.2rem;
+        }
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .box {
+            border: 1px solid #333;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .box h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .inventory-list {
+            list-style: none;
+            padding: 0;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        .inventory-list li {
+            padding: 5px 0;
+            border-bottom: 1px dotted #ccc;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .avatar-frame {
+            width: 150px;
+            height: 150px;
+            border: 3px double #333;
+            margin: 0 auto 1rem;
+            background: #ccc url('https://api.dicebear.com/7.x/adventurer/svg?seed=CuongHoa') center/cover;
+        }
+
+        .btn-quest {
+            background: #8b0000;
+            color: #fffacD;
+            border: 2px solid #5a0000;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-family: 'MedievalSharp', cursive;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-quest:hover {
+            background: #a50000;
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .xp-bar {
+            height: 10px;
+            background: #ccc;
+            border: 1px solid #333;
+            margin-top: 5px;
+            position: relative;
+        }
+
+        .xp-fill {
+            height: 100%;
+            width: 85%;
+            background: #4caf50;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sheet">
+        <div class="header">
+            <div>
+                <div style="font-size: 0.8rem; text-transform: uppercase; color: #666;">Character Name</div>
+                <div class="title">CuongHoa.AI</div>
+            </div>
+            <div style="text-align: right;">
+                <div style="font-size: 0.8rem; text-transform: uppercase; color: #666;">Class & Level</div>
+                <div style="font-size: 1.5rem;">Code Wizard (Lvl 99)</div>
+                <div class="xp-bar">
+                    <div class="xp-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="attributes">
+                <div class="avatar-frame"></div>
+
+                <div class="attr-row">
+                    <span>STR</span>
+                    <div class="stat-circle">12</div>
+                </div>
+                <div class="attr-row">
+                    <span>DEX</span>
+                    <div class="stat-circle">18</div>
+                </div>
+                <div class="attr-row">
+                    <span>CON</span>
+                    <div class="stat-circle">14</div>
+                </div>
+                <div class="attr-row">
+                    <span>INT</span>
+                    <div class="stat-circle">20</div>
+                </div>
+                <div class="attr-row">
+                    <span>WIS</span>
+                    <div class="stat-circle">16</div>
+                </div>
+                <div class="attr-row">
+                    <span>CHA</span>
+                    <div class="stat-circle">19</div>
+                </div>
+            </div>
+
+            <div class="main-info">
+                <div class="box">
+                    <h3>Special Abilities</h3>
+                    <p><strong>Clean Code:</strong> Automatic +5 to readability checks.</p>
+                    <p><strong>Rapid Deploy:</strong> Project completes 50% faster.</p>
+                    <p><strong>Bug Banish:</strong> Dispel errors in a 30ft radius.</p>
+                </div>
+
+                <div class="box">
+                    <h3>Inventory</h3>
+                    <ul class="inventory-list">
+                        <li><span>Scroll of Optimization</span> <span>x3</span></li>
+                        <li><span>Potion of Caffeine</span> <span>x5</span></li>
+                        <li><span>Keyboard of Clacking</span> <span>x1</span></li>
+                    </ul>
+                </div>
+
+                <button class="btn-quest" onclick="window.location.href='https://www.cuonghoa.website'">Accept
+                    Quest</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

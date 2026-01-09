@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - SYSTEM OVERRIDE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Rubik+Glitch&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --bg: #050505;
+            --cyber-yellow: #fce300;
+            --cyber-cyan: #00f0ff;
+            --cyber-red: #ff003c;
+            --text: #eeeeee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Chakra Petch', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Glitch Effect Keyframes */
+        @keyframes glitch {
+
+            2%,
+            64% {
+                transform: translate(2px, 0) skew(0deg);
+            }
+
+            4%,
+            60% {
+                transform: translate(-2px, 0) skew(0deg);
+            }
+
+            62% {
+                transform: translate(0, 0) skew(5deg);
+            }
+        }
+
+        @keyframes glitchTop {
+
+            2%,
+            64% {
+                transform: translate(2px, -2px);
+            }
+
+            4%,
+            60% {
+                transform: translate(-2px, 2px);
+            }
+
+            62% {
+                transform: translate(13px, -1px) skew(-13deg);
+            }
+        }
+
+        @keyframes glitchBot {
+
+            2%,
+            64% {
+                transform: translate(-2px, 0);
+            }
+
+            4%,
+            60% {
+                transform: translate(-2px, 0);
+            }
+
+            62% {
+                transform: translate(-22px, 5px) skew(21deg);
+            }
+        }
+
+        .glitch-text {
+            font-family: 'Rubik Glitch', cursive;
+            font-size: 5rem;
+            color: var(--text);
+            position: relative;
+            animation: glitch 1s linear infinite;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+        }
+
+        .glitch-text::before {
+            animation: glitchTop 1s linear infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+            -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+        }
+
+        .glitch-text::after {
+            animation: glitchBot 1.5s linear infinite;
+            clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+            -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Scanline Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0) 50%,
+                    rgba(0, 0, 0, 0.2) 50%,
+                    rgba(0, 0, 0, 0.2));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Nav */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--cyber-yellow);
+            padding-bottom: 20px;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cyber-btn {
+            background: var(--cyber-yellow);
+            color: black;
+            padding: 15px 30px;
+            text-transform: uppercase;
+            font-weight: 900;
+            text-decoration: none;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+            transition: all 0.2s;
+        }
+
+        .cyber-btn:hover {
+            background: var(--cyber-cyan);
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: var(--cyber-cyan);
+            margin-bottom: 10px;
+        }
+
+        /* Course List */
+        .course-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .course-item {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid var(--cyber-red);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .course-item:hover {
+            background: rgba(255, 0, 60, 0.1);
+            transform: scale(1.02);
+            border-left: 10px solid var(--cyber-yellow);
+        }
+
+        .course-item img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        .course-item:hover img {
+            filter: none;
+        }
+
+        .course-info h3 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .course-tags {
+            display: flex;
+            gap: 10px;
+            font-size: 0.8rem;
+            color: var(--cyber-cyan);
+        }
+
+        /* HUD Elements */
+        .hud-corner {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--cyber-cyan);
+            z-index: 1;
+        }
+
+        .top-left {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scanlines"></div>
+    <div class="hud-corner top-left"></div>
+    <div class="hud-corner bottom-right"></div>
+
+    <div class="container">
+        <nav>
+            <div class="logo">CuongHoa_AI</div>
+            <a href="#" class="cyber-btn">Jack In</a>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h2>// SYSTEM_STATUS: COMPROMISED</h2>
+                <h1 class="glitch-text" data-text="AUTOMATE">AUTOMATE</h1>
+                <h1 class="glitch-text" data-text="OR DIE">OR DIE</h1>
+                <p style="margin: 20px 0; max-width: 400px; line-height: 1.6;">
+                    The old world is manual. The new world is procedural.
+                    Upgrade your wetware with our advanced neural training modules.
+                </p>
+                <a href="#modules" class="cyber-btn" style="display:inline-block; margin-top: 20px;">
+                    Download_Skillsets
+                </a>
+            </div>
+            <div class="hero-visual" style="display: flex; align-items: center; justify-content: center;">
+                <i class="ph-duotone ph-cpu" style="font-size: 300px; color: var(--cyber-red); opacity: 0.8;"></i>
+            </div>
+        </section>
+
+        <section id="modules">
+            <div
+                style="background: var(--cyber-yellow); color: black; padding: 5px 10px; display: inline-block; font-weight: bold; margin-bottom: 20px;">
+                AVAILABLE_MODULES
+            </div>
+
+            <div class="course-list">
+                <!-- Course 1 -->
+                <div class="course-item">
+                    <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" alt="Mindset">
+                    <div class="course-info">
+                        <h3>[S01] Neural_Mindset_Bootloop</h3>
+                        <div class="course-tags">
+                            <span>> SYSTEM_DESIGN</span>
+                            <span>> LOGIC_GATES</span>
+                        </div>
+                    </div>
+                    <div style="margin-left: auto; text-align: right;">
+                        <span style="color: var(--cyber-yellow); font-size: 1.2rem; font-weight: bold;">2.9M CR</span>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="course-item">
+                    <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" alt="Banking">
+                    <div class="course-info">
+                        <h3>[S02] Credit_Stream_Interceptor</h3>
+                        <div class="course-tags">
+                            <span>> N8N_PROTOCOL</span>
+                            <span>> BANK_API</span>
+                        </div>
+                    </div>
+                    <div style="margin-left: auto; text-align: right;">
+                        <span style="color: var(--cyber-yellow); font-size: 1.2rem; font-weight: bold;">1.9M CR</span>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="course-item">
+                    <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" alt="Banking">
+                    <div class="course-info">
+                        <h3>[S09] Propaganda_Engine_AI</h3>
+                        <div class="course-tags">
+                            <span>> LLM_INJECTION</span>
+                            <span>> VIRAL_LOOP</span>
+                        </div>
+                    </div>
+                    <div style="margin-left: auto; text-align: right;">
+                        <span style="color: var(--cyber-yellow); font-size: 1.2rem; font-weight: bold;">7.9M CR</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediterranean - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Lato:wght@300;400&display=swap');
+
+        :root {
+            --white-stone: #FAFAFA;
+            --sea-blue: #006994;
+            --deep-blue: #003366;
+            --bougainvillea: #D9388E;
+            --terracotta: #E2725B;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--white-stone);
+            font-family: 'Lato', sans-serif;
+            color: var(--deep-blue);
+            overflow-x: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .left-panel {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-image: radial-gradient(#f0f0f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .right-panel {
+            position: relative;
+            background: var(--sea-blue);
+            overflow: hidden;
+        }
+
+        .curve-overlay {
+            position: absolute;
+            top: 0;
+            left: -1px;
+            bottom: 0;
+            width: 100px;
+            background: var(--white-stone);
+            clip-path: ellipse(50% 120% at 0% 50%);
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--sea-blue);
+        }
+
+        h1 i {
+            font-weight: 400;
+            color: var(--bougainvillea);
+        }
+
+        p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #555;
+            max-width: 500px;
+            margin-bottom: 3rem;
+        }
+
+        .btn-terracotta {
+            background: var(--terracotta);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            display: inline-block;
+            width: fit-content;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .btn-terracotta:hover {
+            transform: translateY(-2px);
+        }
+
+        .window-arch {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 500px;
+            background: url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            border-radius: 150px 150px 0 0;
+            box-shadow:
+                inset 10px 10px 40px rgba(0, 0, 0, 0.3),
+                20px 20px 0px rgba(255, 255, 255, 0.2);
+            border: 20px solid white;
+        }
+
+        .flower-pot {
+            position: absolute;
+            bottom: 60px;
+            right: 80px;
+            font-size: 3rem;
+            transform: rotate(10deg);
+            z-index: 20;
+            filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.2));
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="left-panel">
+        <h1>Santorini <br><i>Summer</i></h1>
+        <p>Breathe in the salt air. White stone architecture meets the endless azure sea. Timeless elegance for your
+            brand.</p>
+        <a href="https://www.cuonghoa.website" class="btn-terracotta">Book Your Escape</a>
+    </div>
+
+    <div class="right-panel">
+        <div class="curve-overlay"></div>
+        <div class="window-arch"></div>
+        <div class="flower-pot">🌺</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Spotlight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #030303;
+            color: #d4d4d4;
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            cursor: none;
+            /* Hide default cursor */
+        }
+
+        /* The Spotlight Overlay */
+        .spotlight-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 100;
+            background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%),
+                    rgba(255, 255, 255, 0.) 0%,
+                    rgba(0, 0, 0, 0.95) 40%);
+            /* This creates a darkness overlay everywhere EXCEPT where the mouse is */
+            /* We actually want the inverse: Dark everywhere, mouse reveals. */
+        }
+
+        /* Better Approach: 
+           Content is dim/invisible. Spotlight adds brightness/opacity.
+        */
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 40px;
+            position: relative;
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            transition: width 0.2s, height 0.2s;
+        }
+
+        .custom-cursor.hovering {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 150px;
+        }
+
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #333;
+            /* Hidden by default */
+            transition: color 0.1s;
+        }
+
+        p.lead {
+            font-size: 1.5rem;
+            color: #333;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Grid of Secrets */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            /* Very thin borders */
+            background: #222;
+            /* Line color */
+            border: 2px solid #222;
+        }
+
+        .grid-item {
+            background: #030303;
+            padding: 40px;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .grid-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .grid-item p {
+            color: #222;
+        }
+
+        .grid-item i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        /* Reveal Effect Logic */
+        /* We use a radial gradient mask on the text elements that tracks the mouse, 
+           simulated by changing text color based on proximity using JS, 
+           OR purely CSS with a 'light' layer on top. 
+           
+           Let's use the CSS variable method to light up elements.
+        */
+
+        /* The "Spotlight" Div that moves with mouse and lights up things below it via mix-blend or opacity */
+        .flashlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%),
+                    rgba(255, 255, 255, 0.15),
+                    transparent 40%);
+            z-index: 10;
+        }
+
+        /* Reveal classes */
+        .reveal-text {
+            color: rgba(255, 255, 255, 0.1);
+            /* Dim by default */
+        }
+
+        /* Hover effects */
+        a.btn-secret {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 40px;
+            border: 1px solid #333;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+
+        a.btn-secret:hover {
+            border-color: white;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="custom-cursor"></div>
+    <div class="flashlight"></div>
+
+    <div class="content-wrapper">
+        <div class="hero">
+            <h1 class="reveal-text">Discovery Mode</h1>
+            <p class="lead reveal-text">
+                The best secrets are hidden in the dark.
+                Move your light to find the answers.
+            </p>
+            <a href="#" class="btn-secret">REVEAL THE PATH</a>
+        </div>
+
+        <div class="grid">
+            <div class="grid-item">
+                <i class="ph-fill ph-skull reveal-text"></i>
+                <h3 class="reveal-text">The Old Way</h3>
+                <p class="reveal-text">Manual labor.<br>Burnout.<br>Linear growth.</p>
+            </div>
+            <div class="grid-item">
+                <i class="ph-fill ph-lightning reveal-text"></i>
+                <h3 class="reveal-text">The New Way</h3>
+                <p class="reveal-text">Automation.<br>Leverage.<br>Exponential scale.</p>
+            </div>
+            <div class="grid-item">
+                <i class="ph-fill ph-crown reveal-text"></i>
+                <h3 class="reveal-text">The Result</h3>
+                <p class="reveal-text">Freedom.<br>Wealth.<br>Peace.</p>
+            </div>
+            <div class="grid-item">
+                <i class="ph-fill ph-code reveal-text"></i>
+                <h3 class="reveal-text">No Code</h3>
+                <p class="reveal-text">You don't need<br>to be a dev.</p>
+            </div>
+            <div class="grid-item" style="background: #111;">
+                <h3 class="reveal-text" style="color:white; opacity:0.1;">JOIN NOW</h3>
+                <p class="reveal-text" style="color:#00ff00; opacity:0.1;">LIFETIME ACCESS</p>
+            </div>
+            <div class="grid-item">
+                <i class="ph-fill ph-rocket reveal-text"></i>
+                <h3 class="reveal-text">Launch</h3>
+                <p class="reveal-text">Deploy tonight.<br>Profit tomorrow.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cursor = document.querySelector('.custom-cursor');
+        const flashlight = document.querySelector('.flashlight');
+        const revealTeksts = document.querySelectorAll('.reveal-text');
+        const gridItems = document.querySelectorAll('.grid-item');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+
+            // Move cursor
+            cursor.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+
+            // Move flashlight gradient
+            flashlight.style.setProperty('--x', `${x}px`);
+            flashlight.style.setProperty('--y', `${y}px`);
+
+            // Proximity effect for text intensity
+            revealTeksts.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const elX = rect.left + rect.width / 2;
+                const elY = rect.top + rect.height / 2;
+
+                const dist = Math.hypot(x - elX, y - elY);
+
+                // Closer means brighter
+                // Max brightness at 0 distance, 0.1 at 400px
+                const maxDist = 400;
+                let intensity = Math.max(0.1, 1 - (dist / maxDist));
+
+                // Different styling for icons vs text
+                if (el.tagName === 'P') intensity *= 0.8;
+
+                el.style.color = `rgba(255, 255, 255, ${intensity})`;
+            });
+
+            // Proximity for grid borders (optional advanced effect)
+        });
+
+        // Hover state for cursor
+        document.querySelectorAll('a, .grid-item').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - VCR</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #111;
+            color: #ccc;
+            font-family: 'VT323', monospace;
+            overflow-x: hidden;
+            min-height: 100vh;
+            text-transform: uppercase;
+        }
+
+        /* VHS Effect Overlay */
+        .vhs-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            pointer-events: none;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 100% 100%;
+        }
+
+        /* Tracking Line */
+        .tracking-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 99;
+            animation: tracking 5s linear infinite;
+            filter: blur(5px);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        @keyframes tracking {
+            0% {
+                top: -100px;
+            }
+
+            50% {
+                top: 100%;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 6rem;
+            color: #fff;
+            text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #00ffff;
+            margin-bottom: 20px;
+            animation: glitch 1s infinite alternate;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #00ffff;
+                transform: skewX(0);
+            }
+
+            20% {
+                text-shadow: 2px 0px 0px #ff00ff, -2px 0px 0px #00ffff;
+                transform: skewX(-2deg);
+            }
+
+            40% {
+                text-shadow: -2px 2px 0px #ff00ff, 2px -2px 0px #00ffff;
+                transform: skewX(1deg);
+            }
+
+            60% {
+                text-shadow: 0px 0px 0px #ff00ff, 0px 0px 0px #00ffff;
+                transform: skewX(0);
+            }
+
+            80% {
+                text-shadow: 4px -2px 0px #ff00ff, -4px 2px 0px #00ffff;
+                transform: skewX(-5deg);
+            }
+
+            100% {
+                text-shadow: 2px 2px 0px #ff00ff, -2px -2px 0px #00ffff;
+                transform: skewX(0);
+            }
+        }
+
+        .osd-text {
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 2px 2px black;
+            position: fixed;
+            z-index: 50;
+        }
+
+        .osd-play {
+            top: 40px;
+            left: 40px;
+        }
+
+        .osd-time {
+            bottom: 40px;
+            right: 40px;
+        }
+
+        .osd-date {
+            bottom: 40px;
+            left: 40px;
+        }
+
+        p.lead {
+            font-size: 1.8rem;
+            max-width: 600px;
+            margin-bottom: 50px;
+            background: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+        }
+
+        /* Buttons */
+        .btn-retro {
+            background: #ccc;
+            color: #111;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            border: 4px solid #fff;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 4px 4px 0px black;
+        }
+
+        .btn-retro:hover {
+            background: #fff;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px black;
+        }
+
+        /* Color Bars */
+        .color-bars {
+            height: 20px;
+            width: 100%;
+            display: flex;
+            margin-bottom: 40px;
+        }
+
+        .bar {
+            flex: 1;
+            height: 100%;
+        }
+
+        /* Video Box */
+        .video-box {
+            border: 2px solid white;
+            padding: 5px;
+            margin-top: 40px;
+            background: #000;
+            position: relative;
+        }
+
+        .rec-dot {
+            width: 20px;
+            height: 20px;
+            background: red;
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1s infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="vhs-overlay"></div>
+    <div class="tracking-line"></div>
+
+    <div class="osd-text osd-play">PLAY &#9658;</div>
+    <div class="osd-text osd-date">DEC 30 2025</div>
+    <div class="osd-text osd-time">09:12 PM</div>
+
+    <div class="container">
+
+        <div class="color-bars">
+            <div class="bar" style="background:white;"></div>
+            <div class="bar" style="background:yellow;"></div>
+            <div class="bar" style="background:cyan;"></div>
+            <div class="bar" style="background:green;"></div>
+            <div class="bar" style="background:magenta;"></div>
+            <div class="bar" style="background:red;"></div>
+            <div class="bar" style="background:blue;"></div>
+        </div>
+
+        <h1>Auto<br>Mation<br>Systems</h1>
+
+        <p class="lead">
+            <span class="rec-dot"></span>Recording your success...<br>
+            Don't adjust your set. The future is automatic.
+        </p>
+
+        <div>
+            <a href="#" class="btn-retro">INSERT TAPE</a>
+        </div>
+
+        <div class="video-box">
+            <div style="padding:20px; font-size:1.2rem; color:#666;">
+                TAPE 1: REVENUE GENERATION<br>
+                TAPE 2: CONTENT CREATION<br>
+                TAPE 3: SYSTEM INTEGRATION
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

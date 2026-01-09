@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Art Deco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deco-gold: #d4af37;
+            --deco-gold-light: #f3e5ab;
+            --deco-black: #0a0a0a;
+        }
+
+        body {
+            background-color: var(--deco-black);
+            color: var(--deco-gold);
+            font-family: 'Tenor Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Decorative Background Pattern */
+        .deco-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(30deg, var(--deco-black) 12%, transparent 12.5%, transparent 87%, var(--deco-black) 87.5%, var(--deco-black)),
+                linear-gradient(150deg, var(--deco-black) 12%, transparent 12.5%, transparent 87%, var(--deco-black) 87.5%, var(--deco-black)),
+                linear-gradient(30deg, var(--deco-black) 12%, transparent 12.5%, transparent 87%, var(--deco-black) 87.5%, var(--deco-black)),
+                linear-gradient(150deg, var(--deco-black) 12%, transparent 12.5%, transparent 87%, var(--deco-black) 87.5%, var(--deco-black)),
+                radial-gradient(var(--deco-gold) 10%, transparent 11%);
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Border Frame */
+        .page-frame {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid var(--deco-gold);
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .page-frame::after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid var(--deco-gold);
+        }
+
+        .corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: var(--deco-black);
+            z-index: 101;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tl {
+            top: 0;
+            left: 0;
+            border-right: 2px solid var(--deco-gold);
+            border-bottom: 2px solid var(--deco-gold);
+        }
+
+        .tr {
+            top: 0;
+            right: 0;
+            border-left: 2px solid var(--deco-gold);
+            border-bottom: 2px solid var(--deco-gold);
+        }
+
+        .bl {
+            bottom: 0;
+            left: 0;
+            border-right: 2px solid var(--deco-gold);
+            border-top: 2px solid var(--deco-gold);
+        }
+
+        .br {
+            bottom: 0;
+            right: 0;
+            border-left: 2px solid var(--deco-gold);
+            border-top: 2px solid var(--deco-gold);
+        }
+
+        .corner-deco {
+            width: 60%;
+            height: 60%;
+            border: 1px solid var(--deco-gold);
+            transform: rotate(45deg);
+        }
+
+        /* Content */
+        .container {
+            z-index: 10;
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 800px;
+        }
+
+        h1 {
+            font-family: 'Marcellus SC', serif;
+            font-size: 4rem;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            background: linear-gradient(to bottom, var(--deco-gold-light), var(--deco-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .divider {
+            display: inline-block;
+            width: 100%;
+            height: 2px;
+            background: radial-gradient(circle, var(--deco-gold) 0%, transparent 100%);
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: "♦";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--deco-black);
+            padding: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        p.lead {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        .btn-deco {
+            background: transparent;
+            color: var(--deco-gold);
+            font-family: 'Marcellus SC', serif;
+            font-size: 1.2rem;
+            padding: 15px 50px;
+            border: 1px solid var(--deco-gold);
+            text-decoration: none;
+            letter-spacing: 3px;
+            position: relative;
+            transition: all 0.4s;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn-deco:hover {
+            background: var(--deco-gold);
+            color: var(--deco-black);
+            box-shadow: 0 0 30px var(--deco-gold);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .feature-item {
+            border: 1px solid var(--deco-gold);
+            padding: 30px;
+            position: relative;
+        }
+
+        .feature-item::before {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .feature-item h3 {
+            font-family: 'Marcellus SC', serif;
+            margin-bottom: 10px;
+        }
+
+        @media(max-width: 800px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .page-frame,
+            .corner {
+                display: none;
+            }
+
+            /* Simpler layout on mobile */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="deco-pattern"></div>
+
+    <div class="page-frame">
+        <div class="corner tl">
+            <div class="corner-deco"></div>
+        </div>
+        <div class="corner tr">
+            <div class="corner-deco"></div>
+        </div>
+        <div class="corner bl">
+            <div class="corner-deco"></div>
+        </div>
+        <div class="corner br">
+            <div class="corner-deco"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div style="font-size: 1.2rem; letter-spacing: 5px; margin-bottom: 10px;">EST. 2025</div>
+        <h1>The Golden Age<br>of Automation</h1>
+
+        <div class="divider"></div>
+
+        <p class="lead">
+            Experience the luxury of effortless intelligence.
+            We craft digital systems with the precision of a fine watch
+            and the elegance of a timeless masterpiece.
+        </p>
+
+        <a href="#" class="btn-deco">Enter Society</a>
+
+        <div class="features">
+            <div class="feature-item">
+                <h3>Opulence</h3>
+                <p>Rich features that dazzle.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Prestige</h3>
+                <p>Rank above the fold.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Legacy</h3>
+                <p>Built to endure eras.</p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Zen</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@300;500;900&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #f4f3ef;
+            /* Rice paper color */
+            color: #2b2b2b;
+            /* Sumi ink color */
+            overflow-x: hidden;
+        }
+
+        /* Textured Paper Overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Vertical Writing Mode Section (Japanese Style) */
+        .vertical-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: row-reverse;
+            /* Read from right to left approx */
+            justify-content: center;
+            align-items: center;
+            gap: 60px;
+            padding: 40px;
+        }
+
+        h1 {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            font-weight: 900;
+            margin: 0;
+            border-left: 1px solid #ccc;
+            padding-left: 40px;
+            height: 60vh;
+        }
+
+        p.vertical-desc {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 1.2rem;
+            line-height: 2;
+            height: 50vh;
+            color: #555;
+            border-left: 1px solid #ccc;
+            padding-left: 20px;
+        }
+
+        /* Red Stamp (Hanko) */
+        .hanko {
+            border: 3px solid #b91c1c;
+            color: #b91c1c;
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-family: 'Noto Serif JP', serif;
+            font-size: 1.2rem;
+            writing-mode: vertical-rl;
+            position: absolute;
+            top: 100px;
+            right: 100px;
+            transform: rotate(-5deg);
+            opacity: 0.8;
+            box-shadow: 0 0 10px rgba(185, 28, 28, 0.2);
+            z-index: 10;
+        }
+
+        /* Circle Motif (Enso) */
+        .enso-bg {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 20px solid rgba(0, 0, 0, 0.03);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            /* Incomplete circle illusion */
+            border-left-color: transparent;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        /* Content Grid */
+        .zen-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 100px;
+            padding: 100px 40px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .zen-item {
+            text-align: center;
+            transition: transform 0.5s ease;
+        }
+
+        .zen-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .zen-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #b91c1c;
+        }
+
+        .zen-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .zen-item p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .btn-zen {
+            display: block;
+            width: fit-content;
+            margin: 80px auto;
+            border: 1px solid #2b2b2b;
+            background: transparent;
+            color: #2b2b2b;
+            padding: 15px 40px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-zen:hover {
+            background: #2b2b2b;
+            color: #fff;
+        }
+
+        /* Image with asymmetry */
+        .zen-image-section {
+            display: flex;
+            align-items: center;
+            padding: 100px 40px;
+        }
+
+        .zen-img {
+            width: 60%;
+            height: 400px;
+            object-fit: cover;
+            filter: grayscale(80%);
+            transition: filter 0.5s;
+        }
+
+        .zen-img:hover {
+            filter: grayscale(0%);
+        }
+
+        .zen-text-block {
+            width: 40%;
+            padding-left: 60px;
+        }
+
+        @media(max-width: 768px) {
+            .vertical-section {
+                flex-direction: column;
+                height: auto;
+                padding-top: 100px;
+            }
+
+            h1 {
+                writing-mode: horizontal-tb;
+                height: auto;
+                border-left: none;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 20px;
+                padding-left: 0;
+            }
+
+            p.vertical-desc {
+                writing-mode: horizontal-tb;
+                height: auto;
+                border: none;
+                padding: 0;
+                margin-top: 20px;
+            }
+
+            .zen-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .zen-image-section {
+                flex-direction: column;
+            }
+
+            .zen-img {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .zen-text-block {
+                width: 100%;
+                padding: 0;
+            }
+
+            .hanko {
+                top: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hanko">Automate</div>
+    <div class="enso-bg"></div>
+
+    <div class="container">
+        <!-- Hero: Vertical Text -->
+        <div class="vertical-section">
+            <h1>無為自然</h1> <!-- Wu Wei / Natural Action -->
+            <p class="vertical-desc">
+                Efficiency without effort.<br>
+                Systems that flow like water.<br>
+                The art of digital automation.
+            </p>
+            <p class="vertical-desc" style="font-size: 1rem; color: #999;">
+                CuongHoa AI<br>
+                Mastery Series
+            </p>
+        </div>
+
+        <!-- Philosophy Grid -->
+        <div class="zen-grid">
+            <div class="zen-item">
+                <i class="ph-light ph-wind zen-icon"></i>
+                <h3>Simplicity</h3>
+                <p>Eliminate the unnecessary.<br>Focus only on what drives value.</p>
+            </div>
+            <div class="zen-item">
+                <i class="ph-light ph-waves zen-icon"></i>
+                <h3>Flow</h3>
+                <p>Create systems that run themselves.<br>Resistance is futile.</p>
+            </div>
+            <div class="zen-item">
+                <i class="ph-light ph-mountain zen-icon"></i>
+                <h3>Structure</h3>
+                <p>Build on a solid foundation.<br>Scale with stability.</p>
+            </div>
+        </div>
+
+        <!-- Asymmetric Section -->
+        <div class="zen-image-section">
+            <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+                class="zen-img">
+            <div class="zen-text-block">
+                <h2 style="font-size: 2.5rem; margin-bottom: 30px;">The Path</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: #555;">
+                    To automate is to liberate the mind for higher pursuits.
+                    We provide the tools, the knowledge, and the way.
+                </p>
+            </div>
+        </div>
+
+        <button class="btn-zen">BEGIN JOURNEY</button>
+
+    </div>
+
+</body>
+
+</html>

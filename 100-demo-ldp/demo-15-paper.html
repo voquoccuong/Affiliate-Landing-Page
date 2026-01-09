@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Sketch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Permanent+Marker&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --paper-action: #2c3e50;
+            --highlight: #f1c40f;
+            --pen-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Patrick Hand', cursive;
+            background-color: #fcf5e5;
+            /* Paper color */
+            /* CSS Pattern for paper texture */
+            background-image:
+                radial-gradient(#d0c9ba 8%, transparent 8%),
+                radial-gradient(#d0c9ba 8%, transparent 8%);
+            background-position: 0 0, 20px 20px;
+            background-size: 40px 40px;
+            color: var(--pen-color);
+            line-height: 1.6;
+            font-size: 1.2rem;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* SVG Filters for wobble effect */
+        .wobble-box {
+            background: white;
+            border: 2px solid var(--pen-color);
+            border-radius: 2px 255px 3px 25px / 255px 5px 225px 2px;
+            /* CSS sketchy border */
+            padding: 30px;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+            transform: rotate(-1deg);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .tape {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%) rotate(2deg);
+            width: 120px;
+            height: 35px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-left: 1px dashed rgba(0, 0, 0, 0.1);
+            border-right: 1px dashed rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            transform: rotate(-2deg);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(241, 196, 15, 0) 0%, rgba(241, 196, 15, 0.4) 100%);
+            padding: 0 10px;
+        }
+
+        .nav-sketched {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .btn-sketch {
+            border: 2px solid var(--pen-color);
+            background: transparent;
+            padding: 10px 25px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: var(--pen-color);
+        }
+
+        .btn-sketch:hover {
+            background: var(--pen-color);
+            color: white;
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* Course Cards */
+        .card-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            transform: rotate(1deg);
+            transition: transform 0.3s;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            max-width: 100%;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(-1.5deg);
+        }
+
+        .polaroid:hover {
+            transform: scale(1.02) rotate(0deg);
+            z-index: 5;
+        }
+
+        .photo-frame {
+            width: 200px;
+            height: 150px;
+            background: #eee;
+            border: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(30%);
+        }
+
+        .note-content {
+            flex: 1;
+        }
+
+        .price-circle {
+            display: inline-block;
+            border: 2px solid #e74c3c;
+            color: #e74c3c;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transform: rotate(-10deg);
+            font-size: 1rem;
+            text-align: center;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            float: right;
+        }
+
+        /* Scribbles */
+        .scribble-arrow {
+            position: absolute;
+            font-family: 'Permanent Marker';
+            color: #e74c3c;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <nav class="nav-sketched">
+            <div style="font-family: 'Permanent Marker'; font-size: 1.5rem;">CuongHoa's Notebook</div>
+            <a href="#" class="btn-sketch">Contact Me</a>
+        </nav>
+
+        <section class="wobble-box" style="text-align: center; padding: 50px;">
+            <div class="tape"></div>
+            <h1>Stop Working <span class="highlight">So Hard!</span></h1>
+            <p style="font-size: 1.4rem;">
+                Hey! I built these systems to help you automate the boring stuff.<br>
+                More free time = More happiness. Simple math.
+            </p>
+            <br>
+            <div style="position: relative; display: inline-block;">
+                <a href="#list" class="btn-sketch" style="font-size: 1.4rem;">Check my notes below</a>
+                <div class="scribble-arrow" style="right: -40px; bottom: -40px; transform: rotate(45deg);">↴</div>
+            </div>
+        </section>
+
+        <div class="card-stack" id="list">
+
+            <!-- Item 1 -->
+            <div class="polaroid">
+                <div class="photo-frame">
+                    <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" alt="Mindset">
+                </div>
+                <div class="note-content">
+                    <div class="price-circle">2.9m<br>VND</div>
+                    <h2
+                        style="font-weight: bold; font-size: 1.8rem; margin-bottom: 5px; font-family: 'Permanent Marker'">
+                        Automation Mindset</h2>
+                    <p>Before you touch any tool, you need to change how you think. This is the blueprint.</p>
+                    <br>
+                    <a href="#" style="text-decoration: underline; color: #2980b9;">Grab this course -></a>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="polaroid">
+                <div class="photo-frame">
+                    <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" alt="Bank">
+                </div>
+                <div class="note-content">
+                    <div class="price-circle">1.9m<br>VND</div>
+                    <h2
+                        style="font-weight: bold; font-size: 1.8rem; margin-bottom: 5px; font-family: 'Permanent Marker'">
+                        Banking Report</h2>
+                    <p>I hate checking bank apps manually. So I built a bot to do it. You can have it too.</p>
+                    <br>
+                    <a href="#" style="text-decoration: underline; color: #2980b9;">Grab this course -></a>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="polaroid">
+                <div class="photo-frame">
+                    <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" alt="AI">
+                </div>
+                <div class="note-content">
+                    <div class="price-circle" style="border-color: #8e44ad; color: #8e44ad;">7.9m<br>VND</div>
+                    <h2
+                        style="font-weight: bold; font-size: 1.8rem; margin-bottom: 5px; font-family: 'Permanent Marker'">
+                        AI Content Machine</h2>
+                    <p>The "Secret Sauce" to unlimited posts. Write once, publish everywhere. Pure magic.</p>
+                    <br>
+                    <a href="#" style="text-decoration: underline; color: #2980b9;">Grab this course -></a>
+                </div>
+            </div>
+
+        </div>
+
+        <footer style="margin-top: 60px; text-align: center; opacity: 0.6;">
+            (c) CuongHoa.AI - Handcrafted with love.
+        </footer>
+    </div>
+
+</body>
+
+</html>

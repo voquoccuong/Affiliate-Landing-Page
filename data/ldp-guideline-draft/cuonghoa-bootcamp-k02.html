@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation Bootcamp K02 - Làm Chủ AI & Tự Động Hóa</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        midnight: '#0B0C15',
+                        surface: '#121421',
+                        surface2: '#1C1E2D',
+                        primary: '#3B82F6', // Blue
+                        accent: '#8B5CF6', // Purple
+                        success: '#10B981',
+                        neon: '#22D3EE', // Cyan
+                    },
+                    backgroundImage: {
+                        'hero-gradient': 'linear-gradient(to right bottom, #0B0C15, #121421)',
+                        'glow': 'conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            background-color: #0B0C15;
+            color: #E2E8F0;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(34, 211, 238, 0.5);
+        }
+
+        .glass-panel {
+            background: rgba(28, 30, 45, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gradient-border {
+            position: relative;
+            background: #1C1E2D;
+            border-radius: 1rem;
+            z-index: 1;
+        }
+
+        .gradient-border::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 1.1rem;
+            background: linear-gradient(45deg, #3B82F6, #8B5CF6, #22D3EE);
+            z-index: -1;
+            opacity: 0.5;
+            transition: opacity 0.3s ease;
+        }
+
+        .gradient-border:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-midnight/80 border-b border-white/5"
+        x-data="{ scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 20)">
+        <div class="container mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="text-2xl font-display font-bold tracking-tight text-white">
+                cuonghoa<span class="text-cyan-400">.ai</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+                <a href="#curriculum" class="hover:text-white transition-colors">Chương trình</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Học phí</a>
+                <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+                <a href="#pricing"
+                    class="bg-cyan-500/10 text-cyan-400 px-6 py-2.5 rounded-full border border-cyan-500/50 hover:bg-cyan-500 hover:text-black transition-all font-semibold">
+                    Đăng Ký Early Bird
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Bloom -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-600/20 rounded-full blur-[120px] -z-10 opacity-50">
+        </div>
+
+        <div class="container mx-auto px-6 text-center">
+            <div
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm animate-fade-in-up">
+                <span class="flex h-2 w-2 relative">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span class="text-sm font-medium text-cyan-300 tracking-wide uppercase">Bootcamp K02 Đã Mở Đăng
+                    Ký</span>
+            </div>
+
+            <h1
+                class="font-display text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white mb-8 leading-[1.1]">
+                Làm Chủ AI <br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-glow">
+                    Tự Động Hóa
+                </span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+                Khóa huấn luyện thực chiến 4 tuần giúp bạn <span class="text-white font-medium">x10 năng suất</span>.
+                Không lý thuyết suông. Chỉ có quy trình, công cụ và kết quả thật.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <a href="#pricing"
+                    class="w-full sm:w-auto px-8 py-4 bg-white text-black font-bold text-lg rounded-full hover:scale-105 transition-transform shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)]">
+                    Săn Vé Early Bird Ngay
+                </a>
+                <a href="#curriculum"
+                    class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/20 text-white font-semibold text-lg rounded-full hover:bg-white/5 transition-colors">
+                    Xem Lộ Trình Chi Tiết
+                </a>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="flex flex-col items-center gap-4">
+                <div class="flex -space-x-3">
+                    <img class="w-10 h-10 rounded-full border-2 border-midnight"
+                        src="https://ui-avatars.com/api/?name=A+N&background=random" alt="User">
+                    <img class="w-10 h-10 rounded-full border-2 border-midnight"
+                        src="https://ui-avatars.com/api/?name=B+T&background=random" alt="User">
+                    <img class="w-10 h-10 rounded-full border-2 border-midnight"
+                        src="https://ui-avatars.com/api/?name=C+L&background=random" alt="User">
+                    <div
+                        class="w-10 h-10 rounded-full border-2 border-midnight bg-surface2 flex items-center justify-center text-xs font-bold text-white">
+                        +70
+                    </div>
+                </div>
+                <p class="text-sm text-gray-400">
+                    <span class="text-red-400">★★★★★</span> 95% học viên K01 hài lòng tuyệt đối
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem / Agitation -->
+    <section class="py-20 bg-surface">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="font-display text-4xl font-bold text-white mb-6">Bạn đang cảm thấy...</h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">Ngập lụt trong tasks thủ công</h3>
+                                <p class="text-gray-400">Bạn dành hàng giờ cho những việc lặp đi lặp lại mỗi ngày, trong
+                                    khi đối thủ đã dùng AI để làm xong trong 5 phút.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">Sợ bị đào thải</h3>
+                                <p class="text-gray-400">AI đang phát triển quá nhanh. Bạn biết mình cần học, nhưng
+                                    không biết bắt đầu từ đâu giữa "ma trận" kiến thức.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500 shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">Dùng AI như "Google search"</h3>
+                                <p class="text-gray-400">Bạn đã có tài khoản ChatGPT/Claude nhưng chỉ dùng để hỏi đáp cơ
+                                    bản, chưa khai thác được sức mạnh tự động hóa thật sự.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-purple-500 rounded-2xl blur-xl opacity-20">
+                    </div>
+                    <div class="glass-panel p-8 rounded-2xl relative">
+                        <div class="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <span class="ml-auto text-xs text-gray-500 font-mono">workflow.yaml</span>
+                        </div>
+                        <div class="space-y-3 font-mono text-sm">
+                            <div class="flex gap-4">
+                                <span class="text-gray-600">1</span>
+                                <span class="text-purple-400">const</span> <span class="text-white">task</span> = <span
+                                    class="text-green-400">"Manual Data Entry"</span>;
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="text-gray-600">2</span>
+                                <span class="text-purple-400">if</span> (<span class="text-white">!useAI</span>) {
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="text-gray-600">3</span>
+                                <span class="pl-4 text-red-400">wasteTime(5 * HOURS);</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="text-gray-600">4</span>
+                                } <span class="text-purple-400">else</span> {
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="text-gray-600">5</span>
+                                <span class="pl-4 text-cyan-400">automateWithn8n().done();</span>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="text-gray-600">6</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section id="curriculum" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-display text-4xl font-bold text-white mb-4">Lộ Trình <span class="text-cyan-400">4
+                        Tuần</span> Thực Chiến</h2>
+                <p class="text-gray-400">Từ tư duy căn bản đến xây dựng hệ thống tự động hóa phức tạp.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Week 1 -->
+                <div
+                    class="group hover:bg-surface2 transition-all p-6 rounded-2xl border border-white/5 bg-white/[0.02]">
+                    <div class="text-4xl font-black text-white/5 mb-4 group-hover:text-cyan-500/20 transition-colors">01
+                    </div>
+                    <div class="h-1 w-12 bg-cyan-500 rounded-full mb-6"></div>
+                    <h3 class="text-xl font-bold text-white mb-2">Tư Duy & Nền Tảng AI</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Hiểu đúng về AI. Kỹ thuật Prompt Engineering nâng
+                        cao để điều khiển AI chính xác như một nhân viên cao cấp.</p>
+                </div>
+
+                <!-- Week 2 -->
+                <div
+                    class="group hover:bg-surface2 transition-all p-6 rounded-2xl border border-white/5 bg-white/[0.02]">
+                    <div class="text-4xl font-black text-white/5 mb-4 group-hover:text-purple-500/20 transition-colors">
+                        02</div>
+                    <div class="h-1 w-12 bg-purple-500 rounded-full mb-6"></div>
+                    <h3 class="text-xl font-bold text-white mb-2">Cá Nhân Hóa & Tự Động</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Xây dựng "First Brain" với AI. Tự động hóa các tác
+                        vụ lặp lại hàng ngày trên máy tính của bạn.</p>
+                </div>
+
+                <!-- Week 3 -->
+                <div
+                    class="group hover:bg-surface2 transition-all p-6 rounded-2xl border border-white/5 bg-white/[0.02]">
+                    <div class="text-4xl font-black text-white/5 mb-4 group-hover:text-pink-500/20 transition-colors">03
+                    </div>
+                    <div class="h-1 w-12 bg-pink-500 rounded-full mb-6"></div>
+                    <h3 class="text-xl font-bold text-white mb-2">Content at Scale</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Quy trình sản xuất hàng loạt nội dung chất lượng
+                        cao cho Social Media, Blog, Email hoàn toàn tự động.</p>
+                </div>
+
+                <!-- Week 4 -->
+                <div
+                    class="group hover:bg-surface2 transition-all p-6 rounded-2xl border border-white/5 bg-white/[0.02]">
+                    <div class="text-4xl font-black text-white/5 mb-4 group-hover:text-blue-500/20 transition-colors">04
+                    </div>
+                    <div class="h-1 w-12 bg-blue-500 rounded-full mb-6"></div>
+                    <h3 class="text-xl font-bold text-white mb-2">Advanced Workflow</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Kết nối đa nền tảng. Đóng gói quy trình. Tối ưu hóa
+                        hệ thống để chạy ổn định 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stack / Value Anchoring -->
+    <section class="py-20 bg-surface relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto rounded-3xl border border-white/10 bg-midnight p-8 md:p-12">
+                <h2 class="font-display text-3xl font-bold text-center mb-10 text-white">Bạn Sẽ Nhận Được Gì?</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
+                        <div class="flex items-center gap-4">
+                            <span class="text-green-400 text-xl">✓</span>
+                            <span class="text-lg font-medium">4 Tuần Live Workshop (Trực tiếp qua Zoom)</span>
+                        </div>
+                        <span class="text-gray-400 line-through">5.000.000đ</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
+                        <div class="flex items-center gap-4">
+                            <span class="text-green-400 text-xl">✓</span>
+                            <span class="text-lg font-medium">Truy cập trọn đời bộ Videos Recordings</span>
+                        </div>
+                        <span class="text-gray-400 line-through">2.000.000đ</span>
+                    </div>
+                    <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
+                        <div class="flex items-center gap-4">
+                            <span class="text-green-400 text-xl">✓</span>
+                            <span class="text-lg font-medium">Thư viện Prompts & Templates Tự động hóa</span>
+                        </div>
+                        <span class="text-gray-400 line-through">1.500.000đ</span>
+                    </div>
+                    <div
+                        class="flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/20">
+                        <div class="flex items-center gap-4">
+                            <span class="text-purple-400 text-xl">★</span>
+                            <span class="text-lg font-bold text-white">Cộng Đồng Kín Hỗ Trợ 1:1</span>
+                        </div>
+                        <span class="text-white font-bold">VÔ GIÁ</span>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-white/10 flex justify-between items-center">
+                    <span class="text-gray-400 text-lg">Tổng giá trị thực tế</span>
+                    <span class="text-4xl font-black text-white">8.500.000đ+</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 relative">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-900/10 rounded-full blur-[100px] -z-10">
+        </div>
+
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-2xl mx-auto mb-16">
+                <div
+                    class="inline-block px-4 py-1 rounded-full bg-red-500/10 text-red-500 font-bold text-sm mb-4 border border-red-500/20 animate-pulse">
+                    CHỈ CÒN 24 GIỜ ƯU ĐÃI
+                </div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-6">Cam Kết Càng Lớn<br>Học Phí Càng
+                    Rẻ</h2>
+                <p class="text-gray-400 text-lg">
+                    Chúng tôi không muốn tiền của bạn nếu bạn không học. <br>
+                    Hãy chọn <span class="text-cyan-400 font-bold">Gói Cam Kết</span> để nhận ưu đãi lớn nhất và kết quả
+                    tốt nhất.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto items-end">
+
+                <!-- Package 1: Observer -->
+                <div
+                    class="bg-surface rounded-3xl p-8 border border-white/5 relative opacity-80 hover:opacity-100 transition-opacity">
+                    <h3 class="text-xl font-bold text-gray-300 mb-2">Gói Quan Sát</h3>
+                    <p class="text-sm text-gray-500 mb-6 h-10">"Tôi chỉ muốn xem, không có thời gian làm bài tập"</p>
+                    <div class="text-3xl font-bold text-white mb-6">1.990.000đ</div>
+
+                    <ul class="text-left space-y-4 mb-8 text-gray-400 text-sm">
+                        <li class="flex gap-3"><span class="text-green-500">✓</span> Full 4 buổi học qua Zoom</li>
+                        <li class="flex gap-3"><span class="text-green-500">✓</span> Xem lại video record</li>
+                        <li class="flex gap-3"><span class="text-green-500">✓</span> Tài liệu khóa học</li>
+                        <li class="flex gap-3 text-red-400 font-bold"><span class="text-red-400">✕</span> KHÔNG CẦN LÀM
+                            BÀI TẬP</li>
+                    </ul>
+                    <a href="https://forms.gle/XXXX"
+                        class="block w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 transition-colors">
+                        Đăng Ký Gói 1.990k
+                    </a>
+                </div>
+
+                <!-- Package 3: Committed (Hero) -->
+                <div
+                    class="gradient-border p-[2px] transform lg:-translate-y-8 relative z-10 shadow-2xl shadow-cyan-500/20">
+                    <div class="bg-[#151725] rounded-[0.9rem] p-8 h-full overflow-hidden relative">
+                        <!-- Badge -->
+                        <div
+                            class="absolute top-0 right-0 bg-gradient-to-l from-cyan-500 to-blue-500 text-black text-xs font-bold px-4 py-1 rounded-bl-xl">
+                            BEST VALUE
+                        </div>
+
+                        <h3 class="text-2xl font-bold text-white mb-2 text-cyan-400">Gói Cam Kết</h3>
+                        <p class="text-sm text-gray-400 mb-6 h-10">"Tôi quyết tâm học và làm bài tập đầy đủ (100%)"</p>
+
+                        <div class="flex items-baseline justify-center gap-2 mb-2">
+                            <span class="text-5xl font-black text-white">1.250.000đ</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-8 line-through">Giá gốc: 8.500.000đ</p>
+
+                        <div class="w-full h-px bg-white/10 mb-8"></div>
+
+                        <ul class="text-left space-y-4 mb-8 text-gray-300">
+                            <li class="flex gap-3"><span class="text-cyan-400">✓</span> <strong>Full 4 buổi học qua
+                                    Zoom</strong></li>
+                            <li class="flex gap-3"><span class="text-cyan-400">✓</span> <strong>Xem lại video record
+                                    trọn đời</strong></li>
+                            <li class="flex gap-3"><span class="text-cyan-400">✓</span> <strong>Tài liệu & Prompt
+                                    Library</strong></li>
+                            <li class="flex gap-3 bg-cyan-500/10 p-2 rounded-lg border border-cyan-500/20"><span
+                                    class="text-cyan-400">★</span> <strong>Cam kết làm 100% bài tập</strong></li>
+                            <li class="flex gap-3"><span class="text-cyan-400">★</span> Certificate hoàn thành</li>
+                        </ul>
+
+                        <a href="https://forms.gle/XXXX"
+                            class="block w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:scale-[1.02] text-white font-bold text-lg shadow-lg shadow-cyan-500/25 transition-all">
+                            Đăng Ký Gói 1.250k Ngay
+                        </a>
+                        <p class="text-xs text-gray-500 mt-4">*Hoàn tiền 100% nếu học xong không thấy giá trị</p>
+                    </div>
+                </div>
+
+                <!-- Package 2: Flexible -->
+                <div
+                    class="bg-surface rounded-3xl p-8 border border-white/5 relative opacity-90 hover:opacity-100 transition-opacity">
+                    <h3 class="text-xl font-bold text-gray-300 mb-2">Gói Linh Hoạt</h3>
+                    <p class="text-sm text-gray-500 mb-6 h-10">"Tôi sẽ cố gắng làm ít nhất 50% bài tập"</p>
+                    <div class="text-3xl font-bold text-white mb-6">1.500.000đ</div>
+
+                    <ul class="text-left space-y-4 mb-8 text-gray-400 text-sm">
+                        <li class="flex gap-3"><span class="text-green-500">✓</span> Full 4 buổi học qua Zoom</li>
+                        <li class="flex gap-3"><span class="text-green-500">✓</span> Xem lại video record</li>
+                        <li class="flex gap-3"><span class="text-green-500">✓</span> Tài liệu khóa học</li>
+                        <li class="flex gap-3 text-yellow-500"><span class="text-yellow-500">⚠️</span> Cam kết làm >2
+                            bài tập</li>
+                    </ul>
+                    <a href="https://forms.gle/XXXX"
+                        class="block w-full py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white font-medium border border-white/10 transition-colors">
+                        Đăng Ký Gói 1.500k
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-surface2/50">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="font-display text-3xl font-bold text-white mb-10 text-center">Câu Hỏi Thường Gặp</h2>
+
+            <div class="space-y-4" x-data="{ active: null }">
+                <!-- FAQ 1 -->
+                <div class="border border-white/10 rounded-xl bg-surface overflow-hidden">
+                    <button @click="active = (active === 1 ? null : 1)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+                        <span class="font-medium text-white">Tôi không rành công nghệ có học được không?</span>
+                        <span class="text-2xl text-gray-400" x-text="active === 1 ? '-' : '+'">+</span>
+                    </button>
+                    <div x-show="active === 1" x-collapse
+                        class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-white/[0.02]">
+                        Hoàn toàn được. Bootcamp thiết kế cho người bắt đầu. Chúng tôi tập trung vào tư duy và cách sử
+                        dụng các công cụ AI "No-code" (không cần lập trình). Chỉ cần bạn biết sử dụng máy tính cơ bản là
+                        đủ.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-white/10 rounded-xl bg-surface overflow-hidden">
+                    <button @click="active = (active === 2 ? null : 2)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+                        <span class="font-medium text-white">Nếu tôi bận không xem live được thì sao?</span>
+                        <span class="text-2xl text-gray-400" x-text="active === 2 ? '-' : '+'">+</span>
+                    </button>
+                    <div x-show="active === 2" x-collapse
+                        class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-white/[0.02]">
+                        Yên tâm, tất cả buổi học đều được Record (ghi hình) lại và upload lên hệ thống trong vòng 24h.
+                        Bạn có quyền truy cập trọn đời để xem lại bất cứ lúc nào.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-white/10 rounded-xl bg-surface overflow-hidden">
+                    <button @click="active = (active === 3 ? null : 3)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors">
+                        <span class="font-medium text-white">Sự khác biệt giữa các gói học phí là gì?</span>
+                        <span class="text-2xl text-gray-400" x-text="active === 3 ? '-' : '+'">+</span>
+                    </button>
+                    <div x-show="active === 3" x-collapse
+                        class="p-6 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5 bg-white/[0.02]">
+                        Nội dung học HOÀN TOÀN GIỐNG NHAU. Sự khác biệt nằm ở **Mức độ cam kết** của bạn. Chúng tôi ưu
+                        đãi giá rẻ hơn cho những ai cam kết làm bài tập đầy đủ, vì họ là những người sẽ tạo ra kết quả
+                        thực tế.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 bg-midnight text-center">
+        <div class="container mx-auto px-6">
+            <a href="#" class="text-2xl font-display font-bold text-white inline-block mb-8">
+                cuonghoa<span class="text-cyan-400">.ai</span>
+            </a>
+            <p class="text-gray-500 text-sm mb-8">
+                © 2025 AI Automation Bootcamp. All rights reserved. <br>
+                Được xây dựng & vận hành bởi đội ngũ Cuonghoa.ai
+            </p>
+            <div class="flex justify-center gap-6 text-sm text-gray-600">
+                <a href="#" class="hover:text-white">Điều khoản sử dụng</a>
+                <a href="#" class="hover:text-white">Chính sách bảo mật</a>
+                <a href="#" class="hover:text-white">Hỗ trợ</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

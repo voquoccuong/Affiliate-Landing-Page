@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Secure</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #020b1c;
+            color: #ecf0f1;
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Hexagon Background Pattern */
+        .hex-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill-opacity='0.03' fill='%23ffffff' fill-rule='evenodd'/%3E%3C/svg%3E");
+            z-index: -1;
+            animation: pan 60s linear infinite;
+        }
+
+        @keyframes pan {
+            from {
+                background-position: 0 0;
+            }
+
+            to {
+                background-position: 100% 100%;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        h1 {
+            font-family: 'Oxanium', cursive;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .shield-icon {
+            font-size: 15rem;
+            color: #f1c40f;
+            /* Gold shield */
+            filter: drop-shadow(0 0 30px rgba(241, 196, 15, 0.4));
+            animation: float 4s ease-in-out infinite;
+            text-align: center;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .sec-card {
+            background: rgba(44, 62, 80, 0.5);
+            border: 1px solid #34495e;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .sec-card:hover {
+            transform: translateY(-5px);
+            background: rgba(52, 152, 219, 0.2);
+            border-color: #3498db;
+        }
+
+        .sec-card i {
+            font-size: 2rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .sec-card h3 {
+            font-family: 'Oxanium', cursive;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .sec-card p {
+            font-size: 0.9rem;
+            color: #95a5a6;
+            margin: 0;
+        }
+
+        .btn-secure {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            border: 1px solid #3498db;
+            color: white;
+            padding: 15px 40px;
+            font-family: 'Oxanium', cursive;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(42, 82, 152, 0.5);
+            transition: all 0.2s;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        .btn-secure:hover {
+            box-shadow: 0 0 30px rgba(42, 82, 152, 0.8);
+            transform: scale(1.05);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-family: 'Oxanium';
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(46, 204, 113, 0.4);
+        }
+
+        @media(max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .card-grid {
+                text-align: left;
+            }
+
+            .shield-icon {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hex-bg"></div>
+
+    <div class="container">
+
+        <div>
+            <div class="status-badge">
+                <div style="width:8px; height:8px; border-radius:50%; background:#2ecc71; box-shadow:0 0 10px #2ecc71;">
+                </div>
+                SYSTEM PROTECTED
+            </div>
+
+            <h1>Fortified<br>Intelligence</h1>
+            <p class="lead">
+                Enterprise-grade security for your automated infrastructure.
+                Sleep soundly knowing your assets are shielded by military-grade encryption.
+            </p>
+
+            <button class="btn-secure">Activate Shield</button>
+
+            <div class="card-grid">
+                <div class="sec-card">
+                    <i class="ph-fill ph-lock-key"></i>
+                    <h3>E2E Encryption</h3>
+                    <p>AES-256 bit data protection.</p>
+                </div>
+                <div class="sec-card">
+                    <i class="ph-fill ph-fingerprint"></i>
+                    <h3>Bio-Auth</h3>
+                    <p>Identity verification layers.</p>
+                </div>
+                <div class="sec-card">
+                    <i class="ph-fill ph-shield-check"></i>
+                    <h3>Threat Detect</h3>
+                    <p>AI-driven anomaly blocking.</p>
+                </div>
+                <div class="sec-card">
+                    <i class="ph-fill ph-cloud-check"></i>
+                    <h3>Safe Cloud</h3>
+                    <p>Redundant detailed backups.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <div class="shield-icon">
+                <i class="ph-fill ph-shield-star"></i>
+            </div>
+            <div style="font-family:'Oxanium'; color:#f1c40f; margin-top:20px; letter-spacing:2px;">TRUST LEVEL: MAX
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Linear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #08090a;
+            color: #e2e8f0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Glow */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 600px;
+            background: radial-gradient(circle at top, rgba(120, 119, 198, 0.15), transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Stars/Particles */
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Nav */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 80px;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #a78bfa, #818cf8);
+            border-radius: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .btn-linear {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-linear:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+            border: none;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(120, 119, 198, 0.1);
+            color: #a78bfa;
+            border: 1px solid rgba(120, 119, 198, 0.2);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            background: linear-gradient(to bottom right, #fff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Glass Cards Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            /* Important Linear detail */
+            border-radius: 12px;
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: #a78bfa;
+            font-size: 1.2rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        p.card-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* Simulated UI Image */
+        .ui-preview {
+            margin-top: 100px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(13, 13, 16, 0.8);
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            position: relative;
+        }
+
+        .ui-preview::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at bottom, rgba(120, 119, 198, 0.1), transparent 50%);
+            pointer-events: none;
+        }
+
+        .fake-ui-row {
+            height: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        .fake-text {
+            width: 100px;
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+        }
+
+        .fake-text.long {
+            width: 200px;
+        }
+
+        .fake-avatar {
+            width: 24px;
+            height: 24px;
+            background: #333;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ambient-glow"></div>
+    <div class="stars"></div>
+
+    <div class="container">
+
+        <nav>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                CuongHoa
+            </div>
+            <div class="nav-links">
+                <a href="#">Features</a>
+                <a href="#">Method</a>
+                <a href="#">Customers</a>
+                <a href="#">Changelog</a>
+            </div>
+            <div class="nav-links" style="gap:12px;">
+                <button class="btn-linear">Log in</button>
+                <button class="btn-linear btn-primary">Sign up</button>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="pill">
+                <span>New Release v2.0</span>
+                <i class="ph-bold ph-arrow-right"></i>
+            </div>
+            <h1>Automate your<br>entire workflow.</h1>
+            <p class="subtitle">Linear-style efficiency for solopreneurs. Build systems, not just lists. A better way to
+                build products.</p>
+            <div style="display:flex; gap:16px; justify-content:center;">
+                <button class="btn-linear btn-primary" style="padding:12px 24px;">Start Building</button>
+                <button class="btn-linear" style="padding:12px 24px;">Introduction <span
+                        style="opacity:0.5; margin-left:5px;">K</span></button>
+            </div>
+        </section>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="ph-fill ph-lightning"></i></div>
+                <h3>Instant Sync</h3>
+                <p class="card-desc">Real-time data synchronization across all your automated channels. No latency.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="ph-fill ph-chart-bar"></i></div>
+                <h3>Deep Insights</h3>
+                <p class="card-desc">Analytics that actually mean something. Conversion rates at a glance.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon"><i class="ph-fill ph-puzzle-piece"></i></div>
+                <h3>Modular</h3>
+                <p class="card-desc">Snap together different modules like Lego blocks. Build your own stack.</p>
+            </div>
+
+        </div>
+
+        <div class="ui-preview">
+            <div
+                style="color:#94a3b8; font-size:0.8rem; padding: 10px 20px; border-bottom:1px solid rgba(255,255,255,0.05); display:flex; gap:20px;">
+                <span>Active Issues</span>
+                <span>Backlog</span>
+                <span>Board</span>
+            </div>
+            <div class="fake-ui-row">
+                <div class="fake-avatar"></div>
+                <div class="fake-text"></div>
+                <div class="fake-text long" style="background:#2d2d3a;"></div>
+                <div
+                    style="margin-left:auto; width:60px; height:20px; background:rgba(120, 119, 198, 0.2); border-radius:4px;">
+                </div>
+            </div>
+            <div class="fake-ui-row">
+                <div class="fake-avatar"></div>
+                <div class="fake-text"></div>
+                <div class="fake-text long" style="background:#2d2d3a;"></div>
+                <div
+                    style="margin-left:auto; width:60px; height:20px; background:rgba(255, 255, 255, 0.05); border-radius:4px;">
+                </div>
+            </div>
+            <div class="fake-ui-row">
+                <div class="fake-avatar"></div>
+                <div class="fake-text"></div>
+                <div class="fake-text long" style="background:#2d2d3a;"></div>
+                <div
+                    style="margin-left:auto; width:60px; height:20px; background:rgba(255, 255, 255, 0.05); border-radius:4px;">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

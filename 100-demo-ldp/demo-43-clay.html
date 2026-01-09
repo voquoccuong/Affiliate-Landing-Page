@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Clay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f0f4f8;
+            color: #4a5568;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .clay-container {
+            max-width: 1000px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* The Clay Effect */
+        .clay-card {
+            background: #f0f4f8;
+            border-radius: 40px;
+            padding: 40px;
+            /* Inner Shadow for "Indented" or Outer Shadow for "Extruded" */
+            box-shadow:
+                20px 20px 60px #cbd2da,
+                -20px -20px 60px #ffffff;
+            /* To make it look like clay, we need soft curves and maybe some inner glow */
+        }
+
+        .clay-floating {
+            background: #f0f4f8;
+            border-radius: 50px;
+            padding: 40px;
+            box-shadow:
+                35px 35px 70px #cbd2da,
+                -35px -35px 70px #ffffff;
+            transform: rotate(-5deg);
+            transition: all 0.3s ease;
+        }
+
+        .clay-floating:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow:
+                25px 25px 50px #cbd2da,
+                -25px -25px 50px #ffffff;
+        }
+
+        h1 {
+            font-weight: 800;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #5560b4;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .btn-clay {
+            display: inline-block;
+            background: #f0f4f8;
+            color: #5560b4;
+            font-weight: 800;
+            text-decoration: none;
+            padding: 20px 50px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+            box-shadow:
+                12px 12px 24px #cbd2da,
+                -12px -12px 24px #ffffff;
+            transition: all 0.2s;
+        }
+
+        .btn-clay:active {
+            box-shadow: inset 6px 6px 12px #cbd2da, inset -6px -6px 12px #ffffff;
+            transform: scale(0.98);
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .i-purple {
+            color: #805ad5;
+            box-shadow: inset 8px 8px 16px #d1d5db, inset -8px -8px 16px #ffffff;
+        }
+
+        .i-pink {
+            color: #d53f8c;
+            box-shadow: 8px 8px 16px #cbd2da, -8px -8px 16px #ffffff;
+        }
+
+        .i-teal {
+            color: #319795;
+            box-shadow: 8px 8px 16px #cbd2da, -8px -8px 16px #ffffff;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .pill {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+            box-shadow: inset 4px 4px 8px #cbd2da, inset -4px -4px 8px #ffffff;
+        }
+
+        .pill.soft-red {
+            color: #e53e3e;
+        }
+
+        @media(max-width: 800px) {
+            .clay-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .feature-grid {
+                text-align: left;
+            }
+
+            .clay-floating {
+                transform: rotate(0);
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="clay-container">
+
+        <div class="text-content">
+            <span class="pill soft-red">New V2.0</span>
+            <h1>Soft &<br>Playful AI</h1>
+            <p>Automation doesn't have to be cold and rigid. Experience the friendly side of artificial intelligence.
+                Built for humans.</p>
+            <a href="#" class="btn-clay">Start Playing</a>
+        </div>
+
+        <div class="clay-floating">
+            <div class="feature-grid">
+
+                <div style="padding: 20px;">
+                    <div class="icon-box i-pink"><i class="ph-fill ph-heart"></i></div>
+                    <h3>Loved by Users</h3>
+                    <p style="font-size:0.9rem; margin-bottom:0;">Simple enough for beginners, powerful enough for pros.
+                    </p>
+                </div>
+
+                <div style="padding: 20px;">
+                    <div class="icon-box i-teal"><i class="ph-fill ph-rocket"></i></div>
+                    <h3>Fast Launch</h3>
+                    <p style="font-size:0.9rem; margin-bottom:0;">Get your campaigns live in minutes, not days.</p>
+                </div>
+
+                <div style="padding: 20px; grid-column: span 2; display:flex; align-items:center; gap:20px;">
+                    <div class="icon-box i-purple" style="width:60px; height:60px; margin-bottom:0;"><i
+                            class="ph-fill ph-magic-wand"></i></div>
+                    <div>
+                        <h3 style="margin-bottom:5px;">Magic Rewrite</h3>
+                        <p style="font-size:0.9rem; margin-bottom:0;">One click optimization.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

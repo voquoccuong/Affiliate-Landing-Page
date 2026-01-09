@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Academia</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #1a120b;
+            /* Dark wood/coffee */
+            color: #d5c5a3;
+            /* Old paper */
+            font-family: 'EB Garamond', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .book-cover {
+            width: 100%;
+            max-width: 600px;
+            background: #2b1d14;
+            /* Leather color */
+            padding: 60px 40px;
+            border-radius: 5px 15px 15px 5px;
+            box-shadow:
+                inset 10px 0 20px rgba(0, 0, 0, 0.5),
+                /* Spine shadow */
+                20px 20px 50px rgba(0, 0, 0, 0.8),
+                0 0 0 2px #3e2723;
+            position: relative;
+            text-align: center;
+            border-left: 15px solid #1a120b;
+            /* Spine */
+        }
+
+        /* Gold Leaf decorations */
+        .gold-border {
+            border: 2px solid #c5a059;
+            /* Dull gold */
+            padding: 10px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .gold-border::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            border: 1px solid #c5a059;
+        }
+
+        .decorative-icon {
+            font-size: 3rem;
+            color: #c5a059;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: #c5a059;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+        }
+
+        .latin-motto {
+            font-style: italic;
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #5d4037;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .wax-seal-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at 30% 30%, #b71c1c, #7f0000);
+            border-radius: 50%;
+            color: #5d0000;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow:
+                0 5px 10px rgba(0, 0, 0, 0.5),
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            text-align: center;
+            border: 2px solid #8e0000;
+            transition: transform 0.3s;
+        }
+
+        .wax-seal-btn:hover {
+            transform: scale(1.1);
+            color: #ffcccc;
+        }
+
+        .wax-seal-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Candles effect (subtle animation) */
+        @keyframes flicker {
+            0% {
+                opacity: 0.9;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.85;
+            }
+        }
+
+        .candle-light {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30vh;
+            background: radial-gradient(ellipse at bottom, rgba(255, 160, 0, 0.1), transparent 70%);
+            z-index: 100;
+            pointer-events: none;
+            animation: flicker 3s infinite alternate;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="candle-light"></div>
+
+    <div class="book-cover">
+
+        <div class="decorative-icon">
+            <i class="ph-fill ph-student"></i>
+        </div>
+
+        <div class="gold-border">
+            <h1>The Secret History<br>of Automation</h1>
+        </div>
+
+        <div class="latin-motto">Scientia Potentia Est</div>
+
+        <p>
+            You have stumbled upon the forbidden archives.
+            Here lies the knowledge to transcend manual labor and
+            achieve intellectual dominance through the dark arts of machine learning.
+        </p>
+
+        <div class="wax-seal-container">
+            <a href="#" class="wax-seal-btn">OPEN<br>ACCESS</a>
+        </div>
+
+        <div style="margin-top: 40px; font-size: 0.9rem; opacity: 0.5;">
+            Vol. V • Lib. XXIV
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blur Gradient - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Abstract blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.8;
+            z-index: 0;
+            animation: float 20s infinite alternate;
+        }
+
+        .b1 {
+            width: 50vw;
+            height: 50vw;
+            background: #FF9A9E;
+            top: -10%;
+            left: -10%;
+            animation-delay: 0s;
+        }
+
+        .b2 {
+            width: 60vw;
+            height: 60vw;
+            background: #FECFEF;
+            bottom: -20%;
+            right: -10%;
+            animation-delay: -5s;
+        }
+
+        .b3 {
+            width: 40vw;
+            height: 40vw;
+            background: #a18cd1;
+            top: 40%;
+            left: 40%;
+            animation-delay: -10s;
+        }
+
+        .b4 {
+            width: 30vw;
+            height: 30vw;
+            background: #fbc2eb;
+            bottom: 10%;
+            left: 10%;
+            animation-delay: -2s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-20px, 40px) scale(0.9);
+            }
+        }
+
+        /* Glassmorphism content card */
+        .card {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 4rem 6rem;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 0 0 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        p {
+            font-size: 1.5rem;
+            color: #555;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .btn-soft {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: white;
+            color: #764ba2;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-soft:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(118, 75, 162, 0.3);
+        }
+
+        /* Gradient grain overlay */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="noise"></div>
+
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blob b4"></div>
+
+    <div class="card">
+        <h1>Ethereal<br>Focus</h1>
+        <p>Soft shadows, gentle gradients, and clarity of thought. Experience the calm side of technology.</p>
+        <a href="https://www.cuonghoa.website" class="btn-soft">Float Away</a>
+    </div>
+
+</body>
+
+</html>

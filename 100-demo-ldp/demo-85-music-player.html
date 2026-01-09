@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Glassmorphism Player */
+        .player {
+            width: 350px;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .cover-art {
+            width: 200px;
+            height: 200px;
+            background: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80');
+            background-size: cover;
+            border-radius: 50%;
+            /* Vinyl style */
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: spin 10s linear infinite;
+            position: relative;
+        }
+
+        /* Center hole */
+        .cover-art::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        h2 {
+            margin: 0;
+            color: #444;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin: 5px 0 30px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+            margin-bottom: 30px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            width: 65%;
+            height: 100%;
+            background: #FF6B6B;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: -3px;
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .btn-ctrl {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #555;
+            transition: transform 0.2s;
+        }
+
+        .btn-ctrl:hover {
+            color: #000;
+        }
+
+        .btn-play {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-play:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-music {
+            display: inline-block;
+            margin-top: 30px;
+            background: #FF6B6B;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(255, 107, 107, 0.4);
+            transition: all 0.3s;
+        }
+
+        .cta-music:hover {
+            background: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        /* Time markers */
+        .time {
+            position: absolute;
+            top: 25px;
+            /* relative to progress bar container actually needs diff logic */
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 5px;
+            /* Offset from bar */
+        }
+
+        .current-time {
+            left: 0;
+        }
+
+        .total-time {
+            right: 0;
+        }
+
+        .progress-wrapper {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="player">
+        <div class="cover-art"></div>
+
+        <h2>Greatest Hits</h2>
+        <p>CuongHoa.AI • 2024 Remaster</p>
+
+        <div class="progress-wrapper">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="time current-time" style="top: 10px;">2:14</div>
+            <div class="time total-time" style="top: 10px; right:0;">3:45</div>
+        </div>
+
+        <div class="controls">
+            <button class="btn-ctrl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
+                </svg>
+            </button>
+            <a href="https://www.cuonghoa.website" class="btn-ctrl btn-play">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l11-7z" />
+                </svg>
+            </a>
+            <button class="btn-ctrl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
+                </svg>
+            </button>
+        </div>
+
+        <a href="https://www.cuonghoa.website" class="cta-music">Listen to Full Album</a>
+    </div>
+
+</body>
+
+</html>

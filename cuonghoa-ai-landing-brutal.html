@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI // BRUTAL</title>
+
+    <!-- Google Fonts: Space Mono (for that raw tech feel) & Archivo Black -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Archivo Black', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    colors: {
+                        brutal: {
+                            yellow: '#FFDE59',
+                            red: '#FF5757',
+                            purple: '#A259FF',
+                            black: '#121212',
+                            white: '#FFFFFF',
+                            blue: '#5471FF',
+                        }
+                    },
+                    boxShadow: {
+                        'hard': '4px 4px 0px 0px #000000',
+                        'hard-hover': '8px 8px 0px 0px #000000',
+                        'hard-sm': '2px 2px 0px 0px #000000',
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #FFDE59;
+            color: #121212;
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body class="font-mono selection:bg-black selection:text-white">
+
+    <!-- Top Marquee -->
+    <div
+        class="bg-black text-white border-b-4 border-black py-2 marquee-container font-sans text-xl uppercase tracking-widest">
+        <div class="marquee-content">
+            // MASTER AI AUTOMATION // BUILD SCALABLE SYSTEMS // JOIN 1000+ STUDENTS // MASTER AI AUTOMATION // BUILD
+            SCALABLE SYSTEMS // JOIN 1000+ STUDENTS //
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="border-b-4 border-black bg-white sticky top-0 z-50">
+        <div class="container mx-auto px-4 h-20 flex items-center justify-between">
+            <a href="#" class="text-3xl font-sans tracking-tighter hover:text-brutal-blue transition-colors">
+                CUONGHOA.AI
+            </a>
+
+            <div class="hidden md:flex gap-8 font-bold">
+                <a href="#courses"
+                    class="hover:underline decoration-4 decoration-brutal-blue underline-offset-4">COURSES</a>
+                <a href="#"
+                    class="hover:underline decoration-4 decoration-brutal-purple underline-offset-4">BLUEPRINTS</a>
+                <a href="#" class="hover:underline decoration-4 decoration-brutal-red underline-offset-4">COMMUNITY</a>
+            </div>
+
+            <button
+                class="bg-black text-white px-6 py-2 font-bold shadow-hard hover:shadow-hard-hover hover:-translate-y-1 hover:-translate-x-1 transition-all border-2 border-transparent active:translate-x-0 active:translate-y-0 active:shadow-none">
+                LOGIN_NOW
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12 md:py-20">
+
+        <!-- Hero -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+            <div>
+                <div
+                    class="inline-block bg-white border-2 border-black px-4 py-2 font-bold mb-6 shadow-hard-sm transform -rotate-2">
+                    🚀 AUTOMATION FOR THE BRAVE
+                </div>
+                <h1 class="text-6xl md:text-8xl font-sans leading-none mb-8">
+                    WORK LESS.<br>
+                    <span class="text-white text-stroke-3 text-stroke-black"
+                        style="-webkit-text-stroke: 3px black;">EARN MORE.</span>
+                </h1>
+                <p
+                    class="text-xl md:text-2xl font-bold mb-10 bg-white inline-block border-2 border-black p-4 shadow-hard">
+                    Stop manually copying data. <br>
+                    Learn n8n, Lark & Make to build your empire.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="#courses"
+                        class="bg-brutal-blue text-white text-xl px-10 py-5 font-sans border-2 border-black shadow-hard hover:shadow-hard-hover transition-all text-center hover:bg-blue-600">
+                        START LEARNING
+                    </a>
+                    <a href="#"
+                        class="bg-white text-black text-xl px-10 py-5 font-sans border-2 border-black shadow-hard hover:shadow-hard-hover transition-all text-center">
+                        SEE DEMOS
+                    </a>
+                </div>
+            </div>
+
+            <!-- Graphic -->
+            <div class="relative hidden lg:block">
+                <div class="absolute inset-0 bg-black translate-x-4 translate-y-4 border-2 border-black"></div>
+                <div
+                    class="relative bg-white border-4 border-black p-8 shadow-none h-full flex flex-col justify-center items-center text-center">
+                    <i data-lucide="bot" class="w-32 h-32 mb-4"></i>
+                    <div class="text-4xl font-sans mb-4">99%</div>
+                    <div class="text-xl font-bold uppercase">Manual Tasks Eliminated</div>
+                </div>
+
+                <!-- Floating badge -->
+                <div
+                    class="absolute -top-10 -right-10 bg-brutal-red text-white w-32 h-32 rounded-full border-4 border-black flex items-center justify-center font-sans text-center text-sm shadow-hard animate-bounce-slow font-bold">
+                    JOIN<br>NOW
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack Ticker -->
+        <div
+            class="mb-24 border-4 border-black bg-white p-8 shadow-hard grid grid-cols-2 md:grid-cols-4 gap-8 text-center font-sans text-2xl md:text-4xl">
+            <div class="hover:text-brutal-red cursor-pointer transition-colors">N8N</div>
+            <div class="hover:text-brutal-blue cursor-pointer transition-colors">LARK</div>
+            <div class="hover:text-brutal-purple cursor-pointer transition-colors">MAKE</div>
+            <div class="hover:text-brutal-yellow cursor-pointer text-stroke-1 transition-colors">OPENAI</div>
+        </div>
+
+        <!-- Courses -->
+        <h2 class="text-5xl md:text-6xl font-sans mb-12 border-b-4 border-black pb-4 inline-block">RAW MATERIALS</h2>
+
+        <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- JS Injected -->
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white border-t-4 border-black py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-6xl md:text-9xl font-sans mb-8">CUONGHOA.AI</h2>
+            <div class="flex justify-center gap-8 font-bold text-xl mb-8">
+                <a href="#" class="hover:text-brutal-yellow underline decoration-wavy">FACEBOOK</a>
+                <a href="#" class="hover:text-brutal-yellow underline decoration-wavy">YOUTUBE</a>
+                <a href="#" class="hover:text-brutal-yellow underline decoration-wavy">EMAIL</a>
+            </div>
+            <p class="font-mono text-gray-400">NO COPYRIGHT. JUST SHIP IT. 2025.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const courseData = {
+            "courses": [
+                {
+                    "title": "[S01] Tổng quan về Automation & kinh nghiệm làm nghề",
+                    "description": "Giới thiệu tổng quan về chương trình AI Automation In Action và chia sẻ kinh nghiệm làm nghề từ các dự án thực chiến",
+                    "price": 2900000,
+                    "color": "bg-white",
+                    "tools": ["Mindset", "Automation"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+                    "productURL": "https://go.cuonghoa.ai/s01-tong-quan-ve-automation-kinh-nghiem-lam-nghe"
+                },
+                {
+                    "title": "[S02] Thông báo tiền ra/vào & báo cáo từ Internet Banking",
+                    "description": "Tự động thông báo giao dịch ngân hàng và báo cáo biến động số dự tiền ra tiền vào theo thời gian thực (real-time).",
+                    "price": 1900000,
+                    "color": "bg-brutal-blue text-white",
+                    "hasFlashSale": true,
+                    "tools": ["SePay", "Lark", "n8n"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+                    "productURL": "https://go.cuonghoa.ai/tong-hop-bao-cao-tien-vao-ra-tu-dong-tu-internet-banking"
+                },
+                {
+                    "title": "[S03] Báo cáo doanh thu & vận hành khóa học tinh gọn",
+                    "description": "Đồng bộ đơn hàng từ website Woocommerce về LarkBase để vận hành nhanh.",
+                    "price": 2900000,
+                    "color": "bg-white",
+                    "tools": ["Wordpress", "SePay", "Lark"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+                    "productURL": "https://go.cuonghoa.ai/bao-cao-doanh-thu-va-van-hanh-khoa-hoc-tinh-gon"
+                },
+                {
+                    "title": "[S04] Tự động hóa quy trình hợp đồng & công nợ",
+                    "description": "Xây dựng hệ thống quản lý báo giá hợp đồng phiếu thu…no-code.",
+                    "price": 4900000,
+                    "color": "bg-brutal-purple text-white",
+                    "tools": ["SePay", "Lark", "n8n"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+                    "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-bao-gia-va-quan-ly-cong-no-tu-dong"
+                },
+                {
+                    "title": "[S05] Chăm sóc group chat Zalo bằng Zalo cá nhân",
+                    "description": "Lên lịch đăng bài tự động hóa lên nhiều nền tảng Facebook, Zalo (đặc biệt là Zalo group) dựa theo các nội dung tại file Google Sheet",
+                    "price": 2900000,
+                    "color": "bg-white",
+                    "tools": ["Make", "Pancake", "Facebook"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-3-20250909025510-8mrrg.png",
+                    "productURL": "https://go.cuonghoa.ai/cham-soc-group-chat-bang-zalo-ca-nhan"
+                },
+                {
+                    "title": "[S06] Tự động hóa hoạt động CSKH cho shop bán lẻ trên Shopee",
+                    "description": "Tự động đồng bộ đánh giá Shopee và cảnh báo ngay khi có review xấu để CSKH kịp thời xử lý",
+                    "price": 3900000,
+                    "color": "bg-brutal-red text-white",
+                    "tools": ["Lark", "n8n", "Shopee"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-4-20250909025943-0n2dg.png",
+                    "productURL": "https://go.cuonghoa.ai/tu-dong-xu-ly-danh-gia-xau-shopee"
+                }
+            ]
+        };
+
+        const grid = document.getElementById('course-grid');
+        function formatPrice(price) { return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price); }
+
+        function createCard(course) {
+            return `
+                <div class="${course.color || 'bg-white'} border-4 border-black shadow-hard hover:shadow-hard-hover hover:-translate-y-2 hover:-translate-x-2 transition-all p-4 flex flex-col h-full relative group">
+                    <div class="h-48 border-2 border-black mb-4 overflow-hidden relative">
+                         <img src="${course.featureImage}" alt="${course.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all">
+                         ${course.hasFlashSale ? `<div class="absolute top-2 right-2 bg-brutal-red text-white border-2 border-black font-sans px-2 animate-pulse">FLASH SALE</div>` : ''}
+                    </div>
+                    
+                    <div class="flex-1">
+                        <div class="flex gap-2 mb-3">
+                             ${course.tools.map(tool => `<span class="bg-black text-white text-xs px-2 py-1 font-bold uppercase">${tool}</span>`).join('')}
+                        </div>
+                        <h3 class="font-sans text-2xl leading-tight mb-2 uppercase">${course.title}</h3>
+                        <p class="font-mono text-sm opacity-80 mb-6 line-clamp-3">${course.description}</p>
+                    </div>
+
+                    <div class="mt-auto pt-4 border-t-4 border-black flex justify-between items-center">
+                        <span class="font-sans text-xl font-bold">${formatPrice(course.price)}</span>
+                        <a href="${course.productURL}" target="_blank" class="bg-black text-white w-10 h-10 flex items-center justify-center hover:bg-gray-800 border-2 border-transparent hover:border-white">
+                            <i data-lucide="arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        grid.innerHTML = courseData.courses.map(createCard).join('');
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C:\DOS_MODE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+        body {
+            background-color: #000;
+            color: #ccc;
+            font-family: 'VT323', monospace;
+            font-size: 24px;
+            margin: 0;
+            padding: 20px;
+            height: 100vh;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ccc;
+            padding: 20px;
+            box-sizing: border-box;
+            background: #0000AA;
+            /* Classic Blue Screen background like Norton Commander or old BIOS setup, or go pure DOS black. Let's go Pure DOS Black content */
+            background: black;
+            position: relative;
+        }
+
+        .crt-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        ::selection {
+            background: #ccc;
+            color: black;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background: #ccc;
+            color: black;
+        }
+
+        .line {
+            margin-bottom: 5px;
+        }
+
+        .prompt {
+            color: #ccc;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: #ccc;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .ascii-art {
+            white-space: pre;
+            color: #ffff55;
+            /* Yellowish */
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+
+        .menu-box {
+            border: 1px double #ccc;
+            width: fit-content;
+            padding: 1rem 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .status-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ccc;
+            color: black;
+            padding: 5px 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="crt-overlay"></div>
+
+    <div class="container">
+        <div class="line">Last login: Mon Dec 30 23:00:00 2024 on tty1</div>
+        <div class="line">CuongHoa MS-DOS v6.22</div>
+        <div class="line">(C)Copyright CuongHoa Corp 1980-2024.</div>
+        <br>
+
+        <div class="ascii-art">
+            _____
+            / ____|
+            | |
+            | |
+            | |____
+            \_____| uongHoa.AI
+        </div>
+
+        <div class="line"><span class="prompt">C:\USERS\GUEST></span> dir /w</div>
+        <br>
+        <div class="line"> Volume in drive C is SYSTEM</div>
+        <div class="line"> Volume Serial Number is 1337-CODE</div>
+        <br>
+        <div class="line"> Directory of C:\USERS\GUEST</div>
+        <br>
+        <div class="line">[.] [..] [PROJECTS] [SERVICES] [CONTACT]</div>
+        <div class="line">README.TXT AUTOEXEC.BAT CONFIG.SYS DOOM.EXE</div>
+        <div class="line"> 4 file(s) 1,024 bytes</div>
+        <div class="line"> 3 dir(s) 640,000 bytes free</div>
+        <br>
+
+        <div class="line"><span class="prompt">C:\USERS\GUEST></span> type README.TXT</div>
+        <div class="line">WELCOME TO THE SYSTEM.</div>
+        <div class="line">ACCESS HIGH CONVERSION LANDING PAGES.</div>
+        <br>
+
+        <div class="menu-box">
+            <div class="line" style="text-align: center; border-bottom: 1px solid #ccc; margin-bottom: 10px;">MAIN MENU
+            </div>
+            <a href="https://www.cuonghoa.website" class="menu-item">[1] EXECUTE STARTUP.EXE</a>
+            <a href="#" class="menu-item">[2] VIEW SOURCE</a>
+            <a href="#" class="menu-item">[3] EXIT TO WINDOWS</a>
+        </div>
+
+        <br>
+        <div class="line"><span class="prompt">C:\USERS\GUEST></span> <span class="cursor"></span></div>
+
+        <div class="status-bar">
+            F1=Help F5=Refresh F10=Exit Alt+X=Quit
+        </div>
+    </div>
+</body>
+
+</html>

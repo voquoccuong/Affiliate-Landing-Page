@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - System 98</title>
+    <link href="https://unpkg.com/98.css" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            background-color: #008080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Pixelified Sans', sans-serif;
+        }
+
+        .desktop-icons {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1;
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80px;
+            cursor: pointer;
+            color: white;
+            text-align: center;
+        }
+
+        .icon-item i {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .icon-text {
+            background: #008080;
+            padding: 2px;
+        }
+
+        /* Windows */
+        .window-container {
+            width: 800px;
+            max-width: 100%;
+            z-index: 10;
+        }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 15px;
+            background: white;
+            border: 2px solid #808080;
+            /* Sunken field */
+            border-style: inset;
+        }
+
+        .course-item {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .course-item:hover {
+            background-color: #000080;
+            color: white;
+        }
+
+        .course-item img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+        }
+
+        .start-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: silver;
+            border-top: 2px solid white;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+            z-index: 100;
+        }
+
+        .start-btn {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+            padding: 5px 10px;
+            min-width: 80px;
+        }
+
+        .clock {
+            margin-left: auto;
+            border: 2px solid gray;
+            border-style: inset;
+            padding: 5px 15px;
+            margin-right: 5px;
+            background: silver;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="desktop-icons">
+        <div class="icon-item" onclick="alert('System A ok')">
+            <i class="ph-fill ph-monitor"></i>
+            <span class="icon-text">My Computer</span>
+        </div>
+        <div class="icon-item">
+            <i class="ph-fill ph-trash"></i>
+            <span class="icon-text">Recycle Bin</span>
+        </div>
+        <div class="icon-item">
+            <i class="ph-fill ph-globe-hemisphere-east"></i>
+            <span class="icon-text">Internet</span>
+        </div>
+    </div>
+
+    <div class="window-container">
+        <div class="window">
+            <div class="title-bar">
+                <div class="title-bar-text">Welcome to CuongHoa.AI Setup Wizard</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div style="display: flex; gap: 20px; align-items: flex-start; margin-bottom: 20px;">
+                    <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" width="64" height="64">
+                    <div>
+                        <p><strong>Automation Installation</strong></p>
+                        <p>Select the components you want to install into your brain business system.</p>
+                        <p>Click "Next" to continue.</p>
+                    </div>
+                </div>
+
+                <fieldset>
+                    <legend>Available Modules (Courses)</legend>
+                    <div class="course-list">
+                        <div class="course-item">
+                            <input type="checkbox" checked id="c1">
+                            <label for="c1" style="flex:1; cursor: inherit;">[S01] Automation Mindset.exe</label>
+                            <span>2.9M</span>
+                        </div>
+                        <div class="course-item">
+                            <input type="checkbox" id="c2">
+                            <label for="c2" style="flex:1; cursor: inherit;">[S02] Banking_Report_v2.0.exe</label>
+                            <span>1.9M</span>
+                        </div>
+                        <div class="course-item">
+                            <input type="checkbox" id="c3">
+                            <label for="c3" style="flex:1; cursor: inherit;">[S09] AI_Content_Generator.bat</label>
+                            <span>7.9M</span>
+                        </div>
+                        <div class="course-item">
+                            <input type="checkbox" id="c4">
+                            <label for="c4" style="flex:1; cursor: inherit;">[Expert] LadiPage_System.dll</label>
+                            <span>6.9M</span>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+                    <button disabled>&lt; Back</button>
+                    <button style="font-weight: bold;">Next &gt;</button>
+                    <button>Cancel</button>
+                </div>
+
+                <div class="status-bar" style="margin-top: 10px;">
+                    <p class="status-bar-field">Press F1 for Help</p>
+                    <p class="status-bar-field">Slide 1 of 5</p>
+                    <p class="status-bar-field">CPU Usage: 100%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="start-bar">
+        <button class="start-btn">
+            <img src="https://win98icons.alexmeub.com/icons/png/windows_slanted-1.png" width="20">
+            Start
+        </button>
+        <div style="border-left: 2px solid gray; height: 26px; margin-left: 5px;"></div>
+        <div class="task-bar-item"
+            style="background: #e0e0e0; border: 2px solid grey; border-style: inset; padding: 3px 10px; margin-left: 5px; font-weight: bold;">
+            Setup Wizard
+        </div>
+        <div class="clock">12:00 PM</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handheld Analyzer - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .device {
+            width: 360px;
+            height: 600px;
+            background: #dc0a2d;
+            border-radius: 20px;
+            position: relative;
+            box-shadow:
+                inset 10px 10px 20px rgba(255, 255, 255, 0.2),
+                inset -10px -10px 20px rgba(0, 0, 0, 0.3),
+                20px 20px 50px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            box-sizing: border-box;
+            border-bottom: 10px solid #8b0000;
+        }
+
+        /* Top Sensor Array */
+        .sensor-array {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .big-lens {
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle at 30% 30%, #44aaff, #0055aa);
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .big-lens::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .small-light {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        /* Screen */
+        .screen-container {
+            background: #dedede;
+            border-radius: 10px 10px 40px 10px;
+            padding: 20px 20px 30px;
+            border: 2px solid #333;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .screen {
+            background: #222;
+            height: 180px;
+            border-radius: 5px;
+            padding: 10px;
+            color: #44ffaa;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            line-height: 1.5;
+            overflow: hidden;
+            border: 2px solid #555;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            animation: scan 2s linear infinite;
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0;
+            }
+
+            100% {
+                top: 100%;
+            }
+        }
+
+        /* Controls */
+        .controls-area {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .d-pad {
+            width: 90px;
+            height: 90px;
+            position: relative;
+        }
+
+        .cross {
+            background: #222;
+            position: absolute;
+            border-radius: 5px;
+            box-shadow: 2px 2px 0 #111;
+        }
+
+        .cross.horizontal {
+            width: 100%;
+            height: 30px;
+            top: 30px;
+            left: 0;
+        }
+
+        .cross.vertical {
+            width: 30px;
+            height: 100%;
+            top: 0;
+            left: 30px;
+        }
+
+        .center-circle {
+            position: absolute;
+            top: 35px;
+            left: 35px;
+            width: 20px;
+            height: 20px;
+            background: #111;
+            border-radius: 50%;
+            box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+            z-index: 10;
+        }
+
+        .action-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: flex-end;
+        }
+
+        .rounded-rect-btn {
+            background: #222;
+            width: 100px;
+            height: 10px;
+            border-radius: 10px;
+        }
+
+        .big-green-btn {
+            width: 100%;
+            background: #58a700;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            color: #1a3200;
+            font-weight: bold;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #3a6e00;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        .big-green-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="device">
+        <div class="sensor-array">
+            <div class="big-lens"></div>
+            <div class="small-light" style="background:#ff3333;"></div>
+            <div class="small-light" style="background:#ffee33;"></div>
+            <div class="small-light" style="background:#33cc33;"></div>
+        </div>
+
+        <div class="screen-container">
+            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 5px;">
+                <div style="width: 8px; height: 8px; background:#f00; border-radius: 50%;"></div>
+                <div style="width: 8px; height: 8px; background:#f00; border-radius: 50%;"></div>
+            </div>
+
+            <div class="screen">
+                <div style="text-align: center; border-bottom: 1px dashed #44ffaa;">ANALYZING TARGET...</div>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div
+                        style="width: 60px; height: 60px; background: rgba(68, 255, 170, 0.2); display: flex; align-items: center; justify-content: center; border: 1px solid #44ffaa;">
+                        IMG</div>
+                    <div>
+                        NAME: CUONGHOA<br>
+                        TYPE: FIRE/TECH<br>
+                        STATUS: ONLINE
+                    </div>
+                </div>
+
+                <div>
+                    > DESCRIPTION:<br>
+                    > A powerful creative entity capable of rapid deployment.
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-area">
+            <div class="d-pad">
+                <div class="cross horizontal"></div>
+                <div class="cross vertical"></div>
+                <div class="center-circle"></div>
+            </div>
+
+            <div class="action-btns">
+                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                    <button
+                        style="border: none; background: #333; color: white; border-radius: 50%; width: 40px; height: 40px; font-family:'Press Start 2P'; font-size: 10px; box-shadow: 2px 2px 0 #111;">A</button>
+                    <button
+                        style="border: none; background: #333; color: white; border-radius: 50%; width: 40px; height: 40px; font-family:'Press Start 2P'; font-size: 10px; box-shadow: 2px 2px 0 #111; margin-top: 20px;">B</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <a href="https://www.cuonghoa.website" class="big-green-btn">CHECK DATA</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

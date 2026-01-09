@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Fluid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #eef2f3;
+            color: #333;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Mesh Background */
+        .fluid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            opacity: 0.15;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Floating Blobs */
+        .blob-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 10s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            left: -100px;
+            background: #c2e9fb;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            bottom: -150px;
+            right: -150px;
+            background: #ffd1ff;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                transform: translateY(50px) scale(1.1);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Nav */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 50px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #111;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #000;
+        }
+
+        .btn-fluid {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-fluid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(118, 75, 162, 0.4);
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #2d3748;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        p.lead {
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .fluid-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: transform 0.3s;
+        }
+
+        .fluid-card:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .card-img {
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        p.desc {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        .price-bubble {
+            background: #fff;
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-left: auto;
+            /* Push to right */
+        }
+
+        @media (max-width: 768px) {
+            .fluid-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .price-bubble {
+                margin: 20px auto 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fluid-bg"></div>
+    <div class="blob-layer">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="container">
+        <div class="nav">
+            <div class="logo">CuongHoa<span style="color:#667eea;">.AI</span></div>
+            <div style="display:flex; align-items:center;">
+                <a href="#" class="nav-link">Courses</a>
+                <a href="#" class="nav-link">Tools</a>
+                <a href="#" class="btn-fluid" style="margin-left: 20px;">Join Now</a>
+            </div>
+        </div>
+
+        <div class="hero">
+            <h1>Flow State<br>Automation</h1>
+            <p class="lead">Smooth, seamless, and effortless business systems.
+                Let us handle the complexity so you can simply flow.</p>
+        </div>
+
+        <div class="cards-grid">
+
+            <!-- Card 1 -->
+            <div class="fluid-card">
+                <img src="https://images.unsplash.com/photo-1592496001020-d31bd830651f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                    class="card-img">
+                <div class="card-content">
+                    <span class="tag">Mindset</span>
+                    <h3>Mental Clarity</h3>
+                    <p class="desc">Clear the noise. Automate the routine. Focus on what truly matters.</p>
+                </div>
+                <div class="price-bubble">2.9M</div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="fluid-card">
+                <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" class="card-img">
+                <div class="card-content">
+                    <span class="tag">Finance</span>
+                    <h3>Financial Flow</h3>
+                    <p class="desc">Watch your revenue stream in real-time. Frictionless reporting.</p>
+                </div>
+                <div class="price-bubble">1.9M</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="fluid-card">
+                <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" class="card-img">
+                <div class="card-content">
+                    <span class="tag">Content</span>
+                    <h3>Creative Stream</h3>
+                    <p class="desc">An endless river of content ideas, generated by AI engines.</p>
+                </div>
+                <div class="price-bubble">7.9M</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

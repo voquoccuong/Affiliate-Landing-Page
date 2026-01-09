@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropical Modern - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;500&display=swap');
+
+        :root {
+            --leaf-dark: #1E3F20;
+            --leaf-light: #4A7C59;
+            --flower: #FF6B6B;
+            --sand: #F7F3E8;
+            --water: #C7E8E8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--leaf-dark);
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        nav {
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 1.5rem;
+            color: var(--sand);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            min-height: 90vh;
+            position: relative;
+        }
+
+        .bg-leaf {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .leaf-1 {
+            top: -10%;
+            right: -10%;
+            width: 600px;
+            transform: rotate(45deg);
+        }
+
+        .leaf-2 {
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            transform: rotate(-45deg);
+        }
+
+        .content {
+            padding: 4rem 6rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 7rem;
+            line-height: 0.9;
+            color: var(--sand);
+            margin: 0;
+            text-shadow: 10px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 2rem 0;
+            max-width: 500px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-main {
+            display: inline-block;
+            background: var(--flower);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            width: fit-content;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .visual-side {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 300px 0 0 0;
+            margin-right: -2rem;
+            /* Pull to edge */
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .visual-side::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(30, 63, 32, 0.3), rgba(30, 63, 32, 0.1));
+        }
+
+        .visual-side:hover {
+            border-radius: 200px 0 0 100px;
+        }
+
+        .floating-card {
+            position: absolute;
+            bottom: 100px;
+            left: -80px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: white;
+            width: 250px;
+        }
+
+        .tag {
+            background: var(--leaf-light);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SVG Definitions for background -->
+    <svg style="display: none;">
+        <symbol id="leaf" viewBox="0 0 100 100">
+            <path d="M50 100 C 20 100 0 50 50 0 C 100 50 80 100 50 100" fill="currentColor" />
+        </symbol>
+    </svg>
+
+    <svg class="bg-leaf leaf-1" viewBox="0 0 100 100">
+        <use href="#leaf" fill="#4A7C59" />
+    </svg>
+    <svg class="bg-leaf leaf-2" viewBox="0 0 100 100">
+        <use href="#leaf" fill="#4A7C59" />
+    </svg>
+
+    <nav>
+        <div class="logo">CuongHoa</div>
+        <div style="display: flex; gap: 2rem;">
+            <a href="#" style="color:white; text-decoration:none;">Oasis</a>
+            <a href="#" style="color:white; text-decoration:none;">Retreats</a>
+            <a href="#" style="color:white; text-decoration:none;">Stories</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="content">
+            <h1>Natural<br>Growth.</h1>
+            <p>Cultivate your business ecosystem with organic strategies that thrive like a rainforest. Sustainable,
+                vibrant, and alive.</p>
+            <a href="https://www.cuonghoa.website" class="btn-main">Plant the Seed &rarr;</a>
+        </div>
+        <div class="visual-side">
+            <div class="floating-card">
+                <span class="tag">Eco-System</span>
+                <h3>Thrive naturally</h3>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem;">No artificial boosters needed.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

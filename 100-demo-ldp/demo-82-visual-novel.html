@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Novel - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            font-family: 'M PLUS Rounded 1c', sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .character {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 85vh;
+            /* Placeholder for anime character sprite */
+            width: 400px;
+            background: url('https://www.pngall.com/wp-content/uploads/5/Anime-Girl-PNG-Free-Download.png') no-repeat bottom center;
+            background-size: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+            transition: transform 0.2s;
+            z-index: 1;
+        }
+
+        .ui-layer {
+            z-index: 10;
+            padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+        }
+
+        .dialog-box {
+            background: rgba(0, 0, 0, 0.8);
+            width: 90%;
+            max-width: 1000px;
+            height: 250px;
+            border: 4px solid white;
+            border-radius: 20px;
+            padding: 2rem;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .name-tag {
+            background: #ff6b6b;
+            color: white;
+            padding: 0.5rem 2rem;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            top: -25px;
+            left: 50px;
+            border: 2px solid white;
+        }
+
+        .text-content {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .cursor-triangle {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid white;
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            animation: bounce 1s infinite;
+        }
+
+        .choices {
+            position: absolute;
+            top: -200px;
+            /* Position above dialog box */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 20;
+        }
+
+        .choice-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px solid #ff6b6b;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .choice-btn:hover {
+            background: #ff6b6b;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        .controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .mini-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 1px solid white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="controls">
+        <button class="mini-btn">SAVE</button>
+        <button class="mini-btn">LOAD</button>
+        <button class="mini-btn">CONFIG</button>
+    </div>
+
+    <!-- Character Sprite -->
+    <div class="character"></div>
+
+    <div class="ui-layer">
+        <div class="dialog-box">
+            <div class="name-tag">CuongHoa-chan</div>
+            <div class="text-content">
+                "Welcome back, senpai! I've been waiting for you.<br>
+                The new landing page designs are ready for your review. Would you like to see them now?"
+            </div>
+            <div class="cursor-triangle"></div>
+
+            <div class="choices">
+                <a href="https://www.cuonghoa.website" class="choice-btn">Yes, show me everything!</a>
+                <a href="#" class="choice-btn">Maybe later...</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

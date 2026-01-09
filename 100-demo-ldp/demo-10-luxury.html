@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Exclusive</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --text: #e5e5e5;
+            --gold: #d4af37;
+            --gold-dim: #8a7024;
+            --border: rgba(212, 175, 55, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 70%);
+        }
+
+        .overline {
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            background: linear-gradient(to right, #fff, #999);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.lead {
+            font-size: 1.1rem;
+            color: #999;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .btn-gold {
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 15px 40px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            transition: all 0.4s ease;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* Collection */
+        .collection {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--gold);
+        }
+
+        .product-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            gap: 60px;
+        }
+
+        .product-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .product-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .product-img::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--border);
+            z-index: -1;
+            transition: transform 0.4s;
+        }
+
+        .product-item:hover .product-img::after {
+            transform: translate(10px, 10px);
+        }
+
+        .product-img img {
+            width: 100%;
+            display: block;
+            filter: grayscale(100%);
+            transition: filter 0.4s;
+        }
+
+        .product-item:hover .product-img img {
+            filter: grayscale(0%);
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .product-info .price {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .desc {
+            color: #888;
+            margin-bottom: 40px;
+        }
+
+        .link-arrow {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 5px;
+            transition: all 0.3s;
+        }
+
+        .link-arrow:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .product-item,
+            .product-item:nth-child(even) {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">CuongHoa<span style="color:#fff">.AI</span></div>
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <span class="overline">The Masterclass Collection</span>
+            <h1>Systems Architecture<br>For The Modern Age</h1>
+            <p class="lead">
+                Transform chaos into elegance. We provide the blueprints for automated business excellence.
+            </p>
+            <a href="#collection" class="btn-gold">View Collection</a>
+        </div>
+    </div>
+
+    <div class="collection" id="collection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Curated Modules</h2>
+                <div style="width: 60px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
+            </div>
+
+            <!-- Item 1 -->
+            <div class="product-item">
+                <div class="product-img">
+                    <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" alt="Mindset">
+                </div>
+                <div class="product-info">
+                    <h3>The Automation Mindset</h3>
+                    <span class="price">2,900,000 VND</span>
+                    <p class="desc">A foundational study in replacing manual labor with intelligent design. The
+                        prerequisite for scale.</p>
+                    <a href="#" class="link-arrow">Acquire —&gt;</a>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="product-item">
+                <div class="product-img">
+                    <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" alt="Banking">
+                </div>
+                <div class="product-info">
+                    <h3>Banking Intelligence</h3>
+                    <span class="price">1,900,000 VND</span>
+                    <p class="desc">Real-time financial visibility. Automated reporting from Internet Banking directly
+                        to your command centers.</p>
+                    <a href="#" class="link-arrow">Acquire —&gt;</a>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="product-item">
+                <div class="product-img">
+                    <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" alt="AI Content">
+                </div>
+                <div class="product-info">
+                    <h3>AI Content Foundry</h3>
+                    <span class="price">7,900,000 VND</span>
+                    <p class="desc">Leverage artificial intelligence to produce content at an industrial scale with
+                        artisanal quality.</p>
+                    <a href="#" class="link-arrow">Acquire —&gt;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>CuongHoa.AI &copy; MMXXV. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

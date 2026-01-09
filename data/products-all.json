@@ -1,0 +1,623 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "updated": "2025-12-31",
+    "source": "data.xlsx + courses.json"
+  },
+  "courses": [
+    {
+      "id": "course-s01",
+      "title": "[S01] Tổng quan về Automation & kinh nghiệm làm nghề",
+      "description": "Giới thiệu tổng quan về chương trình AI Automation In Action và chia sẻ kinh nghiệm hơn 10 năm làm nghề từ các dự án thực chiến của EGANY.",
+      "type": "video-course",
+      "category": "fundamentals",
+      "level": "beginner",
+      "price": 2900000,
+      "price_display": "2.900.000đ",
+      "status": "active",
+      "tools": [
+        "Mindset",
+        "Automation"
+      ],
+      "duration_hours": 3,
+      "feature_image": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+      "product_url": "https://go.cuonghoa.ai/s01-tong-quan-ve-automation-kinh-nghiem-lam-nghe"
+    },
+    {
+      "id": "course-s02",
+      "title": "[S02] Thông báo tiền ra/vào & báo cáo từ Internet Banking",
+      "description": "Tự động thông báo giao dịch ngân hàng và báo cáo biến động số dự tiền ra tiền vào theo thời gian thực (real-time).",
+      "type": "video-course",
+      "category": "finance-automation",
+      "level": "intermediate",
+      "price": 1900000,
+      "price_display": "1.900.000đ",
+      "status": "active",
+      "tools": [
+        "SePay",
+        "Lark",
+        "n8n"
+      ],
+      "duration_hours": 2.5,
+      "feature_image": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+      "product_url": "https://go.cuonghoa.ai/tong-hop-bao-cao-tien-vao-ra-tu-dong-tu-internet-banking"
+    },
+    {
+      "id": "course-s03",
+      "title": "[S03] Báo cáo doanh thu & vận hành khóa học tinh gọn",
+      "description": "Đồng bộ đơn hàng từ website Woocommerce về LarkBase để vận hành nhanh.",
+      "type": "video-course",
+      "category": "operations-automation",
+      "level": "intermediate",
+      "price": 2900000,
+      "price_display": "2.900.000đ",
+      "status": "active",
+      "tools": [
+        "Wordpress",
+        "SePay",
+        "Lark",
+        "n8n"
+      ],
+      "duration_hours": 3,
+      "feature_image": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+      "product_url": "https://go.cuonghoa.ai/bao-cao-doanh-thu-va-van-hanh-khoa-hoc-tinh-gon"
+    },
+    {
+      "id": "course-s04",
+      "title": "[S04] Tự động hóa quy trình hợp đồng & công nợ",
+      "description": "Xây dựng hệ thống quản lý báo giá hợp đồng phiếu thu…no-code.",
+      "type": "video-course",
+      "category": "finance-automation",
+      "level": "advanced",
+      "price": 4900000,
+      "price_display": "4.900.000đ",
+      "status": "active",
+      "tools": [
+        "SePay",
+        "Lark",
+        "n8n"
+      ],
+      "duration_hours": 5,
+      "feature_image": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+      "product_url": "https://go.cuonghoa.ai/xay-dung-he-thong-bao-gia-va-quan-ly-cong-no-tu-dong"
+    },
+    {
+      "id": "course-s05",
+      "title": "[S05] Chăm sóc group chat Zalo bằng Zalo cá nhân",
+      "description": "Lên lịch đăng bài tự động hóa lên nhiều nền tảng Facebook, Zalo (đặc biệt là Zalo group) dựa theo các nội dung tại file Google Sheet.",
+      "type": "video-course",
+      "category": "marketing-automation",
+      "level": "intermediate",
+      "price": 2900000,
+      "price_display": "2.900.000đ",
+      "status": "active",
+      "tools": [
+        "Make",
+        "Pancake",
+        "Facebook",
+        "Zalo"
+      ],
+      "duration_hours": 3,
+      "feature_image": "https://w.ladicdn.com/22603/image-3-20250909025510-8mrrg.png",
+      "product_url": "https://go.cuonghoa.ai/cham-soc-group-chat-bang-zalo-ca-nhan"
+    },
+    {
+      "id": "course-s06",
+      "title": "[S06] Tự động hóa hoạt động CSKH cho shop bán lẻ trên Shopee",
+      "description": "Tự động đồng bộ đánh giá Shopee và cảnh báo ngay khi có review xấu để CSKH kịp thời xử lý.",
+      "type": "video-course",
+      "category": "ecommerce-automation",
+      "level": "intermediate",
+      "price": 3900000,
+      "price_display": "3.900.000đ",
+      "status": "active",
+      "tools": [
+        "Lark",
+        "n8n",
+        "Shopee"
+      ],
+      "duration_hours": 4,
+      "feature_image": "https://w.ladicdn.com/22603/image-4-20250909025943-0n2dg.png",
+      "product_url": "https://go.cuonghoa.ai/tu-dong-xu-ly-danh-gia-xau-shopee"
+    },
+    {
+      "id": "course-s07",
+      "title": "[S07] Hệ thống kích hoạt bảo hành điện tử với AI Automation",
+      "description": "Hệ thống bảo hành điện tử kết hợp thu thập thông tin khách hàng cho các kênh bán sàn (Shopee).",
+      "type": "video-course",
+      "category": "ecommerce-automation",
+      "level": "advanced",
+      "price": 4900000,
+      "price_display": "4.900.000đ",
+      "status": "active",
+      "tools": [
+        "Shopee",
+        "ZNS",
+        "n8n"
+      ],
+      "duration_hours": 5,
+      "feature_image": "https://w.ladicdn.com/22603/image-5-20250909030520-awygw.png",
+      "product_url": "https://go.cuonghoa.ai/xay-dung-he-thong-kich-hoat-bao-hanh-dien-tu"
+    },
+    {
+      "id": "course-s08",
+      "title": "[S08] Bot tóm tắt nội dung nhóm chat",
+      "description": "Trợ lý AI thông minh với báo cáo tự động, tóm tắt cuộc họp và theo dõi hiệu suất team real-time.",
+      "type": "video-course",
+      "category": "ai-assistant",
+      "level": "advanced",
+      "price": 4900000,
+      "price_display": "4.900.000đ",
+      "status": "active",
+      "tools": [
+        "AI",
+        "n8n",
+        "Zalo"
+      ],
+      "duration_hours": 5,
+      "feature_image": "https://w.ladicdn.com/22603/image-6-20250909030937-euvfb.png",
+      "product_url": "https://go.cuonghoa.ai/bot-tom-tat-noi-dung-nhom-chat"
+    },
+    {
+      "id": "course-s09",
+      "title": "[S09] Quy trình sản xuất content Social với AI Automation",
+      "description": "Thu thập bài viết website hoặc transcript Youtube từ URL nội dung được cung cấp (hoặc channel URL) & đúc kết insight từ nội dung và bình luận, hỗ trợ ý tưởng vô hạn cho đội content trong nhà mỗi ngày.",
+      "type": "video-course",
+      "category": "content-automation",
+      "level": "advanced",
+      "price": 7900000,
+      "price_display": "7.900.000đ",
+      "status": "active",
+      "tools": [
+        "Make",
+        "n8n",
+        "AI"
+      ],
+      "duration_hours": 8,
+      "feature_image": "https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png",
+      "product_url": "https://go.cuonghoa.ai/xay-dung-he-thong-san-xuat-content-social"
+    },
+    {
+      "id": "course-website",
+      "title": "Tư duy đúng để xây dựng Website Ecommerce từ đầu",
+      "description": "Chia sẻ kinh nghiệm xây dựng website Ecommerce tối ưu ngay từ đầu cho dân không chuyên từ kinh nghiệm người làm nghề 11 năm.",
+      "type": "video-course",
+      "category": "fundamentals",
+      "level": "beginner",
+      "price": 3000000,
+      "price_display": "3.000.000đ",
+      "status": "active",
+      "tools": [
+        "Ecommerce",
+        "Website",
+        "Mindset"
+      ],
+      "duration_hours": 3,
+      "feature_image": "https://w.ladicdn.com/22603/image-9-20250909033712-ad8ma.png",
+      "product_url": "https://go.cuonghoa.ai/tu-duy-xay-dung-website-ecom"
+    },
+    {
+      "id": "course-expertos01",
+      "title": "ExpertOS 01",
+      "description": "Giải pháp vận hành tinh gọn cho sự kiện và khóa học trên nền tảng Ladi.",
+      "type": "video-course",
+      "category": "operations-automation",
+      "level": "intermediate",
+      "price": 4790000,
+      "price_display": "4.790.000đ",
+      "status": "active",
+      "tools": [
+        "Ladipage",
+        "Automation"
+      ],
+      "duration_hours": 5,
+      "feature_image": "https://w.ladicdn.com/22603/cuonghoaai-vclass-ladi-01-20251022142251-pdkyl.png",
+      "product_url": "https://go.cuonghoa.ai/expertos-01"
+    },
+    {
+      "id": "course-expertos02",
+      "title": "ExpertOS 02",
+      "description": "Giải pháp vận hành khóa học tinh gọn & tự động hóa với các luồng Zalo cá nhân. (Nâng cấp của ExpertOS 01)",
+      "type": "video-course",
+      "category": "operations-automation",
+      "level": "advanced",
+      "price": 6900000,
+      "price_display": "6.900.000đ",
+      "status": "active",
+      "tools": [
+        "Ladipage",
+        "Automation",
+        "Zalo"
+      ],
+      "duration_hours": 7,
+      "feature_image": "https://w.ladicdn.com/22603/cuonghoaai-vclass-ladi-01-1-20251022142341-c06en.png",
+      "product_url": "https://go.cuonghoa.ai/expertos-02"
+    },
+    {
+      "id": "course-ai4b01",
+      "title": "AI4B01 - Ứng dụng AI cơ bản cho tiệm bánh",
+      "description": "Ứng dụng AI cực kỳ cơ bản cho người mới bắt đầu, tiết kiệm thời gian tự mò mẫm.",
+      "type": "video-course",
+      "category": "industry-bakery",
+      "level": "beginner",
+      "price": 499000,
+      "price_display": "499.000đ",
+      "status": "active",
+      "tools": [
+        "AI",
+        "ChatGPT"
+      ],
+      "duration_hours": 1.5,
+      "feature_image": "https://w.ladicdn.com/22603/image-11-20250909034834-prepm.png",
+      "product_url": "https://go.cuonghoa.ai/ung-dung-ai-co-ban-cho-tiem-banh"
+    },
+    {
+      "id": "course-ai4b02",
+      "title": "AI4B02 - Sáng tạo nội dung cho tiệm bánh",
+      "description": "Ứng dụng AI chuyên nghiệp trong việc sáng tạo nội dung và vận hành cho tiệm bánh.",
+      "type": "video-course",
+      "category": "industry-bakery",
+      "level": "intermediate",
+      "price": 1790000,
+      "price_display": "1.790.000đ",
+      "status": "active",
+      "tools": [
+        "AI",
+        "ChatGPT",
+        "Creative"
+      ],
+      "duration_hours": 2.5,
+      "feature_image": "https://w.ladicdn.com/22603/image-12-20250909035013-uos1l.png",
+      "product_url": "https://go.cuonghoa.ai/sang-tao-nang-cao-cho-chu-tiem-banh"
+    },
+    {
+      "id": "course-mcp-basic",
+      "title": "AI Agent & MCP with n8n Basic",
+      "description": "Khóa học về AI Agent và MCP protocol với n8n cho người mới bắt đầu.",
+      "type": "video-course",
+      "category": "ai-agent",
+      "level": "intermediate",
+      "price": 2900000,
+      "price_display": "2.900.000đ",
+      "status": "active",
+      "tools": [
+        "AI",
+        "n8n",
+        "MCP"
+      ],
+      "duration_hours": 4,
+      "feature_image": null,
+      "product_url": null
+    },
+    {
+      "id": "course-ega-content",
+      "title": "EGA Content - Tự động hóa hoạt động sản xuất content tinh gọn",
+      "description": "Đang cập nhật... Chưa chốt ngày ra mắt.",
+      "type": "live-course",
+      "category": "content-automation",
+      "level": "advanced",
+      "price": 4900000,
+      "price_display": "4.900.000đ",
+      "status": "coming-soon",
+      "tools": [
+        "Content",
+        "AI"
+      ],
+      "duration_hours": null,
+      "feature_image": "https://w.ladicdn.com/22603/cuonghoaai-mini-courses-4-3pt8-20250909041641-fvdnt.png",
+      "product_url": "https://go.cuonghoa.ai/ega-content"
+    },
+    {
+      "id": "course-rekap-pro",
+      "title": "Rekap Pro - Tóm tắt nội dung nhóm chat nâng cao",
+      "description": "Đang cập nhật... Chưa chốt ngày ra mắt.",
+      "type": "live-course",
+      "category": "ai-assistant",
+      "level": "advanced",
+      "price": 4900000,
+      "price_display": "4.900.000đ",
+      "status": "coming-soon",
+      "tools": [
+        "AI",
+        "Recap"
+      ],
+      "duration_hours": null,
+      "feature_image": "https://w.ladicdn.com/22603/cuonghoaai-mini-courses-3-d0oe-20250909041747-rdnzi.png",
+      "product_url": "https://go.cuonghoa.ai/rekap-pro"
+    }
+  ],
+  "workshops": [
+    {
+      "id": "workshop-bootcamp-w01",
+      "title": "Xây dựng knowledge base với NotebookLM & các tính năng cơ bản",
+      "description": "Buổi Workshop AABK01 #W01 với chủ đề "Xây dựng Knowledge Base với NotebookLM" chính là chìa khóa giúp bạn biến những tập tin rời rạc thành một "bộ não thứ hai" thông minh và nhạy bén.",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-10-08",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w02",
+      "title": "Xây dựng hệ thống đánh giá kiến thức với NotebookLM và Google Forms ",
+      "description": "Buổi workshop tập trung giải quyết "nỗi đau" của những người làm đào tạo, quản lý và marketing thường xuyên mất quá nhiều thời gian cho việc soạn thảo đề thi và nhập liệu thủ công. Thay vì quy trình truyền thống rườm rà, workshop hướng dẫn áp dụng quy trình "hiện đại" kết hợp sức mạnh của AI và tự động hóa (Automation) để tạo ra các bài đánh giá năng lực nhanh chóng, chính xác và hoàn toàn miễn phí.",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-10-15",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w03",
+      "title": "AI Thực chiến - X10 hiệu suất văn phòng",
+      "description": "Buổi workshop này, được đúc kết từ 6 năm kinh nghiệm thực tế của diễn giả Tuyết Chinh (Chinh Productivity) trong lĩnh vực Quản lý Vận hành (QLVH) tòa nhà, sẽ hướng dẫn bạn cách cường hóa bản thân bằng AI để giải quyết triệt để sự quá tải trong công việc hành chính",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-10-22",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w04",
+      "title": "Tạo AI chatbot cho Facebook Page để trả lời các thông tin cơ bản",
+      "description": "Workshop sẽ mang đến giải pháp công nghệ giúp bạn giải phóng sức lao động và tối ưu hóa quy trình chăm sóc khách hàng tự động.",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-10-29",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w05",
+      "title": "Hướng dẫn làm bộ ảnh đại diện thương hiệu bằng AI",
+      "description": "Workshop chính là giải pháp cường hóa hình ảnh doanh nghiệp của bạn với tốc độ và chi phí tối ưu nhất.",
+      "type": "workshop-record",
+      "source": "bootcamp-k01",
+      "date": "2024-11-05",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w06",
+      "title": "Ứng dụng Smartphone & AI nghiên cứu thông tin nhanh chóng",
+      "description": "Thay đổi hoàn toàn thói quen lướt điện thoại của bạn. Đây là giải pháp thực chiến giúp bạn biến những khoảng thời gian chết khi dùng điện thoại thành thời gian nghiên cứu thị trường và xây dựng tài sản nội dung giá trị.",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-11-12",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w07",
+      "title": "Phác thảo ý tưởng giao diện landing page giới thiệu sản phẩm với AI",
+      "description": "Đây là giải pháp "cứu cánh" dành cho những ai đang gặp khó khăn trong việc xây dựng landing page vì không biết code, không giỏi thiết kế, hoặc mệt mỏi khi phải truyền đạt ý tưởng cho đội ngũ kỹ thuật.",
+      "type": "workshop-record",
+      "source": "bootcamp-k01",
+      "date": "2024-11-19",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w08",
+      "title": "Thu thập Posts Viral Facebook Group để làm bài tổng hợp",
+      "description": "Nội dung buổi học tập trung vào việc giải quyết bài toán hóc búa của các Marketer: Làm sao để theo dõi sát sao 5-10 Facebook Groups (quy mô 10k-100k thành viên) mà không tốn hàng giờ đồng hồ mỗi tuần.",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-11-26",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w09",
+      "title": "Biến CV khô khan thành Portfolio kể chuyện",
+      "description": "Workshop Biến CV khô khan thành Portfolio kể chuyện sẽ là lời giải giúp bạn định vị lại thương hiệu cá nhân một cách ấn tượng và chuyên nghiệp.",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-12-03",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w10",
+      "title": "Tạo thiệp mời tự động với Google Sheet và EGA Template",
+      "description": "Thay vì mất hàng giờ chỉnh sửa thủ công và lo lắng sai sót, buổi Workshop này sẽ giúp bạn làm chủ tư duy tự động hóa, Mr.Thành sẽ hướng dẫn bạn cách kết hợp Google Sheets cùng EGA Template để tạo thiệp mời tự động, giúp tiết kiệm tối đa thời gian và công sức",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-12-10",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w11",
+      "title": "Tạo ảnh sản phẩm bán sàn TMĐT với ChatGPT và Gemini",
+      "description": "Giải pháp toàn diện giúp bạn tự tay phù phép những bức ảnh thô sơ thành bộ ảnh thương mại chuyên nghiệp chỉ với sự trợ giúp của AI.",
+      "type": "workshop-record",
+      "source": "bootcamp-k01",
+      "date": "2024-12-17",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    },
+    {
+      "id": "workshop-bootcamp-w12",
+      "title": "Vibe Coding cơ bản cho người mới",
+      "description": "Hướng dẫn những người không chuyên (non-tech) cách sử dụng AI để tạo ra các công cụ phần mềm phục vụ công việc cá nhân mà không cần kiến thức lập trình chuyên sâu.",
+      "type": "workshop-record",
+      "source": "ai-automation-bootcamp-k01",
+      "date": "2024-12-24",
+      "duration_minutes": 90,
+      "price": 500000,
+      "price_display": "500.000đ",
+      "status": "active",
+      "access": "bootcamp-member"
+    }
+  ],
+  "bootcamp": {
+    "id": "bootcamp-k02",
+    "title": "AI Automation Bootcamp K02",
+    "description": "Chuỗi Live Workshop 5 tuần liên tục cho người mới luyện thói quen ứng dụng công nghệ vào công việc hàng tuần.",
+    "start_date": "2026-01-07",
+    "duration_weeks": 5,
+    "sessions": 5,
+    "status": "preparing",
+    "tiers": [
+      {
+        "id": "fast-track",
+        "name": "Chiến Binh Fast-track",
+        "price": 1250000,
+        "price_display": "1.250.000đ",
+        "commitment": "high",
+        "premium_discount": 0.75,
+        "description": "Cam kết cao nhất - Ưu đãi Premium lên tới 75%"
+      },
+      {
+        "id": "self-paced",
+        "name": "Luyện Linh Hoạt Self-paced",
+        "price": 1750000,
+        "price_display": "1.750.000đ",
+        "commitment": "medium",
+        "premium_discount": 0.7,
+        "description": "Linh hoạt - Ưu đãi Premium lên tới 70%"
+      },
+      {
+        "id": "audit",
+        "name": "Audit - Quan sát",
+        "price": 1990000,
+        "price_display": "1.990.000đ",
+        "commitment": "low",
+        "premium_discount": 0.6,
+        "description": "Quan sát - Ưu đãi Premium lên tới 60%"
+      }
+    ],
+    "original_price": 2500000,
+    "original_price_display": "2.500.000đ"
+  },
+  "membership": [
+    {
+      "id": "free",
+      "name": "Free Member",
+      "price": 0,
+      "price_display": "Miễn phí",
+      "duration": "unlimited",
+      "benefits": [
+        "Truy cập FB Group Cường Hóa AI",
+        "Truy cập community trên member.egany.com",
+        "Cập nhật tin tức AI Automation",
+        "Tài nguyên miễn phí cơ bản"
+      ],
+      "access_urls": {
+        "facebook": "https://www.facebook.com/groups/cuonghoaai",
+        "member_portal": "https://member.egany.com/communities/groups/cuong-hoa-ai/home"
+      }
+    },
+    {
+      "id": "premium",
+      "name": "Premium Membership",
+      "price_range": {
+        "new_member": 18000000,
+        "bootcamp_registered": 12000000,
+        "fast_track": 6000000,
+        "self_paced": 7200000,
+        "audit": 9600000
+      },
+      "price_display": "6.000.000đ - 18.000.000đ/năm",
+      "original_price": 24000000,
+      "duration": "12 months",
+      "total_value": 72000000,
+      "pillars": [
+        {
+          "name": "Môi trường rèn luyện",
+          "value": 38400000,
+          "includes": [
+            "36 Live Workshop/năm",
+            "Video Record không giới hạn",
+            "AI Automation Playbooks 50+ videos",
+            "Premium Q&A Channel"
+          ]
+        },
+        {
+          "name": "Kho tài nguyên Premium",
+          "value": 12000000,
+          "includes": [
+            "n8n Workflows",
+            "Templates",
+            "Source Code",
+            "eBooks"
+          ]
+        },
+        {
+          "name": "Hỗ trợ cá nhân hóa",
+          "value": 15000000,
+          "includes": [
+            "Priority Support",
+            "1-on-1 Consultation (limited)",
+            "Custom Workflow Review"
+          ]
+        },
+        {
+          "name": "Networking & Partner Deals",
+          "value": 6000000,
+          "includes": [
+            "Exclusive Partner Discounts",
+            "Private Networking Events",
+            "Job/Project Board"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vip",
+      "name": "VIP Membership",
+      "price": null,
+      "price_display": "Liên hệ",
+      "duration": "12 months",
+      "benefits": [
+        "Tất cả quyền lợi Premium",
+        "Unlock TẤT CẢ khóa học trên hệ thống",
+        "Priority Access cho khóa mới",
+        "Direct Line với Founder"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "resource-placeholder",
+      "title": "Kho tài nguyên đang được cập nhật",
+      "description": "Templates, Source Code, eBooks sẽ được cập nhật trong Q1/2026",
+      "type": "placeholder",
+      "status": "coming-soon"
+    }
+  ]
+}

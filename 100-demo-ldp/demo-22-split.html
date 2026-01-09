@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Split</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #f0f0f0;
+            color: #111;
+            height: 100vh;
+            overflow: hidden;
+            /* Main body no scroll */
+        }
+
+        .split-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Left Side - Sticky/Fixed */
+        .left-pane {
+            width: 50%;
+            background: #111;
+            color: white;
+            padding: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #888;
+            margin-bottom: 50px;
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        .cta-box {
+            background: #222;
+            padding: 30px;
+            border-radius: 4px;
+            border-left: 4px solid #fff;
+        }
+
+        .btn-main {
+            background: white;
+            color: black;
+            padding: 15px 30px;
+            border: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        .btn-main:hover {
+            background: #ddd;
+        }
+
+        /* Right Side - Scrollable */
+        .right-pane {
+            width: 50%;
+            overflow-y: auto;
+            background: #fff;
+            scroll-behavior: smooth;
+        }
+
+        .right-pane::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .right-pane::-webkit-scrollbar-thumb {
+            background: #ccc;
+        }
+
+        .content-block {
+            padding: 80px;
+            border-bottom: 1px solid #eee;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .block-num {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin-bottom: -20px;
+            margin-left: -5px;
+            z-index: 0;
+            position: relative;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .course-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            filter: grayscale(100%);
+            transition: filter 0.5s;
+        }
+
+        .content-block:hover .course-img {
+            filter: grayscale(0%);
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tag {
+            border: 1px solid #111;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        @media (max-width: 900px) {
+            .split-container {
+                flex-direction: column;
+                height: auto;
+                overflow: auto;
+            }
+
+            .left-pane,
+            .right-pane {
+                width: 100%;
+            }
+
+            .left-pane {
+                height: 100vh;
+            }
+
+            body {
+                overflow: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="split-container">
+        <!-- Sticky Left -->
+        <div class="left-pane">
+            <div class="logo">CuongHoa.AI</div>
+            <h1>Automate.<br>Scale.<br>Thrive.</h1>
+            <p class="subtitle">
+                A curated collection of courses designed to transform solo operators into systematic business owners.
+            </p>
+
+            <div class="cta-box">
+                <div style="font-size: 0.9rem; color: #888; margin-bottom: 5px;">FULL BUNDLE ACCESS</div>
+                <div style="font-size: 2rem; font-weight: 700; margin-bottom: 10px;">6.999.000đ</div>
+                <button class="btn-main">Get Full Access</button>
+            </div>
+        </div>
+
+        <!-- Scrollable Right -->
+        <div class="right-pane">
+
+            <!-- Item 1 -->
+            <div class="content-block">
+                <div class="block-num">01</div>
+                <h2>Automation Mindset</h2>
+                <img src="https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png" class="course-img">
+                <p>
+                    Before you build the robot, you must think like the robot.
+                    Learn the core principles of reducing friction and eliminating repetitive tasks from your daily
+                    workflow.
+                </p>
+                <div class="tags">
+                    <span class="tag">Foundation</span>
+                    <span class="tag">Theory</span>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="content-block">
+                <div class="block-num">02</div>
+                <h2>AI Content Engine</h2>
+                <img src="https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png" class="course-img">
+                <p>
+                    Stop writing from scratch. Build a system that generates high-quality,
+                    personality-driven content for all your social channels in minutes, not hours.
+                </p>
+                <div class="tags">
+                    <span class="tag">Marketing</span>
+                    <span class="tag">Generative AI</span>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="content-block">
+                <div class="block-num">03</div>
+                <h2>Finance Telemetry</h2>
+                <img src="https://w.ladicdn.com/22603/image-20250909024310-u2yni.png" class="course-img">
+                <p>
+                    Connect your bank accounts directly to Google Sheets.
+                    Visualize your cash flow in real-time and make data-driven decisions without opening your banking
+                    app.
+                </p>
+                <div class="tags">
+                    <span class="tag">Operations</span>
+                    <span class="tag">Finance</span>
+                </div>
+            </div>
+
+            <!-- Footer in right pane -->
+            <div style="padding: 80px; text-align: center; color: #888; background: #fafafa;">
+                <p>Ready to start?</p>
+                <button class="btn-main" style="background: #111; color: white;">Join Now</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

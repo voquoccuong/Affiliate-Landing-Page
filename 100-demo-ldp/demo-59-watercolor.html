@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Watercolor</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nunito:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Nunito', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Watercolor Paper Texture */
+        .paper-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/watercolor.png');
+            opacity: 0.6;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Watercolor Blobs (CSS Gradients simulating bleed) */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.8;
+            z-index: 0;
+        }
+
+        .b1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, #ff9a9e 0%, #fad0c4 100%);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .b2 {
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, #a18cd1 0%, #fbc2eb 100%);
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        .b3 {
+            top: 40%;
+            left: 30%;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, #84fab0 0%, #8fd3f4 100%);
+            opacity: 0.5;
+            animation: float 12s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(20px, 30px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .container {
+            z-index: 5;
+            text-align: center;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(5px);
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 5rem;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+        }
+
+        p {
+            font-size: 1.4rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        /* Action Button acting like a paint stain */
+        .btn-paint {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-family: 'Caveat', cursive;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            background-color: #ff9a9e;
+            /* Irregular shape via clip-path */
+            clip-path: polygon(5% 10%, 95% 5%, 100% 90%, 8% 95%);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .btn-paint::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            z-index: -1;
+            clip-path: polygon(0% 15%, 100% 0%, 95% 95%, 5% 100%);
+            transition: all 0.3s;
+        }
+
+        .btn-paint:hover {
+            transform: scale(1.05) rotate(2deg);
+            background-color: #ff758c;
+        }
+
+        .brush-stroke {
+            width: 200px;
+            height: 20px;
+            background: #a18cd1;
+            margin: 20px auto;
+            opacity: 0.5;
+            mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg"><path d="M0,10 Q50,0 100,10 T200,10" stroke="black" stroke-width="15" fill="none"/></svg>');
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg"><path d="M0,10 Q50,0 100,10 T200,10" stroke="black" stroke-width="15" fill="none"/></svg>');
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="paper-overlay"></div>
+
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+
+    <div class="container">
+        <h1>Flow & Create</h1>
+        <div class="brush-stroke"></div>
+        <p>
+            Experience a softer approach to technology.
+            Automated solutions that blend seamlessly into your workflow,
+            like pigment on wet paper.
+        </p>
+
+        <a href="#" class="btn-paint">Start Painting</a>
+    </div>
+
+</body>
+
+</html>

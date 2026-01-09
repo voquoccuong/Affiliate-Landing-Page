@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - The Journey</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Manrope:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- AOS Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #d97706;
+            /* Amber */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(to bottom, transparent, var(--dark)),
+                url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Problem Statement */
+        .problem-section {
+            background: #1e293b;
+        }
+
+        .text-highlight {
+            color: var(--accent);
+        }
+
+        /* Solution / Cards */
+        .card-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .course-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .course-row:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .course-img {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .course-img img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .course-row:hover .course-img img {
+            transform: scale(1.05);
+        }
+
+        .course-info {
+            flex: 1;
+        }
+
+        .course-info h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .course-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .btn-link {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 5px;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .btn-link:hover {
+            color: var(--accent);
+            padding-bottom: 2px;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .course-row,
+            .course-row:nth-child(even) {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="container" data-aos="fade-up" data-aos-duration="1500">
+            <h1>The Future is Automated</h1>
+            <p>Hành trình thay đổi cách bạn vận hành doanh nghiệp mãi mãi.</p>
+        </div>
+    </section>
+
+    <section class="problem-section">
+        <div class="container">
+            <h2 style="font-size: 3rem; margin-bottom: 2rem;" data-aos="fade-right">Bạn đang kiệt sức?</h2>
+            <p style="font-size: 1.5rem; line-height: 1.6; max-width: 700px;" data-aos="fade-left" data-aos-delay="200">
+                Nhập liệu thủ công. <br>
+                Kiểm tra giao dịch ngân hàng từng phút. <br>
+                Trả lời tin nhắn lặp đi lặp lại. <br>
+                <span class="text-highlight">Đã đến lúc dừng lại.</span>
+            </p>
+        </div>
+    </section>
+
+    <section style="background: var(--dark);">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 3rem; margin-bottom: 5rem; color: #fff;">Giải Pháp CuongHoa.AI
+            </h2>
+
+            <div class="card-stack" id="courseStack">
+                <!-- JS Inject -->
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 4rem; text-align: center; background: #000; color: #555;">
+        <p>Designed for storytelling.</p>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        const courses = [
+            {
+                "title": "Banking Automation",
+                "desc": "Không còn nỗi lo soát tiền. Hệ thống tự động báo cáo dòng tiền vào/ra ngay lập tức trên điện thoại của bạn.",
+                "image": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+            },
+            {
+                "title": "Hợp Đồng Tự Động",
+                "desc": "Tạm biệt giấy tờ lộn xộn. Tạo, gửi và quản lý hợp đồng chỉ với 1 cú click chuột. Chuyên nghiệp hóa quy trình.",
+                "image": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+            },
+            {
+                "title": "AI Content Creator",
+                "desc": "Đội ngũ content 1 người chấp 10 người. Sử dụng sức mạnh của AI để sản xuất nội dung viral không giới hạn.",
+                "image": "https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png",
+            }
+        ];
+
+        const stack = document.getElementById('courseStack');
+
+        courses.forEach((c, i) => {
+            const row = document.createElement('div');
+            row.className = 'course-row';
+
+            row.innerHTML = `
+                <div class="course-img" data-aos="${i % 2 === 0 ? 'fade-right' : 'fade-left'}" data-aos-duration="1000">
+                    <img src="${c.image}" alt="">
+                </div>
+                <div class="course-info" data-aos="${i % 2 === 0 ? 'fade-left' : 'fade-right'}" data-aos-duration="1000" data-aos-delay="200">
+                    <h3>${c.title}</h3>
+                    <p>${c.desc}</p>
+                    <a href="#" class="btn-link">Khám phá hành trình</a>
+                </div>
+            `;
+            stack.appendChild(row);
+        });
+    </script>
+</body>
+
+</html>

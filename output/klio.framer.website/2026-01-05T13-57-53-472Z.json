@@ -1,0 +1,408 @@
+{
+  "url": "https://klio.framer.website/",
+  "extractedAt": "2026-01-05T13:57:53.464Z",
+  "logo": null,
+  "favicons": [
+    {
+      "type": "icon",
+      "url": "https://framerusercontent.com/images/rViWLgaaStb9FW7KPB9iEbd7Bw.png",
+      "sizes": null
+    },
+    {
+      "type": "icon",
+      "url": "https://framerusercontent.com/images/rViWLgaaStb9FW7KPB9iEbd7Bw.png",
+      "sizes": null
+    },
+    {
+      "type": "og:image",
+      "url": "https://framerusercontent.com/images/nhW1Y633mRMCzrIWAvWPwM4qg.png",
+      "sizes": null
+    },
+    {
+      "type": "twitter:image",
+      "url": "https://framerusercontent.com/images/nhW1Y633mRMCzrIWAvWPwM4qg.png",
+      "sizes": null
+    },
+    {
+      "type": "favicon.ico",
+      "url": "https://klio.framer.website/favicon.ico",
+      "sizes": null
+    }
+  ],
+  "colors": {
+    "semantic": {},
+    "palette": [
+      {
+        "color": "rgb(144, 144, 144)",
+        "normalized": "#909090",
+        "count": 448,
+        "confidence": "high",
+        "sources": []
+      },
+      {
+        "color": "rgb(0, 0, 238)",
+        "normalized": "#0000ee",
+        "count": 176,
+        "confidence": "high",
+        "sources": []
+      },
+      {
+        "color": "rgb(34, 34, 34)",
+        "normalized": "#222222",
+        "count": 171,
+        "confidence": "high",
+        "sources": []
+      },
+      {
+        "color": "rgb(255, 255, 255)",
+        "normalized": "#ffffff",
+        "count": 110,
+        "confidence": "high",
+        "sources": []
+      }
+    ],
+    "cssVariables": {}
+  },
+  "typography": {
+    "styles": [
+      {
+        "context": "heading-1",
+        "family": "Figtree",
+        "fallbacks": "Figtree Placeholder",
+        "size": "32px (2.00rem)",
+        "weight": 600,
+        "lineHeight": "1.10",
+        "spacing": "-0.64px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Figtree",
+        "fallbacks": "Figtree Placeholder",
+        "size": "20px (1.25rem)",
+        "weight": 600,
+        "lineHeight": "1.30",
+        "spacing": "-0.4px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Figtree",
+        "fallbacks": "Figtree Placeholder",
+        "size": "16px (1.00rem)",
+        "weight": 500,
+        "lineHeight": "1.70",
+        "spacing": "-0.32px",
+        "transform": null
+      },
+      {
+        "context": "heading-1",
+        "family": "Figtree",
+        "fallbacks": "Figtree Placeholder",
+        "size": "15px (0.94rem)",
+        "weight": 600,
+        "lineHeight": "1.10",
+        "spacing": "-0.3px",
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "Figtree",
+        "fallbacks": "Figtree Placeholder",
+        "size": "15px (0.94rem)",
+        "weight": 600,
+        "lineHeight": "1.10",
+        "spacing": "-0.3px",
+        "transform": null
+      },
+      {
+        "context": "caption",
+        "family": "Figtree",
+        "fallbacks": "Figtree Placeholder",
+        "size": "14px (0.88rem)",
+        "weight": 500,
+        "lineHeight": "1.40",
+        "spacing": "-0.28px",
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "Figtree",
+        "fallbacks": "Figtree Placeholder",
+        "size": "14px (0.88rem)",
+        "weight": 500,
+        "lineHeight": "1.40",
+        "spacing": "-0.28px",
+        "transform": null
+      },
+      {
+        "context": "caption",
+        "family": "Inter-SemiBold",
+        "fallbacks": "Inter, Inter Placeholder",
+        "size": "13px (0.81rem)",
+        "weight": 600,
+        "lineHeight": "1.20",
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "link",
+        "family": "sans-serif",
+        "fallbacks": null,
+        "size": "12px (0.75rem)",
+        "weight": 400,
+        "lineHeight": null,
+        "spacing": null,
+        "transform": null
+      },
+      {
+        "context": "caption",
+        "family": "Figtree",
+        "fallbacks": "Figtree Placeholder",
+        "size": "12px (0.75rem)",
+        "weight": 400,
+        "lineHeight": "5.33",
+        "spacing": null,
+        "transform": null
+      }
+    ],
+    "sources": {
+      "googleFonts": [],
+      "adobeFonts": false,
+      "variableFonts": false
+    }
+  },
+  "spacing": {
+    "scaleType": "8px",
+    "commonValues": [
+      {
+        "px": "6px",
+        "rem": "0.38rem",
+        "count": 2,
+        "numericValue": 6
+      },
+      {
+        "px": "8px",
+        "rem": "0.50rem",
+        "count": 2,
+        "numericValue": 8
+      },
+      {
+        "px": "12px",
+        "rem": "0.75rem",
+        "count": 4,
+        "numericValue": 12
+      },
+      {
+        "px": "20px",
+        "rem": "1.25rem",
+        "count": 10,
+        "numericValue": 20
+      },
+      {
+        "px": "22px",
+        "rem": "1.38rem",
+        "count": 18,
+        "numericValue": 22
+      },
+      {
+        "px": "28px",
+        "rem": "1.75rem",
+        "count": 16,
+        "numericValue": 28
+      },
+      {
+        "px": "30px",
+        "rem": "1.88rem",
+        "count": 1,
+        "numericValue": 30
+      },
+      {
+        "px": "32px",
+        "rem": "2.00rem",
+        "count": 8,
+        "numericValue": 32
+      },
+      {
+        "px": "40px",
+        "rem": "2.50rem",
+        "count": 1,
+        "numericValue": 40
+      },
+      {
+        "px": "50px",
+        "rem": "3.13rem",
+        "count": 1,
+        "numericValue": 50
+      },
+      {
+        "px": "60px",
+        "rem": "3.75rem",
+        "count": 1,
+        "numericValue": 60
+      },
+      {
+        "px": "150px",
+        "rem": "9.38rem",
+        "count": 1,
+        "numericValue": 150
+      }
+    ]
+  },
+  "borderRadius": {
+    "values": [
+      {
+        "value": "1px",
+        "count": 4,
+        "elements": [
+          "div"
+        ],
+        "confidence": "medium",
+        "numericValue": 1
+      },
+      {
+        "value": "6px",
+        "count": 7,
+        "elements": [
+          "div"
+        ],
+        "confidence": "medium",
+        "numericValue": 6
+      },
+      {
+        "value": "10px",
+        "count": 3,
+        "elements": [
+          "a",
+          "div"
+        ],
+        "confidence": "low",
+        "numericValue": 10
+      },
+      {
+        "value": "27px",
+        "count": 1,
+        "elements": [
+          "div"
+        ],
+        "confidence": "low",
+        "numericValue": 27
+      },
+      {
+        "value": "32px",
+        "count": 16,
+        "elements": [
+          "div",
+          "img"
+        ],
+        "confidence": "high",
+        "numericValue": 32
+      },
+      {
+        "value": "40px",
+        "count": 4,
+        "elements": [
+          "div"
+        ],
+        "confidence": "medium",
+        "numericValue": 40
+      },
+      {
+        "value": "100%",
+        "count": 1,
+        "elements": [
+          "div"
+        ],
+        "confidence": "low",
+        "numericValue": 100
+      }
+    ]
+  },
+  "borders": {
+    "combinations": []
+  },
+  "shadows": [
+    {
+      "shadow": "rgba(0, 0, 0, 0.1) 0px 2px 4px 0px",
+      "count": 2,
+      "confidence": "low"
+    },
+    {
+      "shadow": "rgba(0, 0, 0, 0.18) 0px 0.602187px 0.602187px -1.25px, rgba(0, 0, 0, 0.16) 0px 2.28853px 2.28853px -2.5px, rgba(0, 0, 0, 0.063) 0px 10px 10px -3.75px",
+      "count": 1,
+      "confidence": "low"
+    },
+    {
+      "shadow": "rgba(0, 0, 0, 0.26) 0px 0.636953px 1.14652px -1.125px, rgba(0, 0, 0, 0.24) 0px 1.9316px 3.47689px -2.25px, rgba(0, 0, 0, 0.192) 0px 5.10612px 9.19102px -3.375px, rgba(0, 0, 0, 0.03) 0px 16px 28.8px -4.5px",
+      "count": 1,
+      "confidence": "low"
+    }
+  ],
+  "components": {
+    "buttons": [],
+    "inputs": {
+      "text": [],
+      "checkbox": [],
+      "radio": [],
+      "select": []
+    },
+    "links": [
+      {
+        "color": "rgb(0, 0, 238)",
+        "textDecoration": "none",
+        "fontWeight": "400",
+        "states": {
+          "default": {
+            "color": "rgb(0, 0, 238)",
+            "textDecoration": "underline"
+          },
+          "hover": {
+            "color": "var(--framer-link-hover-text-color, var(--framer-link-text-color, var(--framer-text-color, #000)))",
+            "textDecoration": "var(--framer-link-hover-text-decoration, var(--framer-link-text-decoration, var(--framer-text-decoration, none)))"
+          }
+        }
+      },
+      {
+        "color": "rgb(34, 34, 34)",
+        "textDecoration": "underline",
+        "fontWeight": "600",
+        "states": {
+          "default": {
+            "color": "rgb(34, 34, 34)",
+            "textDecoration": "underline"
+          },
+          "hover": {
+            "color": "var(--framer-link-hover-text-color, var(--framer-link-text-color, var(--framer-text-color, #000)))",
+            "textDecoration": "var(--framer-link-hover-text-decoration, var(--framer-link-text-decoration, var(--framer-text-decoration, none)))"
+          }
+        }
+      }
+    ],
+    "badges": {
+      "all": [],
+      "byVariant": {
+        "error": [],
+        "warning": [],
+        "success": [],
+        "info": [],
+        "neutral": []
+      }
+    }
+  },
+  "breakpoints": [
+    {
+      "px": "0px"
+    },
+    {
+      "px": "809px"
+    },
+    {
+      "px": "810px"
+    },
+    {
+      "px": "1199px"
+    }
+  ],
+  "iconSystem": [],
+  "frameworks": []
+}

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Luxury</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f9f9f9;
+            color: #111;
+            overflow-x: hidden;
+        }
+
+        /* Loading Screen simulated */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+            animation: fadeOut 1s ease-in-out 1s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+            }
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+            color: white;
+        }
+
+        .logo {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-links span {
+            cursor: pointer;
+            border-bottom: 1px solid transparent;
+            transition: border 0.3s;
+        }
+
+        .nav-links span:hover {
+            border-bottom: 1px solid white;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomSlow 20s linear infinite alternate;
+        }
+
+        @keyframes zoomSlow {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            mix-blend-mode: difference;
+        }
+
+        h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 6rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        p.lead {
+            font-size: 1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .btn-lux {
+            display: inline-block;
+            border: 1px solid white;
+            padding: 15px 40px;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .btn-lux:hover {
+            background: white;
+            color: black;
+        }
+
+        /* Products Section */
+        .section {
+            padding: 120px 60px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .product-card {
+            text-align: center;
+        }
+
+        .img-container {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        h3 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .price {
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 1px;
+        }
+
+        .collection-title {
+            text-align: center;
+            font-family: 'Bodoni Moda', serif;
+            font-size: 3rem;
+            margin-bottom: 80px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="loader">
+        <div style="font-family:'Bodoni Moda'; font-size:2rem;">CH</div>
+    </div>
+
+    <nav>
+        <div class="logo">CuongHoa</div>
+        <div class="nav-links">
+            <span>New Arrivals</span>
+            <span>Collections</span>
+            <span>Maison</span>
+            <span>Cart (0)</span>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80"
+            class="hero-bg">
+        <div class="hero-content">
+            <p class="lead">The Autumn Collection</p>
+            <h1>Automated<br>Elegance</h1>
+            <a href="#" class="btn-lux">Explore</a>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="collection-title">Curated Kits</h2>
+        <div class="product-grid">
+
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1595991209266-5ff5a3a2f008?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        class="product-img">
+                </div>
+                <h3>The Essential</h3>
+                <div class="price">1.200.000 VND</div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        class="product-img">
+                </div>
+                <h3>The Professional</h3>
+                <div class="price">2.400.000 VND</div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1549439602-43ebca2327af?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        class="product-img">
+                </div>
+                <h3>The Masterpiece</h3>
+                <div class="price">5.900.000 VND</div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

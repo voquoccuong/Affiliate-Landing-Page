@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - Retro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #202020;
+            color: #33ff00;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            image-rendering: pixelated;
+        }
+
+        /* CRT Scanline Effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* Handheld Console Frame */
+        .console-frame {
+            background: #e0e0e0;
+            padding: 40px;
+            border-radius: 20px 20px 60px 20px;
+            box-shadow:
+                inset -10px -10px 20px rgba(0, 0, 0, 0.2),
+                inset 10px 10px 20px rgba(255, 255, 255, 0.8),
+                0 20px 50px rgba(0, 0, 0, 0.5);
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+        }
+
+        .screen-bezel {
+            background: #555;
+            padding: 30px 40px;
+            border-radius: 10px 10px 40px 10px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .screen {
+            background: #0f380f;
+            /* Original Gameboy Green-ish */
+            color: #9bbc0f;
+            height: 500px;
+            overflow-y: auto;
+            border: 4px solid #333;
+            padding: 20px;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+            /* Custom Scrollbar */
+            scrollbar-width: none;
+        }
+
+        .screen::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px black;
+        }
+
+        .menu-list {
+            margin-top: 40px;
+        }
+
+        .menu-item {
+            border: 4px solid transparent;
+            padding: 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.1s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .menu-item:hover,
+        .menu-item.active {
+            border-color: #9bbc0f;
+            background: rgba(15, 56, 15, 0.5);
+            color: #fff;
+        }
+
+        .menu-item span.arrow {
+            opacity: 0;
+        }
+
+        .menu-item:hover span.arrow {
+            opacity: 1;
+        }
+
+        .pixel-btn {
+            background: #9bbc0f;
+            color: #0f380f;
+            border: 4px solid #333;
+            padding: 15px;
+            font-family: 'Press Start 2P', cursive;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            box-shadow: 4px 4px 0 #333;
+        }
+
+        .pixel-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: none;
+        }
+
+        .decor-lines {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+            gap: 10px;
+        }
+
+        .line {
+            width: 3px;
+            height: 30px;
+            background: #999;
+            border-radius: 2px;
+        }
+
+        /* D-Pad Decor */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 30px;
+            padding: 0 20px;
+        }
+
+        .d-pad {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+
+        .d-pad div {
+            background: #333;
+            position: absolute;
+            border-radius: 4px;
+            box-shadow: 2px 2px 0 #000;
+        }
+
+        .d-up {
+            width: 30px;
+            height: 35px;
+            top: 0;
+            left: 35px;
+        }
+
+        .d-down {
+            width: 30px;
+            height: 35px;
+            bottom: 0;
+            left: 35px;
+        }
+
+        .d-left {
+            width: 35px;
+            height: 30px;
+            left: 0;
+            top: 35px;
+        }
+
+        .d-right {
+            width: 35px;
+            height: 30px;
+            right: 0;
+            top: 35px;
+        }
+
+        .d-center {
+            width: 30px;
+            height: 30px;
+            top: 35px;
+            left: 35px;
+            box-shadow: none;
+        }
+
+        .ab-btns {
+            display: flex;
+            gap: 20px;
+            transform: rotate(-15deg);
+        }
+
+        .btn-round {
+            width: 40px;
+            height: 40px;
+            background: #b90000;
+            border-radius: 50%;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .power-led {
+            width: 10px;
+            height: 10px;
+            background: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            box-shadow: 0 0 5px red;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="console-frame">
+        <div class="screen-bezel">
+            <div style="position:relative;">
+                <div class="power-led"></div>
+                <div style="text-align:center; color: #aaa; font-size: 0.6rem; margin-bottom: 5px;">BATTERY</div>
+            </div>
+
+            <div class="screen">
+                <div style="text-align:center; margin-top: 20px;">
+                    <i class="ph-fill ph-game-controller" style="font-size: 3rem;"></i>
+                </div>
+                <h1>PRESS START<br>TO AUTOMATE</h1>
+
+                <div class="menu-list">
+                    <div class="menu-item active">
+                        > LEVEL 1: MINDSET <span class="arrow">
+                            << /span>
+                    </div>
+                    <div class="menu-item">
+                        > LEVEL 2: FINANCE <span class="arrow">
+                            << /span>
+                    </div>
+                    <div class="menu-item">
+                        > LEVEL 3: CONTENT <span class="arrow">
+                            << /span>
+                    </div>
+                    <div class="menu-item">
+                        > LEVEL 4: SYSTEMS <span class="arrow">
+                            << /span>
+                    </div>
+                    <div class="menu-item">
+                        > BOSS FIGHT: SCALE <span class="arrow">
+                            << /span>
+                    </div>
+                </div>
+
+                <button class="pixel-btn">INSERT COIN (2.9M)</button>
+
+                <div style="text-align: center; font-size: 0.6rem; margin-top: 40px;">
+                    © 1995-2025 CUONGHOA CORP.<br>ALL RIGHTS RESERVED.
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="d-pad">
+                <div class="d-up"></div>
+                <div class="d-right"></div>
+                <div class="d-down"></div>
+                <div class="d-left"></div>
+                <div class="d-center"></div>
+            </div>
+            <div class="decor-lines">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="ab-btns">
+                <div class="btn-round"></div>
+                <div class="btn-round" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

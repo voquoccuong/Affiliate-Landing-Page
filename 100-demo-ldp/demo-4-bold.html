@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CuongHoa.AI - BOLD AUTOMATION</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=IBM+Plex+Mono:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fffbf0;
+            --text: #000000;
+            --primary: #ff4d4d;
+            --secondary: #24a0ed;
+            --accent: #ffeb3b;
+            --green: #00d26a;
+            --border: 3px solid #000;
+            --shadow: 6px 6px 0px #000;
+            --shadow-hover: 10px 10px 0px #000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'IBM Plex Mono', monospace;
+            overflow-x: hidden;
+            border: 10px solid #000;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Archivo', sans-serif;
+            text-transform: uppercase;
+            font-weight: 900;
+            line-height: 0.9;
+        }
+
+        /* Marquee */
+        .marquee-container {
+            background: #000;
+            color: #fff;
+            padding: 15px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            border-bottom: var(--border);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 40px;
+            font-family: 'Archivo', sans-serif;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Nav */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: var(--border);
+            background: #fff;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .cta-btn {
+            background: var(--primary);
+            color: #fff;
+            border: var(--border);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            min-height: 80vh;
+        }
+
+        .hero-text {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: var(--border);
+        }
+
+        .hero-text h1 {
+            font-size: 6rem;
+            margin-bottom: 30px;
+            color: #000;
+        }
+
+        .hero-image {
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 120%;
+            border: var(--border);
+            box-shadow: var(--shadow);
+            transform: rotate(-5deg);
+        }
+
+        /* Courses */
+        .section-header {
+            padding: 40px;
+            border-bottom: var(--border);
+            background: var(--accent);
+        }
+
+        .section-header h2 {
+            font-size: 4rem;
+        }
+
+        .courses-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        }
+
+        .course-item {
+            border-right: var(--border);
+            border-bottom: var(--border);
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-img {
+            height: 250px;
+            border-bottom: var(--border);
+            overflow: hidden;
+        }
+
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+            filter: grayscale(100%);
+        }
+
+        .course-item:hover .course-img img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .course-info {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tags {
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: #000;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .course-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--green);
+            background: #000;
+            padding: 5px 15px;
+            display: inline-block;
+            transform: rotate(-2deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text {
+                border-right: none;
+                border-bottom: var(--border);
+                padding: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-image {
+                padding: 40px;
+            }
+
+            body {
+                border-width: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item">AUTOMATION IS POWER</span>
+            <span class="marquee-item">///</span>
+            <span class="marquee-item">NO-CODE REVOLUTION</span>
+            <span class="marquee-item">///</span>
+            <span class="marquee-item">SCALE YOUR BUSINESS</span>
+            <span class="marquee-item">///</span>
+            <span class="marquee-item">AI ASSISTANT</span>
+            <span class="marquee-item">///</span>
+            <span class="marquee-item">AUTOMATION IS POWER</span>
+            <span class="marquee-item">///</span>
+            <span class="marquee-item">NO-CODE REVOLUTION</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#" class="logo">CUONGHOA <span style="color: var(--primary)">.AI</span></a>
+        <a href="#" class="cta-btn">GET STARTED</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>Don't Work Hard.<br>Work <span style="background: var(--accent);">Smart</span>.</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 500px;">
+                Cắt giảm 80% công việc thủ công. Tối ưu quy trình doanh nghiệp với các khóa học thực chiến về AI &
+                Automation.
+            </p>
+            <a href="#courses" class="cta-btn">XEM KHÓA HỌC -></a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1546900703-cf06143d1239?q=80&w=2650&auto=format&fit=crop"
+                alt="Robot working">
+        </div>
+    </header>
+
+    <section id="courses">
+        <div class="section-header">
+            <h2>AVAILABLE COURSES</h2>
+        </div>
+        <div class="courses-list" id="courseList">
+            <!-- JS Injection -->
+        </div>
+    </section>
+
+    <script>
+        const courses = [
+            {
+                "title": "[S01] Automation Mindset",
+                "price": 2900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+                "tools": ["Mindset", "Strategy"]
+            },
+            {
+                "title": "[S02] Banking Automation",
+                "price": 1900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+                "tools": ["SePay", "Money"]
+            },
+            {
+                "title": "[S03] Shop Management",
+                "price": 2900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+                "tools": ["Woo"]
+            },
+            {
+                "title": "[S09] AI Content Machine",
+                "price": 7900000,
+                "featureImage": "https://w.ladicdn.com/22603/image-7-20250909032248-nxwdm.png",
+                "tools": ["Viral", "AI"]
+            }
+        ];
+
+        const list = document.getElementById('courseList');
+
+        courses.forEach((course) => {
+            const priceFormatted = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(course.price);
+
+            const item = document.createElement('div');
+            item.className = 'course-item';
+
+            item.innerHTML = `
+                <div class="course-img">
+                    <img src="${course.featureImage}" alt="Course">
+                </div>
+                <div class="course-info">
+                    <div>
+                        <div class="tags">
+                            ${course.tools.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                        <h3 class="course-title">${course.title}</h3>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px;">
+                        <span class="price-tag">${priceFormatted}</span>
+                        <a href="#" style="color:black; font-weight:700; font-size:1.5rem; text-decoration:none;">BUY -></a>
+                    </div>
+                </div>
+            `;
+            list.appendChild(item);
+        });
+    </script>
+</body>
+
+</html>

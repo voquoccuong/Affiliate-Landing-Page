@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL // CuongHoa.AI</title>
+
+    <!-- Google Fonts: JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        neon: {
+                            green: '#00ff41',
+                            pink: '#ff00ff',
+                            cyan: '#00ffff',
+                        },
+                        cyber: {
+                            black: '#050505',
+                            dark: '#0a0a0a',
+                            grid: '#1a1a1a',
+                        }
+                    },
+                    animation: {
+                        'blink': 'blink 1s step-end infinite',
+                        'scan': 'scan 4s linear infinite',
+                    },
+                    keyframes: {
+                        blink: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        },
+                        scan: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #00ff41;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: crosshair;
+        }
+
+        /* CRT Effect */
+        .crt::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .glitch-hover:hover {
+            animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+            color: #ff00ff;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0)
+            }
+
+            20% {
+                transform: translate(-2px, 2px)
+            }
+
+            40% {
+                transform: translate(-2px, -2px)
+            }
+
+            60% {
+                transform: translate(2px, 2px)
+            }
+
+            80% {
+                transform: translate(2px, -2px)
+            }
+
+            100% {
+                transform: translate(0)
+            }
+        }
+
+        .cyber-border {
+            border: 1px solid #1a1a1a;
+            position: relative;
+        }
+
+        .cyber-border::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 10px;
+            height: 10px;
+            background: #00ff41;
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen crt overflow-x-hidden selection:bg-neon-green selection:text-black">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-cyber-black/90 border-b border-neon-green/20 backdrop-blur">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-neon-pink font-bold">></span>
+                <span
+                    class="font-bold tracking-widest text-shadow drop-shadow-[0_0_5px_rgba(0,255,65,0.8)]">CUONGHOA_SYSTEM</span>
+                <span class="animate-blink">_</span>
+            </div>
+
+            <div class="hidden md:flex gap-8 text-xs uppercase tracking-widest">
+                <a href="#" class="hover:text-neon-pink transition-colors">[INIT]</a>
+                <a href="#" class="hover:text-neon-pink transition-colors text-neon-green/50">[MODULES]</a>
+                <a href="#" class="hover:text-neon-pink transition-colors text-neon-green/50">[NETWORK]</a>
+            </div>
+
+            <button
+                class="border border-neon-green px-4 py-1 text-xs uppercase hover:bg-neon-green hover:text-black transition-colors">
+                EXECUTE_LOGIN()
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pt-32 pb-20 relative border-b border-white/10">
+        <div class="absolute inset-0 z-0 opacity-20"
+            style="background-image: radial-gradient(#00ff41 1px, transparent 1px); background-size: 30px 30px;"></div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <div
+                class="inline-block border border-neon-pink text-neon-pink text-xs px-2 py-1 mb-8 uppercase tracking-[0.2em] transform -skew-x-12">
+                System Status: Online
+            </div>
+
+            <h1 class="text-4xl md:text-7xl font-black mb-6 uppercase tracking-tighter leading-none glitch-hover">
+                Automate<br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan">Everything</span>
+            </h1>
+
+            <p class="text-gray-400 max-w-xl mx-auto mb-10 text-sm md:text-base leading-relaxed font-light">
+                // Injecting efficiency into your workflow...<br>
+                // Loading n8n, Lark, Make protocols...<br>
+                // Ready to deploy scalable automation systems.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#courses"
+                    class="bg-neon-green text-black px-8 py-4 font-bold text-sm uppercase tracking-widest hover:bg-neon-pink hover:text-white transition-colors clip-path-polygon">
+                    INITIALIZE_LEARNING
+                </a>
+                <a href="#"
+                    class="border border-white/20 text-white px-8 py-4 font-bold text-sm uppercase tracking-widest hover:border-neon-cyan hover:text-neon-cyan transition-colors">
+                    READ_DOCS
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Terminal Output / Stack -->
+    <div class="bg-cyber-dark border-b border-gray-800 py-4 overflow-hidden whitespace-nowrap">
+        <div class="container mx-auto px-4 font-mono text-xs text-gray-500">
+            <span class="mr-8">>> LOADING: n8n_v2.4.0 ... OK</span>
+            <span class="mr-8 text-neon-pink">>> LOADING: Lark_Base_API ... OK</span>
+            <span class="mr-8">>> LOADING: Make_Scenario ... OK</span>
+            <span class="mr-8 text-neon-cyan">>> LOADING: ChatGPT_4o ... OK</span>
+            <span class="mr-8">>> SYSTEM: OPTIMIZED</span>
+        </div>
+    </div>
+
+    <!-- Courses Grid -->
+    <section id="courses" class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="flex items-end justify-between mb-16 border-b border-white/10 pb-4">
+                <h2 class="text-3xl font-bold uppercase text-white">Available_Modules</h2>
+                <div class="text-neon-pink text-xs animate-pulse">Scanning database...</div>
+            </div>
+
+            <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JS Injected -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-12 bg-cyber-dark text-xs text-gray-500">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div>
+                <div class="text-white font-bold mb-4 uppercase">> CuongHoa.AI_Core</div>
+                <p class="mb-4 max-w-xs">Terminating manual processes. <br>Executing automated futures.</p>
+                <div class="flex gap-4 text-neon-green">
+                    <a href="#" class="hover:underline">[FB]</a>
+                    <a href="#" class="hover:underline">[YT]</a>
+                    <a href="#" class="hover:underline">[LI]</a>
+                </div>
+            </div>
+            <div class="text-right flex flex-col justify-end">
+                <div class="mb-2">System_ID: 884-291-X</div>
+                <div>&copy; 2025 All Rights Reserved.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const courseData = {
+            "courses": [
+                {
+                    "title": "[S01] Automation_Overview",
+                    "description": "Core protocols for AI Automation. Mindset installation and field experience extraction.",
+                    "category": "vClass",
+                    "price": 2900000,
+                    "tools": ["Mindset", "Automation"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-13-20250909040425-zw_ho.png",
+                    "productURL": "https://go.cuonghoa.ai/s01-tong-quan-ve-automation-kinh-nghiem-lam-nghe"
+                },
+                {
+                    "title": "[S02] Banking_Watchdog",
+                    "description": "Real-time surveillance of capital flow. Auto-report transaction anomalies via Internet Banking APIs.",
+                    "category": "vClass",
+                    "price": 1900000,
+                    "hasFlashSale": true,
+                    "tools": ["SePay", "Lark", "n8n"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-20250909024310-u2yni.png",
+                    "productURL": "https://go.cuonghoa.ai/tong-hop-bao-cao-tien-vao-ra-tu-dong-tu-internet-banking"
+                },
+                {
+                    "title": "[S03] Revenue_Ops_Core",
+                    "description": "Sync Woocommerce orders to LarkBase. Lean operation architecture for high-speed processing.",
+                    "category": "vClass",
+                    "price": 2900000,
+                    "hasFlashSale": true,
+                    "tools": ["Wordpress", "SePay", "Lark"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-1-20250909024623-nawlw.png",
+                    "productURL": "https://go.cuonghoa.ai/bao-cao-doanh-thu-va-van-hanh-khoa-hoc-tinh-gon"
+                },
+                {
+                    "title": "[S04] Contract_Auto_Bot",
+                    "description": "Zero-code contract generation and debt management system. Automated billing cycles.",
+                    "category": "vClass",
+                    "price": 4900000,
+                    "hasFlashSale": true,
+                    "tools": ["SePay", "Lark", "n8n"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-2-20250909024738-jshlc.png",
+                    "productURL": "https://go.cuonghoa.ai/xay-dung-he-thong-bao-gia-va-quan-ly-cong-no-tu-dong"
+                },
+                {
+                    "title": "[S05] Zalo_Group_Manager",
+                    "description": "Automated content distribution network for Zalo/Facebook. G-Sheet drive inputs.",
+                    "category": "vClass",
+                    "price": 2900000,
+                    "tools": ["Make", "Pancake", "Facebook"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-3-20250909025510-8mrrg.png",
+                    "productURL": "https://go.cuonghoa.ai/cham-soc-group-chat-bang-zalo-ca-nhan"
+                },
+                {
+                    "title": "[S06] Shopee_Feedback_Loop",
+                    "description": "Negative review interception system. Syncs cleaning protocols to CSKH team instantly.",
+                    "category": "vClass",
+                    "price": 3900000,
+                    "tools": ["Lark", "n8n", "Shopee"],
+                    "featureImage": "https://w.ladicdn.com/22603/image-4-20250909025943-0n2dg.png",
+                    "productURL": "https://go.cuonghoa.ai/tu-dong-xu-ly-danh-gia-xau-shopee"
+                }
+            ]
+        };
+
+        const grid = document.getElementById('course-grid');
+        function formatPrice(price) { return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(price); }
+
+        function createCard(course) {
+            return `
+                <div class="cyber-border bg-gray-900 group hover:bg-gray-800 transition-colors duration-200">
+                    <div class="relative h-48 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500 border-b border-white/10">
+                        <img src="${course.featureImage}" alt="${course.title}" class="w-full h-full object-cover">
+                         ${course.hasFlashSale ? `<div class="absolute inset-0 bg-neon-green/20 pointer-events-none animate-pulse"></div><div class="absolute top-2 right-2 bg-neon-green text-black text-xs font-bold px-1">FLASH_SALE_ACTIVE</div>` : ''}
+                    </div>
+                    
+                    <div class="p-5">
+                        <div class="flex flex-wrap gap-2 mb-4 text-[10px] uppercase tracking-wider">
+                             ${course.tools.map(tool => `<span class="border border-white/20 px-1 py-0.5 text-gray-400 group-hover:border-neon-cyan group-hover:text-neon-cyan">[${tool}]</span>`).join('')}
+                        </div>
+                        
+                        <h3 class="font-bold text-white text-base mb-2 group-hover:text-neon-green transition-colors font-mono">
+                            <span class="text-neon-pink mr-1">></span>${course.title}
+                        </h3>
+                        <p class="text-gray-500 text-xs mb-6 line-clamp-3 h-10">${course.description}</p>
+                        
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="text-lg text-white font-bold">${formatPrice(course.price)}</span>
+                            <a href="${course.productURL}" target="_blank" class="bg-white/5 hover:bg-neon-green hover:text-black border border-white/10 text-white text-xs px-4 py-2 uppercase tracking-wide transition-all">
+                                ACCESS >
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        grid.innerHTML = courseData.courses.map(createCard).join('');
+    </script>
+</body>
+
+</html>

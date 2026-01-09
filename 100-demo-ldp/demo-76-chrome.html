@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Chrome - CuongHoa.AI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: white;
+            font-family: 'Syncopate', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chrome-text {
+            font-size: 8rem;
+            font-weight: 700;
+            letter-spacing: -5px;
+            text-transform: uppercase;
+            text-align: center;
+            background: linear-gradient(to bottom,
+                    #333 0%,
+                    #fff 50%,
+                    #333 51%,
+                    #888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            filter: drop-shadow(0 10px 20px rgba(255, 255, 255, 0.2));
+            z-index: 10;
+        }
+
+        .chrome-text::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0.8) 0%,
+                    rgba(255, 255, 255, 0) 40%,
+                    rgba(255, 255, 255, 0) 60%,
+                    rgba(255, 255, 255, 0.5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            mix-blend-mode: overlay;
+            z-index: 11;
+        }
+
+        /* Fluid background simulation */
+        .fluid-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150vw;
+            height: 150vh;
+            background: radial-gradient(circle at 50% 50%, #444, #000);
+            z-index: 1;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff, #888, #222);
+            box-shadow:
+                0 0 30px rgba(255, 255, 255, 0.1),
+                inset -10px -10px 20px rgba(0, 0, 0, 0.8);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-duration: 15s;
+        }
+
+        .orb2 {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            right: 15%;
+            animation-duration: 12s;
+            animation-delay: 2s;
+        }
+
+        .orb3 {
+            width: 100px;
+            height: 100px;
+            top: 40%;
+            right: 30%;
+            animation-duration: 8s;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            33% {
+                transform: translate(30px, -50px);
+            }
+
+            66% {
+                transform: translate(-20px, 20px);
+            }
+        }
+
+        .content {
+            z-index: 20;
+            text-align: center;
+        }
+
+        p {
+            font-family: 'Arial', sans-serif;
+            letter-spacing: 2px;
+            color: #aaa;
+            margin-top: -2rem;
+            margin-bottom: 4rem;
+        }
+
+        .cta-silver {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #e0e0e0, #ffffff, #a0a0a0);
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            text-transform: uppercase;
+            box-shadow:
+                0 10px 20px rgba(0, 0, 0, 0.5),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+        }
+
+        .cta-silver:hover {
+            transform: scale(1.1);
+            box-shadow:
+                0 0 40px rgba(255, 255, 255, 0.4),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fluid-bg"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+    <div class="content">
+        <div class="chrome-text" data-text="LIQUID">LIQUID</div>
+        <div class="chrome-text" data-text="METAL" style="font-size: 6rem; margin-top: -30px;">METAL</div>
+
+        <p>REFLECT YOUR TRUE POTENTIAL</p>
+
+        <a href="https://www.cuonghoa.website" class="cta-silver">Get Shiny</a>
+    </div>
+
+</body>
+
+</html>
